@@ -4,7 +4,7 @@
 >#### <i>Authors</i>
 > * João Pedro Gomes Martins :link:
 > * Matheus Silva Moreira dos Santos
-> * V
+> * Vitor Lima Brandão
 > * V
 > * H
 
