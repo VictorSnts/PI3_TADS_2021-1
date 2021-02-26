@@ -4,7 +4,7 @@
 >#### <i>Authors</i>
 
 > * Henrique Monteiro Martins
-> * João Pedro Gomes Martins :link:
+> * João Pedro Gomes Martins
 > * Matheus Silva Moreira dos Santos
 > * Victor Freitas dos Santos
 > * Vitor Lima Brandão
