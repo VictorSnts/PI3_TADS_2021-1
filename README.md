@@ -5,8 +5,8 @@
 > * João Pedro Gomes Martins :link:
 > * Matheus Silva Moreira dos Santos
 > * Vitor Lima Brandão
-> * V
-> * H
+> * Victor Freitas dos Santos
+> * Henrique Monteiro
 
 
 
