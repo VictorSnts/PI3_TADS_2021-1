@@ -2,12 +2,12 @@
 
 ### Grupo :rocket:
 >#### <i>Authors</i>
+
+> * Henrique Monteiro Martins
 > * João Pedro Gomes Martins :link:
 > * Matheus Silva Moreira dos Santos
-> * Vitor Lima Brandão
 > * Victor Freitas dos Santos
-> * Henrique Monteiro
-
+> * Vitor Lima Brandão
 
 
 
