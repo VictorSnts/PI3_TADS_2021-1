@@ -1,0 +1,7 @@
+/Users/victor/NetBeansProjects/TestesPI/src/main/java/com/pi/systeminstruverso/entidade/Cliente.java
+/Users/victor/NetBeansProjects/TestesPI/src/main/java/com/pi/systeminstruverso/servlet/CadastrarClienteServlet.java
+/Users/victor/NetBeansProjects/TestesPI/src/main/java/com/pi/systeminstruverso/servlet/ExcluirClienteServlet.java
+/Users/victor/NetBeansProjects/TestesPI/src/main/java/com/pi/systeminstruverso/dao/ClienteDAO.java
+/Users/victor/NetBeansProjects/TestesPI/src/main/java/com/pi/systeminstruverso/servlet/AlterarClienteServlet.java
+/Users/victor/NetBeansProjects/TestesPI/src/main/java/com/pi/systeminstruverso/servlet/ClienteServlet.java
+/Users/victor/NetBeansProjects/TestesPI/src/main/java/com/pi/systeminstruverso/conexao/Conexao.java
