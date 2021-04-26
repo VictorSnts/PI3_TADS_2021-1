@@ -35,6 +35,9 @@
                     <td>
                         <a href="clientes/cadastrar.jsp">Cadastrar</a>
                     </td>
+                    <td>
+                        <a href="fornecedores/cadastrar.jsp">Cadastrar</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

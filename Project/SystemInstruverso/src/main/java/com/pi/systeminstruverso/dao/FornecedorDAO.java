@@ -19,6 +19,42 @@ import java.util.logging.Logger;
  */
 public class FornecedorDAO {
     
+    public static boolean cadastrar(Fornecedor fornecedor){
+        boolean ok = false;
+        
+        String query = "INSERT INTO INSTRUVERSE.FORNECEDOR (RAZAO_SOCIAL, NOME_FANTASIA, DATA_REGISTRO, NOME_CONTATO, TELEFONE, EMAIL, SITE, CNPJ, CEP, ENDERECO, NUMERO, PAIS, UF, BAIRRO, CIDADE, FILIAL_CADASTRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            
+            ps.setString(1, fornecedor.getRazao_social());
+            ps.setString(2, fornecedor.getNome_fantasia());
+            ps.setString(3, fornecedor.getData_registro());
+            ps.setString(4, fornecedor.getNome_contato());
+            ps.setString(5, fornecedor.getTelefone());
+            ps.setString(6, fornecedor.getEmail());
+            ps.setString(7, fornecedor.getSite());
+            ps.setString(8, fornecedor.getCnpj());
+            ps.setString(9, fornecedor.getCep());
+            ps.setString(10, fornecedor.getEndereco());
+            ps.setInt(11, fornecedor.getNumero());
+            ps.setString(12, fornecedor.getPais());
+            ps.setString(13, fornecedor.getUf());
+            ps.setString(14, fornecedor.getBairro());
+            ps.setString(15, fornecedor.getCidade());
+            ps.setInt(16, fornecedor.getFilial_cadastro());
+            ps.executeUpdate();
+            
+            ok = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return ok;
+    }
+    
     public static boolean deletar(String cnpj){
         boolean ok = false;
         
