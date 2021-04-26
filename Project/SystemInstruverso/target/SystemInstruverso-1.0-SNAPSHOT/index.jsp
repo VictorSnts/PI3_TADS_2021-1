@@ -17,11 +17,34 @@
         <c:import url="header.jsp"/>
         <h1>Menu</h1>
         
+        <table>
+            <thead>
+                <th scope="col"><b>Clientes</b></th>
+                <th scope="col"><b>Fornecedores</b></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="ClienteServlet">Listar</a>
+                    </td>
+                    <td>
+                        <a href="FornecedorServlet">Listar</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="clientes/cadastrar.jsp">Cadastrar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
         <br/>
-        <a href="ClienteServlet">- Listar Clientes -</a>
+        
         <br/>
         <br/>
-        <a href="clientes/cadastrar.jsp">- Cadastrar Cliente -</a>
+        
 
     </body>
 </html>

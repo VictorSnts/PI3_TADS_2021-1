@@ -132,9 +132,6 @@ public class ClienteDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-
-        
-        
         return ok;
     }
     

@@ -1,7 +1,7 @@
 package com.pi.systeminstruverso.servlet;
 
-import com.pi.systeminstruverso.dao.ClienteDAO;
-import com.pi.systeminstruverso.entidade.Cliente;
+import com.pi.systeminstruverso.dao.FornecedorDAO;
+import com.pi.systeminstruverso.entidade.Fornecedor;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,20 +16,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author victor
  */
-public class ClienteServlet extends HttpServlet {
+public class FornecedorServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            List<Cliente> listaClientes = ClienteDAO.getClientes();
+            List<Fornecedor> listaFornecedores = FornecedorDAO.getFornecedores();
             
-            request.setAttribute("listaClientes", listaClientes);
-            request.getRequestDispatcher("/clientes/listar.jsp").forward(request, response);
+            request.setAttribute("listaFornecedores", listaFornecedores);
+            request.getRequestDispatcher("/fornecedores/listar.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
-    
 }

@@ -16,6 +16,14 @@
         <servlet-name>AlterarClienteServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.AlterarClienteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FornecedorServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.FornecedorServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirFornecedorServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.ExcluirFornecedorServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>AlterarClienteServlet</servlet-name>
         <url-pattern>/AlterarClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FornecedorServlet</servlet-name>
+        <url-pattern>/FornecedorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirFornecedorServlet</servlet-name>
+        <url-pattern>/ExcluirFornecedorServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
