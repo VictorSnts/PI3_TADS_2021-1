@@ -2,6 +2,7 @@ package com.pi.systeminstruverso.servlet;
 
 import com.pi.systeminstruverso.dao.ClienteDAO;
 import com.pi.systeminstruverso.entidade.Cliente;
+import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,11 +22,21 @@ public class CadastrarClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         // Recuperar os parametros
         String nome = request.getParameter("nome");
+        String telefone = request.getParameter("telefone");
+        int filial_cadastro = Convert.ToInt(request.getParameter("filial_cadastro"));
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
+        String data_nasc = request.getParameter("data_nasc");
+        String endereco = request.getParameter("endereco");
+        int numero = Convert.ToInt(request.getParameter("numero"));
+        String cep = request.getParameter("cep");
+        String uf = request.getParameter("uf");
+        String bairro = request.getParameter("bairro");
+        String cidade = request.getParameter("cidade");
+
         
         // Inserir oi cliente no BD
-        Cliente cliente = new Cliente(nome, email, cpf);
+        Cliente cliente = new Cliente(nome, telefone, email, cpf, cep, endereco, numero, uf, bairro, cidade, filial_cadastro, data_nasc);
         boolean ok = ClienteDAO.cadastrar(cliente);
               
         // Redirecionar para sucesso/erro

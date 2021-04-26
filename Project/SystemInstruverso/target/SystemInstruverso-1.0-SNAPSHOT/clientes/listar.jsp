@@ -21,18 +21,35 @@
         <table class="table table-striped table-bordered table-sm ">
             <thead>
                 <th scope="col">Nome</th>
+                <th scope="col">Data_nasc</th>
+                <th scope="col">Telefone</th>
                 <th scope="col">Email</th>
-                <th scope="col">CPF</th>
+                <th scope="col">Cpf</th>
+                <th scope="col">Cep</th>
+                <th scope="col">Endereco</th>
+                <th scope="col">Numero</th>
+                <th scope="col">Uf</th>
+                <th scope="col">Bairro</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Filial</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 
-
             </thead>
             <c:forEach items="${listaClientes}" var="cliente">
                 <tr>
                     <td>${cliente.nome}</td>
+                    <td>${cliente.data_nasc}</td>
+                    <td>${cliente.telefone}</td>
                     <td>${cliente.email}</td>
                     <td>${cliente.cpf}</td>
+                    <td>${cliente.cep}</td>
+                    <td>${cliente.endereco}</td>
+                    <td>${cliente.numero}</td>
+                    <td>${cliente.uf}</td>
+                    <td>${cliente.bairro}</td>
+                    <td>${cliente.cidade}</td>
+                    <td>${cliente.filial_cadastro}</td>
                     <td><a href="AlterarClienteServlet?cpf=${cliente.cpf}">Atualizar</a></td>
                     <td><a href="ExcluirClienteServlet?cpf=${cliente.cpf}">Excluir</a></td>
                 </tr>
