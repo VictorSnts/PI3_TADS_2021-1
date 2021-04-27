@@ -1,7 +1,6 @@
 package com.pi.systeminstruverso.dao;
 
 import com.pi.systeminstruverso.conexao.Conexao;
-import com.pi.systeminstruverso.entidade.Cliente;
 import com.pi.systeminstruverso.entidade.Fornecedor;
 import com.pi.systeminstruverso.utils.Convert;
 import java.sql.Connection;
@@ -18,6 +17,78 @@ import java.util.logging.Logger;
  * @author victor
  */
 public class FornecedorDAO {
+    
+    public static Fornecedor getFornecedor(String cnpj) throws SQLException{
+        String query = "SELECT * FROM fornecedor WHERE cnpj = ?";
+        
+        Fornecedor fornecedor = null;
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, cnpj);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                String razao_social = rs.getString("razao_social");
+                String nome_fantasia = rs.getString("nome_fantasia");
+                String data_registro = rs.getString("data_registro");
+                String nome_contato = rs.getString("nome_contato");
+                String telefone = rs.getString("telefone");
+                String email = rs.getString("email");
+                String site = rs.getString("site");
+                String cep = rs.getString("cep");
+                String endereco = rs.getString("endereco");
+                int numero = rs.getInt("numero");
+                String pais = rs.getString("pais");
+                String uf = rs.getString("uf");
+                String bairro = rs.getString("bairro");
+                String cidade = rs.getString("cidade");
+                int filial_cadastro = rs.getInt("filial_cadastro");
+                
+                fornecedor = new Fornecedor(razao_social, nome_fantasia, data_registro, nome_contato, telefone, email, site, cnpj, cep, endereco, numero, pais, uf, bairro, cidade, filial_cadastro);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fornecedor;
+    }    
+    
+    public static boolean atualizar(Fornecedor fornecedor){
+        boolean ok = false;
+        
+        String query = "UPDATE fornecedor SET RAZAO_SOCIAL=?, NOME_FANTASIA=?, DATA_REGISTRO=?, NOME_CONTATO=?, TELEFONE=?, EMAIL=?, SITE=?, CEP=?, ENDERECO=?, NUMERO=?, PAIS=?, UF=?, BAIRRO=?, CIDADE=?, FILIAL_CADASTRO=? WHERE CNPJ=?";
+        
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            
+            ps.setString(1, fornecedor.getRazao_social());
+            ps.setString(2, fornecedor.getNome_fantasia());
+            ps.setString(3, fornecedor.getData_registro());
+            ps.setString(4, fornecedor.getNome_contato());
+            ps.setString(5, fornecedor.getTelefone());
+            ps.setString(6, fornecedor.getEmail());
+            ps.setString(7, fornecedor.getSite());
+            ps.setString(8, fornecedor.getCep());
+            ps.setString(9, fornecedor.getEndereco());
+            ps.setInt(10, fornecedor.getNumero());
+            ps.setString(11, fornecedor.getPais());
+            ps.setString(12, fornecedor.getUf());
+            ps.setString(13, fornecedor.getBairro());
+            ps.setString(14, fornecedor.getCidade());
+            ps.setInt(15, fornecedor.getFilial_cadastro());
+            ps.setString(16, fornecedor.getCnpj());
+            ps.executeUpdate();
+            
+            ok = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ok;
+    }
     
     public static boolean cadastrar(Fornecedor fornecedor){
         boolean ok = false;

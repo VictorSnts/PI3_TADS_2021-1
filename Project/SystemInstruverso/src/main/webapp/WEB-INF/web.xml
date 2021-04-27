@@ -28,6 +28,10 @@
         <servlet-name>CadastrarFornecedorServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.CadastrarFornecedorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlterarFornecedorServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.AlterarFornecedorServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>CadastrarFornecedorServlet</servlet-name>
         <url-pattern>/CadastrarFornecedorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarFornecedorServlet</servlet-name>
+        <url-pattern>/AlterarFornecedorServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
