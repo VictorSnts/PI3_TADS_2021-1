@@ -1,0 +1,14 @@
+com/pi/systeminstruverso/dao/FornecedorDAO.class
+com/pi/systeminstruverso/entidade/Cliente.class
+com/pi/systeminstruverso/dao/ClienteDAO.class
+com/pi/systeminstruverso/servlet/AlterarClienteServlet.class
+com/pi/systeminstruverso/servlet/ClienteServlet.class
+com/pi/systeminstruverso/servlet/ExcluirClienteServlet.class
+com/pi/systeminstruverso/servlet/CadastrarClienteServlet.class
+com/pi/systeminstruverso/servlet/AlterarFornecedorServlet.class
+com/pi/systeminstruverso/entidade/Fornecedor.class
+com/pi/systeminstruverso/servlet/CadastrarFornecedorServlet.class
+com/pi/systeminstruverso/conexao/Conexao.class
+com/pi/systeminstruverso/servlet/FornecedorServlet.class
+com/pi/systeminstruverso/servlet/ExcluirFornecedorServlet.class
+com/pi/systeminstruverso/utils/Convert.class
