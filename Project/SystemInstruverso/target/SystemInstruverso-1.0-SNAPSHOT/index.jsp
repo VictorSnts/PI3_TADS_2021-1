@@ -22,6 +22,7 @@
         <div class="sidebar">
             <a href="ClienteServlet"><i class="fa fa-fw fa-user"></i> Clientes</a>
             <a href="FornecedorServlet"><i class="fa fa-fw fa-industry"></i> Fornecedores</a>
+            <a href="UsuarioServlet"><i class="fa fa-fw fa-users"></i> Usuarios</a>
         </div>
   
         <br/>

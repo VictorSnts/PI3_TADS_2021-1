@@ -1,6 +1,9 @@
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/ExcluirFornecedorServlet.java
+/Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/UsuarioServlet.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/AlterarFornecedorServlet.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/dao/ClienteDAO.java
+/Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/dao/UsuarioDAO.java
+/Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/entidade/Usuario.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/conexao/Conexao.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/entidade/Fornecedor.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/AlterarClienteServlet.java
@@ -10,5 +13,6 @@
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/entidade/Cliente.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/FornecedorServlet.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/utils/Convert.java
+/Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/CadastrarUsuarioServlet.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/CadastrarClienteServlet.java
 /Users/victor/Documents/Development/Facul/PI3/git/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/CadastrarFornecedorServlet.java

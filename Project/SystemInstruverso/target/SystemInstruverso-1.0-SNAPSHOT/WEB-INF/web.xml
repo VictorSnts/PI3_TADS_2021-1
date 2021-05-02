@@ -32,6 +32,22 @@
         <servlet-name>AlterarFornecedorServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.AlterarFornecedorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.UsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarUsuarioServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.CadastrarUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarUsuarioServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.AlterarUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirUsuarioServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.ExcluirUsuarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -63,6 +79,22 @@
     <servlet-mapping>
         <servlet-name>AlterarFornecedorServlet</servlet-name>
         <url-pattern>/AlterarFornecedorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <url-pattern>/UsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarUsuarioServlet</servlet-name>
+        <url-pattern>/CadastrarUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarUsuarioServlet</servlet-name>
+        <url-pattern>/AlterarUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirUsuarioServlet</servlet-name>
+        <url-pattern>/ExcluirUsuarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
