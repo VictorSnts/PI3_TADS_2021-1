@@ -16,4 +16,9 @@ public class Convert {
         return num;
     }
     
+    public static double ToDouble(String str){
+        double num = Double.parseDouble(str);
+        return num;
+    }
+    
 }

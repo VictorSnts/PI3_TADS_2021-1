@@ -50,4 +50,31 @@ public class ProdutoDAO {
         }
         return produtos;
     }
+    
+    public static boolean cadastrar(Produto produto){
+        boolean ok = false;
+        
+        String query = "INSERT INTO INSTRUVERSE.PRODUTO (NOME, MARCA, CUSTO, PRECO, QUANTIDADE, COMISSAO) VALUES (?, ?, ?, ?, ?, ?)";
+        
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            
+            ps.setString(1, produto.getNome());
+            ps.setString(2, produto.getMarca());
+            ps.setDouble(3, produto.getCusto());
+            ps.setDouble(4, produto.getPreco());
+            ps.setInt(5, produto.getQuantidade());
+            ps.setDouble(6, produto.getComissao());
+            ps.executeUpdate();
+            
+            ok = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return ok;
+    }
+    
 }

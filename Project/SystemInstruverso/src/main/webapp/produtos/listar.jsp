@@ -38,12 +38,12 @@
                     <td>${produtos.cod}</td>
                     <td>${produtos.nome}</td>
                     <td>${produtos.marca}</td>
-                    <td>${produtos.custo}</td>
-                    <td>${produtos.preco}</td>
+                    <td>R$${produtos.custo}</td>
+                    <td>R$${produtos.preco}</td>
                     <td>${produtos.quantidade}</td>
-                    <td>${produtos.comissao}</td>
+                    <td>${produtos.comissao}%</td>
                     <td><a href="AlterarProdutoServlet?cod=${produto.cod}">Atualizar</a></td>
-                    <td><a href="ExcluirprodutoServlet?cod=${produto.cod}">Excluir</a></td>
+                    <td><a href="ExcluirProdutoServlet?cod=${produto.cod}">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

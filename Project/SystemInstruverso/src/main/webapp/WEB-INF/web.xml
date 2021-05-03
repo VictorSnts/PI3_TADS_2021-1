@@ -52,6 +52,10 @@
         <servlet-name>ProdutoServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.ProdutoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastrarProdutoServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.CadastrarProdutoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ProdutoServlet</servlet-name>
         <url-pattern>/ProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarProdutoServlet</servlet-name>
+        <url-pattern>/CadastrarProdutoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
