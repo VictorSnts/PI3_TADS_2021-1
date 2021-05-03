@@ -6,9 +6,7 @@
 package com.pi.systeminstruverso.servlet;
 
 import com.pi.systeminstruverso.dao.ProdutoDAO;
-import com.pi.systeminstruverso.dao.UsuarioDAO;
 import com.pi.systeminstruverso.entidade.Produto;
-import com.pi.systeminstruverso.entidade.Usuario;
 import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
 import javax.servlet.ServletException;

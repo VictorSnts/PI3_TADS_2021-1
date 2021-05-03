@@ -1,7 +1,6 @@
 package com.pi.systeminstruverso.dao;
 
 import com.pi.systeminstruverso.conexao.Conexao;
-import com.pi.systeminstruverso.entidade.Fornecedor;
 import com.pi.systeminstruverso.entidade.Usuario;
 import com.pi.systeminstruverso.utils.Convert;
 import java.sql.Connection;

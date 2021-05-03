@@ -9,7 +9,6 @@ import com.pi.systeminstruverso.dao.FornecedorDAO;
 import com.pi.systeminstruverso.entidade.Fornecedor;
 import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

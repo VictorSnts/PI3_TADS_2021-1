@@ -4,7 +4,6 @@ import com.pi.systeminstruverso.dao.ClienteDAO;
 import com.pi.systeminstruverso.entidade.Cliente;
 import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
