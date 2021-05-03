@@ -56,6 +56,14 @@
         <servlet-name>CadastrarProdutoServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.CadastrarProdutoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlterarProdutoServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.AlterarProdutoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirProdutoServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.ExcluirProdutoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -111,6 +119,14 @@
     <servlet-mapping>
         <servlet-name>CadastrarProdutoServlet</servlet-name>
         <url-pattern>/CadastrarProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarProdutoServlet</servlet-name>
+        <url-pattern>/AlterarProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirProdutoServlet</servlet-name>
+        <url-pattern>/ExcluirProdutoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

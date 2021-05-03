@@ -8,6 +8,7 @@ package com.pi.systeminstruverso.dao;
 import com.pi.systeminstruverso.conexao.Conexao;
 import com.pi.systeminstruverso.entidade.Produto;
 import com.pi.systeminstruverso.entidade.Usuario;
+import com.pi.systeminstruverso.utils.Convert;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +24,54 @@ import java.util.logging.Logger;
  */
 
 public class ProdutoDAO {
+    
+    public static boolean deletar(int cod){
+        boolean ok = false;
+        
+        String query = "DELETE FROM produto WHERE cod=?";
+        
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            
+            ps.setInt(1, cod);
+            ps.executeUpdate();
+
+            ok = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ok;
+    }
+    
+    
+    public static boolean atualizar(Produto produto){
+        boolean ok = false;
+        
+        String query = "UPDATE PRODUTO SET NOME=?, MARCA=?, CUSTO=?, PRECO=?, QUANTIDADE=?, COMISSAO=? WHERE cod=?";
+        
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            
+            ps.setString(1, produto.getNome());
+            ps.setString(2, produto.getMarca());
+            ps.setDouble(3, produto.getCusto());
+            ps.setDouble(4, produto.getPreco());
+            ps.setInt(5, produto.getQuantidade());
+            ps.setDouble(6, produto.getComissao());
+            ps.setInt(7, produto.getCod());
+            ps.executeUpdate();
+            
+            ok = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ok;
+    }
+    
     public static List<Produto> getProdutos() throws SQLException{
         String query = "SELECT * FROM produto";
         
@@ -77,4 +126,33 @@ public class ProdutoDAO {
         return ok;
     }
     
+    public static Produto getProduto(String cod_usuario) {
+        String query = "SELECT * FROM produto WHERE cod = ?";
+        
+        Produto produto = null;
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, Convert.ToInt(cod_usuario));
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                int cod = rs.getInt("cod");
+                String nome = rs.getString("nome");
+                String marca = rs.getString("marca");
+                double custo = rs.getDouble("custo");
+                double preco = rs.getDouble("preco");
+                int quantidade = rs.getInt("quantidade");
+                double comissao = rs.getDouble("comissao");
+
+                
+                produto =  new Produto(cod, nome, marca, custo, preco, quantidade, comissao);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produto;
+    }
 }

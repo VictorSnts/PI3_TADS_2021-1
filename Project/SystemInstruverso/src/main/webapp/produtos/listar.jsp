@@ -33,15 +33,15 @@
                 <th scope="col">Quantidade</th>
                 <th scope="col">Comissao</th>
             </thead>
-            <c:forEach items="${listaProdutos}" var="produtos">
+            <c:forEach items="${listaProdutos}" var="produto">
                 <tr>
-                    <td>${produtos.cod}</td>
-                    <td>${produtos.nome}</td>
-                    <td>${produtos.marca}</td>
-                    <td>R$${produtos.custo}</td>
-                    <td>R$${produtos.preco}</td>
-                    <td>${produtos.quantidade}</td>
-                    <td>${produtos.comissao}%</td>
+                    <td>${produto.cod}</td>
+                    <td>${produto.nome}</td>
+                    <td>${produto.marca}</td>
+                    <td>R$${produto.custo}</td>
+                    <td>R$${produto.preco}</td>
+                    <td>${produto.quantidade}</td>
+                    <td>${produto.comissao}%</td>
                     <td><a href="AlterarProdutoServlet?cod=${produto.cod}">Atualizar</a></td>
                     <td><a href="ExcluirProdutoServlet?cod=${produto.cod}">Excluir</a></td>
                 </tr>
