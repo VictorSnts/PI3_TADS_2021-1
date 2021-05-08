@@ -1,6 +1,7 @@
 package com.pi.systeminstruverso.servlet;
 
 import com.pi.systeminstruverso.dao.ClienteDAO;
+import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +18,10 @@ public class ExcluirClienteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Recuperar os parametros
-        String cpf = request.getParameter("cpf");
+        int cod = Convert.ToInt(request.getParameter("cod"));
         
         // deleatr o cliente no BD
-        boolean ok = ClienteDAO.deletar(cpf);
+        boolean ok = ClienteDAO.deletar(cod);
               
         // Redirecionar para sucesso/erro
         if (ok) {

@@ -17,6 +17,7 @@ import lombok.Setter;
  */
 public class Cliente {
     
+    private int cod;
     private String nome;
     private String telefone;
     private String email;
@@ -31,8 +32,9 @@ public class Cliente {
     private String data_nasc;
     
 
-    public Cliente(String nome, String telefone, String email, String cpf, String cep, String endereco, 
+    public Cliente(int cod, String nome, String telefone, String email, String cpf, String cep, String endereco, 
             int numero, String uf, String bairro, String cidade, int filial_cadastro, String data_nasc) {
+        this.cod = cod;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;

@@ -22,9 +22,9 @@ public class AlterarClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cpf = request.getParameter("cpf");
+        String cod = request.getParameter("cod");
         try {
-            Cliente cliente = ClienteDAO.getCliente(cpf);            
+            Cliente cliente = ClienteDAO.getCliente(cod);            
             request.setAttribute("cliente", cliente);
             
             request.getRequestDispatcher("clientes/cadastrar.jsp").forward(request, response);
@@ -40,6 +40,7 @@ public class AlterarClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        int cod = Convert.ToInt(request.getParameter("cod"));
         String nome = request.getParameter("nome");
         String telefone = request.getParameter("telefone");
         int filial_cadastro = Convert.ToInt(request.getParameter("filial_cadastro"));
@@ -55,7 +56,7 @@ public class AlterarClienteServlet extends HttpServlet {
         
         System.out.println(cpf);
 
-        Cliente cliente = new Cliente(nome, telefone, email, cpf, cep, endereco, numero, uf, bairro, cidade, filial_cadastro, data_nasc);
+        Cliente cliente = new Cliente(cod, nome, telefone, email, cpf, cep, endereco, numero, uf, bairro, cidade, filial_cadastro, data_nasc);
         boolean ok = ClienteDAO.atualizar(cliente);
         
         

@@ -22,7 +22,7 @@ public class ClienteDAO {
     public static boolean atualizar(Cliente cliente){
         boolean ok = false;
         
-        String query = "UPDATE cliente SET nome=?, telefone=?, email=?, cep=?, endereco=?, numero=?, uf=?, bairro=?, cidade=?, filial_cadastro=?, data_nasc=? WHERE cpf=?";
+        String query = "UPDATE cliente SET nome=?, telefone=?, email=?, cep=?, endereco=?, numero=?, uf=?, bairro=?, cidade=?, filial_cadastro=?, data_nasc=?, cpf=? WHERE cod=?";
         
         Connection con;
         try {
@@ -41,6 +41,7 @@ public class ClienteDAO {
             ps.setInt(10, cliente.getFilial_cadastro());
             ps.setString(11, cliente.getData_nasc());
             ps.setString(12, cliente.getCpf());
+            ps.setInt(13, cliente.getCod());
             ps.executeUpdate();
             
             ok = true;
@@ -50,21 +51,23 @@ public class ClienteDAO {
         return ok;
     }
     
-    public static Cliente getCliente(String cpf) throws SQLException{
-        String query = "SELECT * FROM cliente WHERE CPF = ?";
+    public static Cliente getCliente(String cod) throws SQLException{
+        String query = "SELECT * FROM cliente WHERE cod = ?";
         
         Cliente cliente = null;
         
         try {
             Connection con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, cpf);
+            ps.setString(1, cod);
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
+                int cod_cli = Convert.ToInt(rs.getString("cod"));
                 String nome = rs.getString("nome");
                 String telefone = rs.getString("telefone");
                 String email = rs.getString("email");
+                String cpf = rs.getString("cpf");
                 String cep = rs.getString("cep");
                 String endereco = rs.getString("endereco");
                 int numero = Convert.ToInt(rs.getString("numero"));
@@ -74,7 +77,7 @@ public class ClienteDAO {
                 int filial_cadastro = Convert.ToInt(rs.getString("filial_cadastro"));
                 String data_nasc = rs.getString("data_nasc");
                 
-                cliente = new Cliente(nome, telefone, email, cpf, cep, endereco, numero, uf, bairro, cidade, filial_cadastro, data_nasc);
+                cliente = new Cliente(cod_cli, nome, telefone, email, cpf, cep, endereco, numero, uf, bairro, cidade, filial_cadastro, data_nasc);
             }
             
         } catch (SQLException ex) {
@@ -83,17 +86,17 @@ public class ClienteDAO {
         return cliente;
     }    
     
-    public static boolean deletar(String cpf){
+    public static boolean deletar(int cod){
         boolean ok = false;
         
-        String query = "DELETE FROM cliente WHERE cpf=?";
+        String query = "DELETE FROM cliente WHERE cod=?";
         
         Connection con;
         try {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
             
-            ps.setString(1, cpf);
+            ps.setInt(1, cod);
             ps.executeUpdate();
 
             ok = true;
@@ -146,6 +149,7 @@ public class ClienteDAO {
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
+                int cod = rs.getInt("cod");
                 String nome = rs.getString("nome");
                 String telefone = rs.getString("telefone");
                 String email = rs.getString("email");
@@ -159,7 +163,7 @@ public class ClienteDAO {
                 int filial_cadastro = Convert.ToInt(rs.getString("filial_cadastro"));
                 String data_nasc = rs.getString("data_nasc");
                 
-                Cliente cliente =  new Cliente(nome, telefone, email, cpf, cep, endereco, numero, uf, bairro, cidade, filial_cadastro, data_nasc);
+                Cliente cliente =  new Cliente(cod, nome, telefone, email, cpf, cep, endereco, numero, uf, bairro, cidade, filial_cadastro, data_nasc);
                 clientes.add(cliente);
             }
 

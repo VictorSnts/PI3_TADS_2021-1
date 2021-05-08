@@ -24,6 +24,7 @@
         
         <table class="table table-striped table-bordered table-sm">
             <thead>
+                <th scope="col">cod</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Data_nasc</th>
                 <th scope="col">Telefone</th>
@@ -42,6 +43,7 @@
             </thead>
             <c:forEach items="${listaClientes}" var="cliente">
                 <tr>
+                    <td>${cliente.cod}</td>
                     <td>${cliente.nome}</td>
                     <td>${cliente.data_nasc}</td>
                     <td>${cliente.telefone}</td>
@@ -54,8 +56,8 @@
                     <td>${cliente.bairro}</td>
                     <td>${cliente.cidade}</td>
                     <td>${cliente.filial_cadastro}</td>
-                    <td><a href="AlterarClienteServlet?cpf=${cliente.cpf}">Atualizar</a></td>
-                    <td><a href="ExcluirClienteServlet?cpf=${cliente.cpf}">Excluir</a></td>
+                    <td><a href="AlterarClienteServlet?cod=${cliente.cod}">Atualizar</a></td>
+                    <td><a href="ExcluirClienteServlet?cod=${cliente.cod}">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>
