@@ -25,6 +25,7 @@
         
         <table class="table table-striped table-bordered table-sm ">
             <thead>
+                <th scope="col">Codigo</th>
                 <th scope="col">Razao Social</th>
                 <th scope="col">Nome Fantasia</th>
                 <th scope="col">Data Registro</th>
@@ -45,6 +46,7 @@
             </thead>
             <c:forEach items="${listaFornecedores}" var="fornecedor">
                 <tr>
+                    <td>${fornecedor.cod}</td>
                     <td>${fornecedor.razao_social}</td>
                     <td>${fornecedor.nome_fantasia}</td>
                     <td>${fornecedor.data_registro}</td>
@@ -61,8 +63,8 @@
                     <td>${fornecedor.bairro}</td>
                     <td>${fornecedor.cidade}</td>
                     <td>${fornecedor.filial_cadastro}</td>
-                    <td><a href="AlterarFornecedorServlet?cnpj=${fornecedor.cnpj}">Atualizar</a></td>
-                    <td><a href="ExcluirFornecedorServlet?cnpj=${fornecedor.cnpj}">Excluir</a></td>
+                    <td><a href="AlterarFornecedorServlet?cod=${fornecedor.cod}">Atualizar</a></td>
+                    <td><a href="ExcluirFornecedorServlet?cod=${fornecedor.cod}">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

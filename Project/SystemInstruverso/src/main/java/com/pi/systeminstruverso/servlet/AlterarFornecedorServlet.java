@@ -22,9 +22,9 @@ public class AlterarFornecedorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cnpj = request.getParameter("cnpj");
+        int cod = Convert.ToInt(request.getParameter("cod"));
         try {
-            Fornecedor fornecedor = FornecedorDAO.getFornecedor(cnpj);            
+            Fornecedor fornecedor = FornecedorDAO.getFornecedor(cod);            
             request.setAttribute("fornecedor", fornecedor);
             
             request.getRequestDispatcher("fornecedores/cadastrar.jsp").forward(request, response);
@@ -40,6 +40,7 @@ public class AlterarFornecedorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        int cod = Convert.ToInt(request.getParameter("cod"));
         String razao_social = request.getParameter("razao_social");
         String nome_fantasia = request.getParameter("nome_fantasia");
         String data_registro = request.getParameter("data_registro");
@@ -57,9 +58,8 @@ public class AlterarFornecedorServlet extends HttpServlet {
         String cidade = request.getParameter("cidade");
         int filial_cadastro = Convert.ToInt(request.getParameter("filial_cadastro"));
         
-        System.out.println(cnpj);
-
-        Fornecedor fornecedor = new Fornecedor(razao_social, nome_fantasia, data_registro, nome_contato, telefone, email, site, cnpj, cep, endereco, numero, pais, uf, bairro, cidade, filial_cadastro);
+        
+        Fornecedor fornecedor = new Fornecedor(cod, razao_social, nome_fantasia, data_registro, nome_contato, telefone, email, site, cnpj, cep, endereco, numero, pais, uf, bairro, cidade, filial_cadastro);
         boolean ok = FornecedorDAO.atualizar(fornecedor);
         
         

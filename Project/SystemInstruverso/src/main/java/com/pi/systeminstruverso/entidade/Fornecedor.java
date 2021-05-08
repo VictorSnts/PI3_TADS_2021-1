@@ -17,6 +17,7 @@ import lombok.Setter;
  */
 public class Fornecedor {
     
+    private int cod;
     private String razao_social;
     private String nome_fantasia;
     private String data_registro;
@@ -34,8 +35,9 @@ public class Fornecedor {
     private String cidade;
     private int filial_cadastro;
     
-    public Fornecedor(String razao_social, String nome_fantasia, String data_registro, String nome_contato, String telefone, String email, String site, 
+    public Fornecedor(int cod, String razao_social, String nome_fantasia, String data_registro, String nome_contato, String telefone, String email, String site, 
             String cnpj, String cep, String endereco, int numero, String pais, String uf, String bairro, String cidade, int filial_cadastro) {
+        this.cod = cod;
         this.razao_social = razao_social;
         this.nome_fantasia = nome_fantasia;
         this.data_registro = data_registro;

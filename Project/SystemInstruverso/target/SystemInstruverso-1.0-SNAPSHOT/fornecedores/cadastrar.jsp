@@ -24,52 +24,63 @@
                 
                 <h3>-| Dados da Empresa |-</h3>
                 
-                <label class="form-label">Filial de Cadastro: </label>
-                <input type="text" name ="filial_cadastro"required="true">
+                <label class="form-label">Filial: </label>                
+                <select name="filial_cadastro" required="true">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <label class="form-label">Codigo: </label>
+                <input type="text" name="cod" size="6" readonly="true">
                 <br><br>
+                
                 <label class="form-label">Razao Social: </label>
-                <input type="text" name ="razao_social"required="true">
+                <input type="text" name ="razao_social"required="true" size="52">
                 <br><br>
                 
                 <label class="form-label">Nome Fantasia: </label>
-                <input type="text" name ="nome_fantasia"required="true">
-                <label class="form-label">Cnpj: </label>
-                <input type="text" name ="cnpj"required="true"/>
-                <label class="form-label">Data Registro: </label >
-                <input type="text" name ="data_registro" required="true">
+                <input type="text" name ="nome_fantasia" required="true" size="50">
                 <br><br>
                 
-                <label class="form-label">Nome Contato: </label>
-                <input type="text" name ="nome_contato"required="true">
+                <label class="form-label">Cnpj: </label>
+                <input type="text" name ="cnpj"required="true" size="15" maxlength="14"/>
+                <label class="form-label">Data Registro: </label >
+                <input type="date" name ="data_registro" required="true">
+                <br><br>
+                
+                <label class="form-label">Nome para Contato: </label>
+                <input type="text" name ="nome_contato"required="true" size="20">
                 <label class="form-label">Telefone: </label>
-                <input type="text" name ="telefone"required="true">
+                <input type="text" name ="telefone"required="true" size="13" maxlength="11">
                 <br><br>
                 
                 <label class="form-label">Email: </label>
-                <input type="text" name ="email"required="true">
+                <input type="text" name ="email"required="true" size="25">
                 <label class="form-label">Site: </label>
-                <input type="text" name ="site"required="true">
+                <input type="text" name ="site"required="true" size="25">
                 <br><br>
+                
                 <h3>-| Endereco |-</h3>
-                <label class="form-label">Cep: </label>
-                <input type="text" name ="cep"required="true">
                 <label class="form-label">Endereco: </label>
-                <input type="text" name ="endereco"required="true">
-                <br><br>
-                
+                <input type="text" name ="endereco"required="true" size="50">
                 <label class="form-label">Numero: </label>
-                <input type="text" name ="numero"required="true">
+                <input type="text" name ="numero"required="true" size="5">
+                <br><br>
+
+                <label class="form-label">Cep: </label>
+                <input type="text" name ="cep"required="true" size="10" maxlength="8">               
                 <label class="form-label">Bairro: </label>
-                <input type="text" name ="bairro"required="true">
+                <input type="text" name ="bairro"required="true" size="15">
                 <label class="form-label">Cidade: </label>
-                <input type="text" name ="cidade"required="true">
+                <input type="text" name ="cidade"required="true" size="15">
+                <label class="form-label">UF: </label>
+                <input type="text" name ="uf"required="true" size="3" maxlength="2">
                 <br><br>
                 
-                <label class="form-label">UF: </label>
-                <input type="text" name ="uf"required="true">
                 <label class="form-label">Pais: </label>
-                <input type="text" name ="pais"required="true">
-                
+                <input type="text" name ="pais"required="true" size="15">
+                <br><br>
                 
                 
 
@@ -84,51 +95,89 @@
                 
                 <h3>-| Dados da Empresa |-</h3>
                 
-                <label class="form-label">Filial de Cadastro: </label>
-                <input type="text" name ="filial_cadastro"required="true" value=${fornecedor.filial_cadastro}>
+
+
+                <label class="form-label">Filial: </label>                
+                <select name="filial_cadastro" required="true">
+                    
+                    <c:if test="${fornecedor.filial_cadastro == '1'}">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                    <c:if test="${fornecedor.filial_cadastro == '2'}">
+                        <option value="1">1</option>
+                        <option value="2" selected="selected">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                    <c:if test="${fornecedor.filial_cadastro == '3'}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected="selected">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                     <c:if test="${fornecedor.filial_cadastro == '4'}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4"  selected="selected">4</option>
+                    </c:if>
+                    
+                    
+                </select>
+                <label class="form-label">Codigo: </label>
+                <input type="text" name="cod" size="6" readonly="true" value="${fornecedor.cod}">
                 <br><br>
+
                 <label class="form-label">Razao Social: </label>
-                <input type="text" name ="razao_social"required="true" value=${fornecedor.razao_social}>
-                <br><br>
-                
+                <input type="text" name ="razao_social"required="true" size="52" value=${fornecedor.razao_social}>
+                <br><br>  
+
                 <label class="form-label">Nome Fantasia: </label>
-                <input type="text" name ="nome_fantasia"required="true" value=${fornecedor.nome_fantasia}>
+                <input type="text" name ="nome_fantasia" required="true" size="50" value=${fornecedor.nome_fantasia}>
+                <br><br>
+
                 <label class="form-label">Cnpj: </label>
-                <input type="text" name ="cnpj"required="true" value=${fornecedor.cnpj}>
+                <input type="text" name ="cnpj"required="true" size="15" maxlength="14" value="${fornecedor.cnpj}"/>
                 <label class="form-label">Data Registro: </label >
-                <input type="text" name ="data_registro"required="true" value=${fornecedor.data_registro} readonly="true">
+                <input type="date" name ="data_registro" required="true" value=${fornecedor.data_registro}>
                 <br><br>
-                
-                <label class="form-label">Nome Contato: </label>
-                <input type="text" name ="nome_contato"required="true" value=${fornecedor.nome_contato}>
+
+                <label class="form-label">Nome para Contato: </label>
+                <input type="text" name ="nome_contato"required="true" size="20" value=${fornecedor.nome_contato}>
                 <label class="form-label">Telefone: </label>
-                <input type="text" name ="telefone"required="true" value=${fornecedor.telefone}>
+                <input type="text" name ="telefone"required="true" size="13" maxlength="11" value=${fornecedor.telefone}>
                 <br><br>
-                
+
                 <label class="form-label">Email: </label>
-                <input type="text" name ="email"required="true" value=${fornecedor.email}>
+                <input type="text" name ="email"required="true" size="25" value=${fornecedor.email}>
                 <label class="form-label">Site: </label>
-                <input type="text" name ="site"required="true" value=${fornecedor.site}>
-                
+                <input type="text" name ="site"required="true" size="25" value=${fornecedor.site}>
+                <br><br>
+
+
                 <h3>-| Endereco |-</h3>
-                <label class="form-label">Cep: </label>
-                <input type="text" name ="cep"required="true" value=${fornecedor.cep}>
                 <label class="form-label">Endereco: </label>
-                <input type="text" name ="endereco"required="true" value=${fornecedor.endereco}>
-                <br><br>
-                
+                <input type="text" name ="endereco"required="true" size="50" value=${fornecedor.endereco}>
                 <label class="form-label">Numero: </label>
-                <input type="text" name ="numero"required="true" value=${fornecedor.numero}>"
-                <label class="form-label">Bairro: </label>
-                <input type="text" name ="bairro"required="true" value=${fornecedor.bairro}>
-                <label class="form-label">Cidade: </label>
-                <input type="text" name ="cidade"required="true" value=${fornecedor.cidade}>
+                <input type="text" name ="numero"required="true" size="5" value=${fornecedor.numero}>
                 <br><br>
-                
+
+                <label class="form-label">Cep: </label>
+                <input type="text" name ="cep"required="true" size="10" maxlength="8" value=${fornecedor.cep}>               
+                <label class="form-label">Bairro: </label>
+                <input type="text" name ="bairro"required="true" size="15" value=${fornecedor.bairro}>
+                <label class="form-label">Cidade: </label>
+                <input type="text" name ="cidade"required="true" size="15" value=${fornecedor.cidade}>
                 <label class="form-label">UF: </label>
-                <input type="text" name ="uf"required="true" value=${fornecedor.uf}>
+                <input type="text" name ="uf"required="true" size="3" maxlength="2" value=${fornecedor.uf}>
+                <br><br>
+
                 <label class="form-label">Pais: </label>
-                <input type="text" name ="pais"required="true" value=${fornecedor.pais}>
+                <input type="text" name ="pais"required="true" size="15" value=${fornecedor.pais}>
+                <br><br>
             
             <button type="submit" class="btn-primary">Atualizar</button>
             </form>

@@ -24,8 +24,10 @@ public class CadastrarFornecedorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Recuperar os parametros
-        String cod = request.getParameter("cod");
-        String razao_social = request.getParameter("razao_social");
+        int cod = -1;
+        if (!request.getParameter("cod").equals("")) {
+            cod = Convert.ToInt(request.getParameter("cod"));
+        }        String razao_social = request.getParameter("razao_social");
         String nome_fantasia = request.getParameter("nome_fantasia");
         String data_registro = request.getParameter("data_registro");
         String nome_contato = request.getParameter("nome_contato");
@@ -43,7 +45,7 @@ public class CadastrarFornecedorServlet extends HttpServlet {
         int filial_cadastro = Convert.ToInt(request.getParameter("filial_cadastro"));
         
         // Inserir oi cliente no BD
-        Fornecedor fornecedor = new Fornecedor(razao_social, nome_fantasia, data_registro, nome_contato, telefone, email, site, cnpj, cep, endereco, numero, pais, uf, bairro, cidade, filial_cadastro);
+        Fornecedor fornecedor = new Fornecedor(cod, razao_social, nome_fantasia, data_registro, nome_contato, telefone, email, site, cnpj, cep, endereco, numero, pais, uf, bairro, cidade, filial_cadastro);
         boolean ok = FornecedorDAO.cadastrar(fornecedor);
         
         // Redirecionar para sucesso/erro
