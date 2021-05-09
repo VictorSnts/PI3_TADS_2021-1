@@ -28,15 +28,18 @@ public class CadastrarProdutoServlet extends HttpServlet {
         if (!request.getParameter("cod").equals("")) {
             cod = Convert.ToInt(request.getParameter("cod"));
         }
+        int filial = Convert.ToInt(request.getParameter("filial"));
         String nome = request.getParameter("nome");
         String marca = request.getParameter("marca");
+        int codFornecedor = Convert.ToInt(request.getParameter("codFornecedor"));
         double custo = Convert.ToDouble(request.getParameter("custo"));
         double preco = Convert.ToDouble(request.getParameter("preco"));
         int quantidade = Convert.ToInt(request.getParameter("quantidade"));
         double comissao = Convert.ToDouble(request.getParameter("comissao"));
         
+        System.out.println(codFornecedor);
         // Inserir oi cliente no BD
-        Produto produto =  new Produto(cod, nome, marca, custo, preco, quantidade, comissao);
+        Produto produto =  new Produto(cod, filial, nome, marca, codFornecedor, "", custo, preco, quantidade, comissao);
         boolean ok = ProdutoDAO.cadastrar(produto);
         
         // Redirecionar para sucesso/erro

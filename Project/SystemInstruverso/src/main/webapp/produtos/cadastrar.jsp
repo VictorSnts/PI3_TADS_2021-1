@@ -24,29 +24,35 @@
                 
                 <h3>-| Dados do Produto |-</h3>
                 
+                <label class="form-label">Filial: </label>                
+                <select name="filial" required="true">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
                 <label class="form-label">Codigo: </label>
-                <input type="text" name="cod"  required="true" readonly="true"> 
-                <label class="form-label">Nome: </label>
-                <input type="text" name="nome"  required="true"> 
-                
+                <input type="text" name="cod" size="6" required="true" readonly="true"> 
+                <label class="form-label">Codigo Fornecedor: </label>
+                <input type="text" name="codFornecedor" size="5" required="true"> 
                 <br><br>
 
                 <label class="form-label">Marca: </label>
-                <input type="text" name="marca"  required="true"> 
-
-                <label class="form-label">Custo: </label>
-                <input type="text" name="custo"  required="true"> 
+                <input type="text" name="marca" size="20" required="true"> 
+                <label class="form-label">Nome: </label>
+                <input type="text" name="nome" size="20" required="true">                
+                <br><br>
                 
+                <label class="form-label">Custo: </label>
+                <input type="text" name="custo" size="8" required="true"> 
+                <label class="form-label">Preco: </label>
+                <input type="text" name="preco" size="8" required="true"> 
+                <label class="form-label">Quantidade: </label>
+                <input type="text" name="quantidade" size="5" required="true"> 
                 <br><br>
 
-                <label class="form-label">Preco: </label>
-                <input type="text" name="preco"  required="true"> 
-
-                <label class="form-label">Quantidade: </label>
-                <input type="text" name="quantidade"  required="true"> 
-
-                <label class="form-label">Comissao: </label>
-                <input type="text" name="comissao"  required="true"> 
+                <label class="form-label">Comissao pela venda: </label>
+                <input type="text" name="comissao" size="5" required="true"> 
 
                 <br><br>
                 
@@ -62,33 +68,57 @@
                 
                 <h3>-| Dados do Produto |-</h3>
                 
+                <label class="form-label">Filial: </label>                
+                <select name="filial" required="true">
+                    <c:if test="${produto.filial == '1'}">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                    <c:if test="${produto.filial == '2'}">
+                        <option value="1">1</option>
+                        <option value="2" selected="selected">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                    <c:if test="${produto.filial == '3'}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected="selected">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                     <c:if test="${produto.filial == '4'}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4"  selected="selected">4</option>
+                    </c:if>
+                </select>
                 <label class="form-label">Codigo: </label>
-                <input type="text" name="cod"  required="true" readonly="true" value=${produto.cod}> 
-
-                <label class="form-label">Nome: </label>
-                <input type="text" name="nome"  required="true" value=${produto.nome}> 
-                
+                <input type="text" name="cod" size="6" required="true" readonly="true" value=${produto.cod}> 
+                <label class="form-label">Codigo Fornecedor: </label>
+                <input type="text" name="codFornecedor" size="5" required="true" value=${produto.codFornecedor}> 
                 <br><br>
 
                 <label class="form-label">Marca: </label>
-                <input type="text" name="marca"  required="true" value=${produto.marca}> 
-
+                <input type="text" name="marca" size="20" required="true" value=${produto.marca}> 
+                <label class="form-label">Nome: </label>
+                <input type="text" name="nome" size="20" required="true" value=${produto.marca}>                
+                <br><br>
+                
                 <label class="form-label">Custo: </label>
-                <input type="text" name="custo"  required="true" value=${produto.custo}> 
-                
-                <br><br>
-
+                <input type="text" name="custo" size="8" required="true" value=${produto.custo}> 
                 <label class="form-label">Preco: </label>
-                <input type="text" name="preco"  required="true" value=${produto.preco}> 
-
+                <input type="text" name="preco" size="8" required="true" value=${produto.preco}> 
                 <label class="form-label">Quantidade: </label>
-                <input type="text" name="quantidade"  required="true" value=${produto.quantidade}> 
+                <input type="text" name="quantidade" size="5" required="true" value=${produto.quantidade}> 
+                <br><br>
 
-                <label class="form-label">Comissao: </label>
-                <input type="text" name="comissao"  required="true" value=${produto.comissao}> 
+                <label class="form-label">Comissao pela venda: </label>
+                <input type="text" name="comissao" size="5" required="true" value=${produto.comissao}> 
 
                 <br><br>
-                
                 
 
                 <button type="submit" class="btn-primary">Atualizar</button>

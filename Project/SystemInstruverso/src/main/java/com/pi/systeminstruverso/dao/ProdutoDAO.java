@@ -105,7 +105,7 @@ public class ProdutoDAO {
     public static boolean cadastrar(Produto produto){
         boolean ok = false;
         
-        String query = "INSERT INTO INSTRUVERSE.PRODUTO (NOME, MARCA, CUSTO, PRECO, QUANTIDADE, COMISSAO) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO PRODUTO (NOME, MARCA, CUSTO, PRECO, QUANTIDADE, COMISSAO, COD_FORNECEDOR, FILIAL) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
         Connection con;
         try {
@@ -118,6 +118,8 @@ public class ProdutoDAO {
             ps.setDouble(4, produto.getPreco());
             ps.setInt(5, produto.getQuantidade());
             ps.setDouble(6, produto.getComissao());
+            ps.setInt(7, produto.getCodFornecedor());
+            ps.setInt(8, produto.getFilial());
             ps.executeUpdate();
             
             ok = true;
@@ -141,15 +143,17 @@ public class ProdutoDAO {
             
             if(rs.next()){
                 int cod = rs.getInt("cod");
+                int filial = rs.getInt("filial");
                 String nome = rs.getString("nome");
                 String marca = rs.getString("marca");
+                int codFornecedor = rs.getInt("cod_fornecedor");
                 double custo = rs.getDouble("custo");
                 double preco = rs.getDouble("preco");
                 int quantidade = rs.getInt("quantidade");
                 double comissao = rs.getDouble("comissao");
 
                 
-                produto =  new Produto(cod, nome, marca, custo, preco, quantidade, comissao);
+                produto =  new Produto(cod, filial, nome, marca, codFornecedor, "", custo, preco, quantidade, comissao);
             }
             
         } catch (SQLException ex) {
