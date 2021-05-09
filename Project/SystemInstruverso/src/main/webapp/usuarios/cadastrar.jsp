@@ -23,49 +23,43 @@
             <form action="../CadastrarUsuarioServlet" method="POST">
                 
                 <h3>-| Dados do Usuario |-</h3>
-                
-               <label class="form-label">Codigo: </label>
-                <input type="text" name ="cod" readonly="true">
-                <label class="form-label">Nome: </label>
-                <input type="text" name ="nome" required="true">
-                
+                <label class="form-label">Codigo: </label>
+                <input type="text" name ="cod" readonly="true" size="6">
+                <label class="form-label">Filial </label>
+                <select name="filial" required="true">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
                 <br><br>
                 
-                <label class="form-label">Matricula: </label>
-                <input type="text" name ="matricula" required="true">
+                <label class="form-label">Nome: </label>
+                <input type="text" name ="nome" required="true" size="50">
+                <br><br>
+                
                 <label class="form-label">Perfil: </label>
-                <input type="text" name ="perfil" required="true">
-                                
+                <input type="text" name ="perfil" required="true" size="25">
+                <label class="form-label">CPF: </label>
+                <input type="text" name ="cpf" required="true" size="13">
                 <br><br>
                 
                 <label class="form-label">Login: </label>
                 <input type="text" name ="login" required="true">
                 <label class="form-label">Senha: </label>
-                <input type="text" name ="senha" required="true">
-                                
+                <input type="password" name ="senha" required="true">
                 <br><br>
                 
                 <label class="form-label">Telefone: </label>
-                <input type="text" name ="telefone" required="true">
-                <label class="form-label">Email: </label>
-                <input type="text" name ="email" required="true">
-                <label class="form-label">CPF: </label>
-                <input type="text" name ="cpf" required="true">
-                                
-                <br><br>
-                
+                <input type="text" name ="telefone" required="true"size="13">
                 <label class="form-label">Status: </label>
-                <input type="text" name ="status" required="true">
-                <label class="form-label">Filial </label>
-                <input type="text" name ="filial" required="true">
-                                
+                <select name="status" required="true">
+                    <option value="Ativo" selected="selected">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                </select>      
                 <br><br>
-                
-                
-                
 
                 <button type="submit" class="btn-primary">Cadastrar</button>
-                
             </form>
         </c:if>
         
@@ -73,43 +67,68 @@
         <c:if test="${not empty usuario}">
             <form action="AlterarUsuarioServlet" method="POST">
                 
-                <h3>-| Dados da Empresa |-</h3>
+                <h3>-| Dados do Usuario |-</h3>
                 
                 <label class="form-label">Codigo: </label>
-                <input type="text" name ="cod" readonly="true" value=${usuario.cod}>
-                <label class="form-label">Nome: </label>
-                <input type="text" name ="nome" required="true" value=${usuario.nome}>
-                
+                <input type="text" name ="cod" readonly="true" size="6" value="${usuario.cod}">
+                <label class="form-label">Filial </label>
+                <select name="filial" required="true">
+                    <c:if test="${usuario.filial == '1'}">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                    <c:if test="${usuario.filial == '2'}">
+                        <option value="1">1</option>
+                        <option value="2" selected="selected">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                    <c:if test="${usuario.filial == '3'}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected="selected">3</option>
+                        <option value="4">4</option>
+                    </c:if>
+                     <c:if test="${usuario.filial == '4'}">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4"  selected="selected">4</option>
+                    </c:if>
+                </select>
                 <br><br>
                 
-                <label class="form-label">Matricula: </label>
-                <input type="text" name ="matricula" required="true" value=${usuario.matricula}>
+                <label class="form-label">Nome: </label>
+                <input type="text" name ="nome" required="true" size="50" value="${usuario.nome}">
+                <br><br>
+                
                 <label class="form-label">Perfil: </label>
-                <input type="text" name ="perfil" required="true" value=${usuario.perfil}>
-                                
+                <input type="text" name ="perfil" required="true" size="25" value=${usuario.perfil}>
+                <label class="form-label">CPF: </label>
+                <input type="text" name ="cpf" required="true" size="13" value=${usuario.cpf}>
                 <br><br>
                 
                 <label class="form-label">Login: </label>
                 <input type="text" name ="login" required="true" value=${usuario.login}>
                 <label class="form-label">Senha: </label>
-                <input type="text" name ="senha" required="true" value=${usuario.senha}>
-                                
+                <input type="password" name ="senha" required="true" value=${usuario.senha}>
                 <br><br>
                 
                 <label class="form-label">Telefone: </label>
-                <input type="text" name ="telefone" required="true" value=${usuario.telefone}>
-                <label class="form-label">Email: </label>
-                <input type="text" name ="email" required="true" value=${usuario.email}>
-                <label class="form-label">CPF: </label>
-                <input type="text" name ="cpf" required="true" value=${usuario.cpf}>
-                                
-                <br><br>
-                
+                <input type="text" name ="telefone" required="true"size="13" value=${usuario.telefone}>
                 <label class="form-label">Status: </label>
-                <input type="text" name ="status" required="true" value=${usuario.status}>
-                <label class="form-label">Filial </label>
-                <input type="text" name ="filial" required="true" value=${usuario.filial}>
-                                
+                <select name="status" required="true">
+                    <c:if test="${usuario.status == 'Ativo'}">
+                        <option value="Ativo" selected="selected">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                    </c:if>
+                     <c:if test="${usuario.status == 'Inativo'}">
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inativo" selected="selected">Inativo</option>
+                    </c:if>
+                </select>
                 <br><br>
             <button type="submit" class="btn-primary">Atualizar</button>
             </form>

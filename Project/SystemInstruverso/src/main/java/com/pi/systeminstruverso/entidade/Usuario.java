@@ -19,7 +19,6 @@ public class Usuario {
     
     private int cod;
     private String nome;
-    private int matricula;
     private int filial;
     private String perfil;
     private String login;
@@ -29,10 +28,9 @@ public class Usuario {
     private String cpf;
     private String status;
     
-    public Usuario(int cod,String nome,int matricula, int filial, String perfil,String login,String senha,String telefone,String email,String cpf,String status) {
+    public Usuario(int cod,String nome, int filial, String perfil,String login,String senha,String telefone,String email,String cpf,String status) {
         this.cod = cod;
         this.nome = nome;
-        this.matricula = matricula;
         this.filial = filial;
         this.perfil = perfil;
         this.login = login;

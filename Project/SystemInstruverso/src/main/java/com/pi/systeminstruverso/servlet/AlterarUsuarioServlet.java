@@ -33,17 +33,16 @@ public class AlterarUsuarioServlet extends HttpServlet {
         int cod;
         cod = Convert.ToInt(request.getParameter("cod"));
         String nome = request.getParameter("nome");
-        int matricula = Convert.ToInt(request.getParameter("matricula"));
         String perfil = request.getParameter("perfil");
         int filial = Convert.ToInt(request.getParameter("filial"));
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         String telefone = request.getParameter("telefone");
-        String email = request.getParameter("email");
+        String email = login+"@instruverso.com";
         String cpf = request.getParameter("cpf");
         String status = request.getParameter("status");
         
-        Usuario usuario =  new Usuario(cod, nome, matricula, filial, perfil, login, senha, telefone, email, cpf, status);
+        Usuario usuario =  new Usuario(cod, nome, filial, perfil, login, senha, telefone, email, cpf, status);
         boolean ok = UsuarioDAO.atualizar(usuario);
         
         

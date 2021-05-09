@@ -27,7 +27,6 @@
             <thead>
                 <th scope="col">Cod</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Matricula</th>
                 <th scope="col">Filial</th>
                 <th scope="col">Perfil</th>
                 <th scope="col">Login</th>
@@ -45,7 +44,6 @@
                 <tr>
                     <td>${usuario.cod}</td>
                     <td>${usuario.nome}</td>
-                    <td>${usuario.matricula}</td>
                     <td>${usuario.filial}</td>
                     <td>${usuario.perfil}</td>
                     <td>${usuario.login}</td>
