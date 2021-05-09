@@ -26,6 +26,7 @@
         <table class="table table-striped table-bordered table-sm ">
             <thead>
                 <th scope="col">Cod</th>
+                <th scope="col">Filial</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Marca</th>
                 <th scope="col">Cod Fornecedor</th>
@@ -38,6 +39,7 @@
             <c:forEach items="${listaProdutos}" var="produto">
                 <tr>
                     <td>${produto.cod}</td>
+                    <td>${produto.filial}</td>
                     <td>${produto.nome}</td>
                     <td>${produto.marca}</td>
                     <td>${produto.codFornecedor}</td>

@@ -72,7 +72,7 @@ public class ProdutoDAO {
     }
     
     public static List<Produto> getProdutos() throws SQLException{
-        String query = "SELECT PRODUTO.COD, PRODUTO.NOME, PRODUTO.MARCA, PRODUTO.COD_FORNECEDOR, FORNECEDOR.RAZAO_SOCIAL AS FORNECEDOR, PRODUTO.CUSTO, PRODUTO.PRECO, PRODUTO.QUANTIDADE, PRODUTO.COMISSAO FROM PRODUTO Inner JOIN FORNECEDOR ON FORNECEDOR.COD = PRODUTO.COD_FORNECEDOR";
+        String query = "SELECT PRODUTO.COD, PRODUTO.FILIAL, PRODUTO.NOME, PRODUTO.MARCA, PRODUTO.COD_FORNECEDOR, FORNECEDOR.RAZAO_SOCIAL AS FORNECEDOR, PRODUTO.CUSTO, PRODUTO.PRECO, PRODUTO.QUANTIDADE, PRODUTO.COMISSAO FROM PRODUTO Inner JOIN FORNECEDOR ON FORNECEDOR.COD = PRODUTO.COD_FORNECEDOR";
         
         List<Produto> produtos = new ArrayList();
         
@@ -83,6 +83,7 @@ public class ProdutoDAO {
             
             while(rs.next()){
                 int cod = rs.getInt("cod");
+                int filial = rs.getInt("filial");
                 String nome = rs.getString("nome");
                 String marca = rs.getString("marca");
                 int codFornecedor = rs.getInt("cod_fornecedor");
@@ -92,7 +93,7 @@ public class ProdutoDAO {
                 int quantidade = rs.getInt("quantidade");
                 double comissao = rs.getDouble("comissao");
 
-                Produto produto =  new Produto(cod, nome, marca, codFornecedor, fornecedor, custo, preco, quantidade, comissao);
+                Produto produto =  new Produto(cod, filial, nome, marca, codFornecedor, fornecedor, custo, preco, quantidade, comissao);
                 produtos.add(produto);
             }
         } catch (SQLException ex) {

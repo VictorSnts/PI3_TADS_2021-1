@@ -17,6 +17,7 @@ import lombok.Setter;
  */
 public class Produto {
     private int cod;
+    private int filial;
     private String nome;
     private String marca;
     private int codFornecedor;
@@ -26,8 +27,9 @@ public class Produto {
     private int quantidade;
     private double comissao;
     
-    public Produto(int cod, String nome, String marca, int codFornecedor, String fornecedor, double custo, double preco, int quantidade, double comissao){
+    public Produto(int cod, int filial, String nome, String marca, int codFornecedor, String fornecedor, double custo, double preco, int quantidade, double comissao){
         this.cod = cod;
+        this.filial = filial;
         this.nome = nome;
         this.marca = marca;
         this.codFornecedor = codFornecedor;

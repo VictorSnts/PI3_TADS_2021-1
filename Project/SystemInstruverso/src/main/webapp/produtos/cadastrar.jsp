@@ -26,7 +26,6 @@
                 
                 <label class="form-label">Codigo: </label>
                 <input type="text" name="cod"  required="true" readonly="true"> 
-
                 <label class="form-label">Nome: </label>
                 <input type="text" name="nome"  required="true"> 
                 
