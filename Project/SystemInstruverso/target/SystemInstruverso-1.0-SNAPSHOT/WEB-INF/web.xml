@@ -64,6 +64,10 @@
         <servlet-name>ExcluirProdutoServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.ExcluirProdutoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarClienteServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.BuscarClienteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>ExcluirProdutoServlet</servlet-name>
         <url-pattern>/ExcluirProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarClienteServlet</servlet-name>
+        <url-pattern>/BuscarClienteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

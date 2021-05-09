@@ -22,16 +22,6 @@
             <a href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
         </div>
         
-        <form action="BuscarClienteServlet" method="GET">
-            <label for="busca">  Busca: </label>
-            
-            <div class="container">  
-                <input type="search" id="busca" name="busca">
-                <button type="submit">OK</button>
-            </div>
-        </form>
-        <br>
-        
         <table class="table table-striped table-bordered table-sm">
             <thead>
                 <th scope="col">cod</th>

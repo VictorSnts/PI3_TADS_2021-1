@@ -171,5 +171,43 @@ public class ClienteDAO {
             Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return clientes;
-    }    
+    }
+    
+    public static List<Cliente> searchClientes(String busca) throws SQLException{
+        String query = "SELECT * FROM cliente WHERE nome LIKE '%"+busca+"%' OR cpf LIKE '%"+busca+"%'";
+            
+        
+        List<Cliente> clientes = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int cod = rs.getInt("cod");
+                String nome = rs.getString("nome");
+                String telefone = rs.getString("telefone");
+                String email = rs.getString("email");
+                String cpf = rs.getString("cpf");
+                String cep = rs.getString("cep");
+                String endereco = rs.getString("endereco");
+                int numero = Convert.ToInt(rs.getString("numero"));
+                String uf = rs.getString("uf");
+                String bairro = rs.getString("bairro");
+                String cidade = rs.getString("cidade");
+                int filial_cadastro = Convert.ToInt(rs.getString("filial_cadastro"));
+                String data_nasc = rs.getString("data_nasc");
+                
+                Cliente cliente =  new Cliente(cod, nome, telefone, email, cpf, cep, endereco, numero, uf, bairro, cidade, filial_cadastro, data_nasc);
+                clientes.add(cliente);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clientes;
+    }
+    
+    
 }
