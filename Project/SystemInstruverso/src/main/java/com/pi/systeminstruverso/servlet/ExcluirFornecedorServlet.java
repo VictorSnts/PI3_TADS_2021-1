@@ -1,6 +1,7 @@
 package com.pi.systeminstruverso.servlet;
 
 import com.pi.systeminstruverso.dao.FornecedorDAO;
+import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +18,12 @@ public class ExcluirFornecedorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Recuperar os parametros
-        String cnpj = request.getParameter("cnpj");
+        int cod = Convert.ToInt(request.getParameter("cod"));
         
-        System.out.println(cnpj);
+        System.out.println(cod);
         
         // deleatr o cliente no BD
-        boolean ok = FornecedorDAO.deletar(cnpj);
+        boolean ok = FornecedorDAO.deletar(cod);
               
         // Redirecionar para sucesso/erro
         if (ok) {

@@ -23,7 +23,7 @@ public class UsuarioDAO {
     public static boolean cadastrar(Usuario usuario){
         boolean ok = false;
         
-        String query = "INSERT INTO INSTRUVERSE.USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         Connection con;
         try {

@@ -95,7 +95,7 @@ public class FornecedorDAO {
     public static boolean cadastrar(Fornecedor fornecedor){
         boolean ok = false;
         
-        String query = "INSERT INTO INSTRUVERSE.FORNECEDOR (RAZAO_SOCIAL, NOME_FANTASIA, DATA_REGISTRO, NOME_CONTATO, TELEFONE, EMAIL, SITE, CNPJ, CEP, ENDERECO, NUMERO, PAIS, UF, BAIRRO, CIDADE, FILIAL_CADASTRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO FORNECEDOR (RAZAO_SOCIAL, NOME_FANTASIA, DATA_REGISTRO, NOME_CONTATO, TELEFONE, EMAIL, SITE, CNPJ, CEP, ENDERECO, NUMERO, PAIS, UF, BAIRRO, CIDADE, FILIAL_CADASTRO) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         Connection con;
         try {
@@ -128,17 +128,17 @@ public class FornecedorDAO {
         return ok;
     }
     
-    public static boolean deletar(String cnpj){
+    public static boolean deletar(int cod){
         boolean ok = false;
         
-        String query = "DELETE FROM fornecedor WHERE cnpj=?";
+        String query = "DELETE FROM fornecedor WHERE cod=?";
         
         Connection con;
         try {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
             
-            ps.setString(1, cnpj);
+            ps.setInt(1, cod);
             ps.executeUpdate();
 
             ok = true;
