@@ -28,6 +28,8 @@
                 <th scope="col">Cod</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Marca</th>
+                <th scope="col">Cod Fornecedor</th>
+                <th scope="col">Fornecedor</th>
                 <th scope="col">Custo</th>
                 <th scope="col">Preco</th>
                 <th scope="col">Quantidade</th>
@@ -38,6 +40,8 @@
                     <td>${produto.cod}</td>
                     <td>${produto.nome}</td>
                     <td>${produto.marca}</td>
+                    <td>${produto.codFornecedor}</td>
+                    <td>${produto.fornecedor}</td>
                     <td>R$${produto.custo}</td>
                     <td>R$${produto.preco}</td>
                     <td>${produto.quantidade}</td>
