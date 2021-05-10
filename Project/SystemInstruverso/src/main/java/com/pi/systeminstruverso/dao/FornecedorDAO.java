@@ -185,4 +185,45 @@ public class FornecedorDAO {
         }
         return fornecedores;
     }
+    
+    
+    public static List<Fornecedor> searchFornecedor(String busca) throws SQLException{
+        String query = "SELECT * FROM fornecedor WHERE razao_social LIKE '%"+busca+"%' OR nome_fantasia LIKE '%"+busca+"%' OR cnpj LIKE '%"+busca+"%'";
+            
+        
+        List<Fornecedor> fornecedores = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int cod = rs.getInt("cod");
+                String razao_social = rs.getString("razao_social");
+                String nome_fantasia = rs.getString("nome_fantasia");
+                String data_registro = rs.getString("data_registro");
+                String nome_contato = rs.getString("nome_contato");
+                String telefone = rs.getString("telefone");
+                String email = rs.getString("email");
+                String site = rs.getString("site");
+                String cnpj = rs.getString("cnpj");
+                String cep = rs.getString("cep");
+                String endereco = rs.getString("endereco");
+                int numero = rs.getInt("numero");
+                String pais = rs.getString("pais");
+                String uf = rs.getString("uf");
+                String bairro = rs.getString("bairro");
+                String cidade = rs.getString("cidade");
+                int filial_cadastro = rs.getInt("filial_cadastro");
+                
+                Fornecedor fornecedor =  new Fornecedor(cod, razao_social, nome_fantasia, data_registro, nome_contato, telefone, email, site, cnpj, cep, endereco, numero, pais, uf, bairro, cidade, filial_cadastro);
+                fornecedores.add(fornecedor);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fornecedores;
+    }
 }

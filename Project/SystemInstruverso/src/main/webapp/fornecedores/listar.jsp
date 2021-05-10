@@ -22,6 +22,14 @@
             <a href="fornecedores/cadastrar.jsp">Cadastrar Fornecedores</a>
         </div>   
         
+        <form action="BuscarFornecedorServlet" method="GET">
+            <label for="busca">  Busca: </label>
+            
+            <div class="container">  
+                <input type="search" id="busca" name="busca">
+                <button type="submit">OK</button>
+            </div>
+        </form>
         
         <table class="table table-striped table-bordered table-sm ">
             <thead>
