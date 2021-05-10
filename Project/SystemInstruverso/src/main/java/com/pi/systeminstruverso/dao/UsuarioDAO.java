@@ -162,4 +162,37 @@ public class UsuarioDAO {
         }
         return ok;
     }
+   
+   public static List<Usuario> searchUsuario(String busca) throws SQLException{
+        String query = "SELECT * FROM usuario WHERE nome LIKE '%"+busca+"%' OR cpf LIKE '%"+busca+"%' OR perfil LIKE '%"+busca+"%' OR login LIKE '%"+busca+"%'";
+            
+        
+        List<Usuario> usuarios = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int cod = rs.getInt("cod");
+                String nome = rs.getString("nome");
+                int filial = rs.getInt("filial");
+                String perfil = rs.getString("perfil");
+                String login = rs.getString("login");
+                String senha = rs.getString("senha");
+                String telefone = rs.getString("telefone");
+                String email = rs.getString("email");
+                String cpf = rs.getString("cpf");
+                String status = rs.getString("status");
+                
+                Usuario usuario =  new Usuario(cod, nome, filial, perfil, login, senha, telefone, email, cpf, status);
+                usuarios.add(usuario);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuarios;
+    }
 }

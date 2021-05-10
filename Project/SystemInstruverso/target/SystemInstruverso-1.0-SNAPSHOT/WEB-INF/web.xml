@@ -72,6 +72,10 @@
         <servlet-name>BuscarFornecedorServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.BuscarFornecedorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarUsuarioServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.BuscarUsuarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>BuscarFornecedorServlet</servlet-name>
         <url-pattern>/BuscarFornecedorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarUsuarioServlet</servlet-name>
+        <url-pattern>/BuscarUsuarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
