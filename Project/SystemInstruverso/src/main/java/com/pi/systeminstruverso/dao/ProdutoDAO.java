@@ -161,4 +161,36 @@ public class ProdutoDAO {
         }
         return produto;
     }
+    
+    public static List<Produto> searchProduto(String busca) throws SQLException{
+        String query = "SELECT * FROM produto WHERE nome LIKE '%"+busca+"%' OR marca LIKE '%"+busca+"%'";
+            
+        
+        List<Produto> produtos = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int cod = rs.getInt("cod");
+                int filial = rs.getInt("filial");
+                String nome = rs.getString("nome");
+                String marca = rs.getString("marca");
+                int codFornecedor = rs.getInt("cod_fornecedor");
+                double custo = rs.getDouble("custo");
+                double preco = rs.getDouble("preco");
+                int quantidade = rs.getInt("quantidade");
+                double comissao = rs.getDouble("comissao");
+                
+                Produto produto =  new Produto(cod, filial, nome, marca, codFornecedor, "", custo, preco, quantidade, comissao);
+                produtos.add(produto);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produtos;
+    }
 }
