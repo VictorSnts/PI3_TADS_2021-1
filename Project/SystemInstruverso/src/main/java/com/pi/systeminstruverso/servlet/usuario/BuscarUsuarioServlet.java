@@ -1,11 +1,7 @@
 package com.pi.systeminstruverso.servlet.usuario;
 
 import com.pi.systeminstruverso.servlet.cliente.ClienteServlet;
-import com.pi.systeminstruverso.dao.ClienteDAO;
-import com.pi.systeminstruverso.dao.FornecedorDAO;
 import com.pi.systeminstruverso.dao.UsuarioDAO;
-import com.pi.systeminstruverso.entidade.Cliente;
-import com.pi.systeminstruverso.entidade.Fornecedor;
 import com.pi.systeminstruverso.entidade.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;

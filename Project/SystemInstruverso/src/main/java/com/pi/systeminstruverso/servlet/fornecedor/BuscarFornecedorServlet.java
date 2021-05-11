@@ -1,9 +1,7 @@
 package com.pi.systeminstruverso.servlet.fornecedor;
 
 import com.pi.systeminstruverso.servlet.cliente.ClienteServlet;
-import com.pi.systeminstruverso.dao.ClienteDAO;
 import com.pi.systeminstruverso.dao.FornecedorDAO;
-import com.pi.systeminstruverso.entidade.Cliente;
 import com.pi.systeminstruverso.entidade.Fornecedor;
 import java.io.IOException;
 import java.sql.SQLException;
