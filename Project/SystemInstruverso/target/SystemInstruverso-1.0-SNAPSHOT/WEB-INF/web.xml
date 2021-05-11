@@ -2,83 +2,83 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>ClienteServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.ClienteServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.cliente.ClienteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CadastrarClienteServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.CadastrarClienteServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.cliente.CadastrarClienteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExcluirClienteServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.ExcluirClienteServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.cliente.ExcluirClienteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AlterarClienteServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.AlterarClienteServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.cliente.AlterarClienteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FornecedorServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.FornecedorServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.fornecedor.FornecedorServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExcluirFornecedorServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.ExcluirFornecedorServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.fornecedor.ExcluirFornecedorServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CadastrarFornecedorServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.CadastrarFornecedorServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.fornecedor.CadastrarFornecedorServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AlterarFornecedorServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.AlterarFornecedorServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.fornecedor.AlterarFornecedorServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UsuarioServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.UsuarioServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.usuario.UsuarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CadastrarUsuarioServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.CadastrarUsuarioServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.usuario.CadastrarUsuarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AlterarUsuarioServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.AlterarUsuarioServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.usuario.AlterarUsuarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExcluirUsuarioServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.ExcluirUsuarioServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.usuario.ExcluirUsuarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProdutoServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.ProdutoServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.produto.ProdutoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CadastrarProdutoServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.CadastrarProdutoServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.produto.CadastrarProdutoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AlterarProdutoServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.AlterarProdutoServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.produto.AlterarProdutoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExcluirProdutoServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.ExcluirProdutoServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.produto.ExcluirProdutoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuscarClienteServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.BuscarClienteServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.cliente.BuscarClienteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuscarFornecedorServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.BuscarFornecedorServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.fornecedor.BuscarFornecedorServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuscarUsuarioServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.BuscarUsuarioServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.usuario.BuscarUsuarioServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuscarProdutoServlet</servlet-name>
-        <servlet-class>com.pi.systeminstruverso.servlet.BuscarProdutoServlet</servlet-class>
+        <servlet-class>com.pi.systeminstruverso.servlet.produto.BuscarProdutoServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
