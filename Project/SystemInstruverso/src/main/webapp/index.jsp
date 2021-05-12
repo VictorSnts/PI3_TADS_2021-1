@@ -23,7 +23,8 @@
             <a href="ClienteServlet"><i class="fa fa-fw fa-user"></i> Clientes</a>
             <a href="FornecedorServlet"><i class="fa fa-fw fa-industry"></i> Fornecedores</a>
             <a href="UsuarioServlet"><i class="fa fa-fw fa-users"></i> Usuarios</a>
-            <a href="ProdutoServlet"><i class="fa fa-fw fa-cart-arrow-down"></i> Produtos</a>
+            <a href="ProdutoServlet"><i class="fa fa-fw fa-headphones"></i> Produtos</a>
+            <a href="VendaServlet?status=init&venda=none"><i class="fa fa-fw fa-shopping-cart"></i> Vender</a>
         </div>
   
         <br/>
