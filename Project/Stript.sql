@@ -367,4 +367,26 @@ INSERT INTO PRODUTO (FILIAL, NOME, MARCA, COD_FORNECEDOR, CUSTO, PRECO, QUANTIDA
 	VALUES (2, 'Produto T25', 'Marca T25', 30, 15.76, 29.99, 63, 1);
 
 
+CREATE TABLE venda (
+    cod INT GENERATED ALWAYS AS IDENTITY not null primary key,
+    data_venda DATE NOT NULL,
+    valor_total DOUBLE NOT NULL,
+    qtd_itens INT NOT NULL,
+    cod_usuario INT NOT NULL,
+    cod_cliente INT NOT NULL
+);
 
+ALTER TABLE venda ADD FOREIGN KEY (cod_usuario) REFERENCES usuario(COD);
+ALTER TABLE venda ADD FOREIGN KEY (cod_cliente) REFERENCES cliente(COD);
+
+
+
+CREATE TABLE venda_produto (
+    cod INT GENERATED ALWAYS AS IDENTITY not null primary key,
+    cod_venda INT NOT NULL,
+    cod_produto INT NOT NULL,
+    preco_unitario DOUBLE NOT NULL,
+    quantidade INT NOT NULL
+);
+ALTER TABLE venda_produto ADD FOREIGN KEY (cod_venda) REFERENCES venda(COD);
+ALTER TABLE venda_produto ADD FOREIGN KEY (cod_produto) REFERENCES produto(COD);

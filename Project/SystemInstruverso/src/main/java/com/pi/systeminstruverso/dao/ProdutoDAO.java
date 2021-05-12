@@ -130,7 +130,7 @@ public class ProdutoDAO {
         return ok;
     }
     
-    public static Produto getProduto(String cod_usuario) {
+    public static Produto getProduto(String cod_produto) {
         String query = "SELECT * FROM produto WHERE cod = ?";
         
         Produto produto = null;
@@ -138,7 +138,7 @@ public class ProdutoDAO {
         try {
             Connection con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, Convert.ToInt(cod_usuario));
+            ps.setInt(1, Convert.ToInt(cod_produto));
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
