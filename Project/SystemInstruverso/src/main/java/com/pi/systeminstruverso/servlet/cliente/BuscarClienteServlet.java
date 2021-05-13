@@ -27,8 +27,12 @@ public class BuscarClienteServlet extends HttpServlet {
             System.out.println(busca);
             
             List<Cliente> listaClientes = ClienteDAO.searchClientes(busca);
-            
             request.setAttribute("listaClientes", listaClientes);
+            
+            String action = request.getParameter("action");
+            request.setAttribute("action", action);
+            System.out.println(action);
+            
             request.getRequestDispatcher("/clientes/buscar.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);

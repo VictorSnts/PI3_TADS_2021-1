@@ -23,8 +23,12 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             List<Cliente> listaClientes = ClienteDAO.getClientes();
-            
             request.setAttribute("listaClientes", listaClientes);
+            
+            String action = request.getParameter("action");
+            request.setAttribute("action", action);
+
+            
             request.getRequestDispatcher("/clientes/listar.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);

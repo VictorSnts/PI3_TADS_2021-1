@@ -23,9 +23,9 @@ import java.util.logging.Logger;
  */
 public class VendaDAO {
     
-    public static int novaVenda(int cod_usuario, int cod_cliente){
+    public static int novaVenda(int filial, int cod_usuario, int cod_cliente){
         
-        String query = "INSERT INTO VENDA (data_venda, cod_usuario, cod_cliente, finalizada) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO VENDA (filial, data_venda, cod_usuario, cod_cliente, finalizada) VALUES (?, ?, ?, ?, ?)";
         
         Connection con;
         int last_inserted_id = 0;
@@ -35,10 +35,11 @@ public class VendaDAO {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
             
-            ps.setString(1, "2021-01-01"); // Incluir data atual nesse passo
-            ps.setInt(2, cod_usuario);
-            ps.setInt(3, cod_cliente);
-            ps.setBoolean(4, false);
+            ps.setInt(1, filial);
+            ps.setString(2, "2021-01-01"); // Incluir data atual nesse passo
+            ps.setInt(3, cod_usuario);
+            ps.setInt(4, cod_cliente);
+            ps.setBoolean(5, false);
             ps.executeUpdate();
             
             ResultSet rs = ps.getGeneratedKeys();

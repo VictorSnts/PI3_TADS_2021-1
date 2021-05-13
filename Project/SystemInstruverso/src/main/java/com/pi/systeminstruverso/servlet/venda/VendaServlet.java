@@ -31,89 +31,68 @@ public class VendaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // GET do num da venda, caso ja tenha iniciado
-        int num_venda;
-        if(request.getParameter("venda").equals("none")){
-            num_venda = 0;
+        int num_venda = 0;
+        int cod_cliente = 0;
+        
+        // Definindo cliente
+        cod_cliente = Convert.ToInt(request.getParameter("cliente"));
+        request.setAttribute("cod_cliente", cod_cliente);
+        
+        // Definindo nro venda
+        boolean primeira_exec = request.getParameter("venda").equals("none");
+        if(primeira_exec){
+            num_venda = VendaDAO.novaVenda(1, 50, cod_cliente); // NovaVenda recebe a filal o cod de usuario e cliente. Por enqunato ta padrao 50,50
         } else{
             num_venda = Convert.ToInt(request.getParameter("venda"));
         }
+        request.setAttribute("num_venda", num_venda);
         
-        try {
-            // Cria a venda
-            String status = request.getParameter("status");
-            if(status.equals("init")){
-                num_venda = VendaDAO.novaVenda(50, 50); // NovaVenda recebe o cod de usuario e cliente. Por enqunato ta padrao 50,50
-                if(num_venda==0) System.out.println("ERRO NO CADASTRO DA VENDA");
-                else request.setAttribute("num_venda", num_venda);
-            }
-            
-        } catch (NullPointerException ex) {
-            System.out.println("Venda aberta");
-        }
         
         // Popula tabela de produtos
-        List<Produto> listaProdutos;
         try {
+            List<Produto> listaProdutos;
             listaProdutos = ProdutoDAO.getProdutos();
-            request.setAttribute("num_venda", num_venda);
             request.setAttribute("listaProdutos", listaProdutos);
-            
-            
-            
-            
         } catch (SQLException ex) {
             Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        try {
+         int cod_produto = 0;
+         boolean ja_adicionado = false;
+
+        if(!primeira_exec){
             // Pega o codigo do produto adicionado
-            String cod = "";
-            if (!request.getParameter("cod").equals("")) cod = request.getParameter("cod");
-            
-            int cod_produto = Convert.ToInt(cod);
-            
-            
+            if (!request.getParameter("cod").equals("")){
+                cod_produto = Convert.ToInt(request.getParameter("cod"));
+            }
             // verifica se ja o produto ja foi adicionado
-            boolean ja_adicionado = false;
             try {
                 ja_adicionado = VendaDAO.verificarProdutoVenda(num_venda, cod_produto);
             } catch (SQLException ex) {
                 Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+            } // Se ja foi adicionado
             if(ja_adicionado){
                 //somar qtd
                 VendaDAO.adicionarItem(num_venda, cod_produto);
             } else{
                 // Busca info do produto no BD
-                Produto produto = ProdutoDAO.getProduto(cod);
+                Produto produto = ProdutoDAO.getProduto(Integer.toString(cod_produto));
 
                 // Cadastra item da venda
                 VendaProduto vp = new VendaProduto(num_venda, produto.getCod(), produto.getPreco(), 1);
                 VendaDAO.cadastrarProdutoVenda(vp);
             }
-            
-            List<VendaProduto> listaItem;
-            listaItem = VendaDAO.getItensVenda(num_venda);
-            request.setAttribute("listaItem", listaItem);
-            
-            double total_venda = VendaDAO.getTotalVenda(num_venda);
-            request.setAttribute("total_venda", total_venda);
-
-            
-
-            
-        } catch (NullPointerException ex) {
-            System.out.println("Falta do parm cod, carrinho nao populado");
         }
+        // Lista os produtos do carrinho para a venda corrente
+        List<VendaProduto> listaItem;
+        listaItem = VendaDAO.getItensVenda(num_venda);
+        request.setAttribute("listaItem", listaItem);
+
+        // Calcula o total da nota para venda corrente
+        double total_venda = VendaDAO.getTotalVenda(num_venda);
+        request.setAttribute("total_venda", total_venda);
         
         request.getRequestDispatcher("/vendas/vender.jsp").forward(request, response);
 
-        
-        
-            
-        
-        
     }
 }

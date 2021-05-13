@@ -18,10 +18,13 @@
         <c:import url="../header.jsp"/>
         <h1>Vender</h1>
         
-        <label class="form-label">Numero da Venda </label>
+        <label class="form-label">Numero da Venda :</label>
         <input type="text" name="cod" size="6" required="true" readonly="true" value=${num_venda}>
+        <label class="form-label">Cliente :</label>
+        <input type="text" name="cod" size="12" required="true" readonly="true" value=${cod_cliente}>
+        
         <br>
-        <table class="table">
+        <table class="table table-bordered table-striped mb-0">
             <thead>
                 <th scope="col">Cod</th>
                 <th scope="col">Nome</th>
@@ -38,7 +41,7 @@
                     <td>${produto.marca}</td>
                     <td>R$${produto.preco}</td>
                     <td>${produto.quantidade}</td>
-                    <td><a href="VendaServlet?cod=${produto.cod}&venda=${num_venda}&status=aberta">Adicionar</a></td>
+                    <td><a href="VendaServlet?cod=${produto.cod}&venda=${num_venda}&cliente=${cod_cliente}&status=aberta">Adicionar</a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -66,7 +69,7 @@
         </table>
         
         <br>
-        <label class="form-label">Numero da Venda </label>
+        <label class="form-label">Total da Venda </label>
         <input type="text" name="cod" size="6" required="true" readonly="true" value=${total_venda}>
 
         
