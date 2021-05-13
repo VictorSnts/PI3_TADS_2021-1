@@ -5,8 +5,10 @@
  */
 package com.pi.systeminstruverso.servlet.venda;
 
+import com.pi.systeminstruverso.dao.ClienteDAO;
 import com.pi.systeminstruverso.dao.ProdutoDAO;
 import com.pi.systeminstruverso.dao.VendaDAO;
+import com.pi.systeminstruverso.entidade.Cliente;
 import com.pi.systeminstruverso.servlet.cliente.ClienteServlet;
 import com.pi.systeminstruverso.entidade.Produto;
 import com.pi.systeminstruverso.entidade.VendaProduto;
@@ -36,7 +38,15 @@ public class VendaServlet extends HttpServlet {
         
         // Definindo cliente
         cod_cliente = Convert.ToInt(request.getParameter("cliente"));
-        request.setAttribute("cod_cliente", cod_cliente);
+        try {
+            Cliente cliente = ClienteDAO.getCliente(Integer.toString(cod_cliente));
+            request.setAttribute("cod_cliente", cliente.getCod());
+            request.setAttribute("nome_cliente", cliente.getNome());
+        } catch (SQLException ex) {
+            Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         
         // Definindo nro venda
         boolean primeira_exec = request.getParameter("venda").equals("none");

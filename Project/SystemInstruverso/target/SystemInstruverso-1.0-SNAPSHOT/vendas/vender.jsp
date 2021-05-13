@@ -19,9 +19,9 @@
         <h1>Vender</h1>
         
         <label class="form-label">Numero da Venda :</label>
-        <input type="text" name="cod" size="6" required="true" readonly="true" value=${num_venda}>
+        <input type="text" name="num_venda" size="6" required="true" readonly="true" value=${num_venda}>
         <label class="form-label">Cliente :</label>
-        <input type="text" name="cod" size="12" required="true" readonly="true" value=${cod_cliente}>
+        <input type="text" name="cnome_clienteod" size="25" required="true" readonly="true" value="${nome_cliente}">
         
         <br>
         <table class="table table-bordered table-striped mb-0">
