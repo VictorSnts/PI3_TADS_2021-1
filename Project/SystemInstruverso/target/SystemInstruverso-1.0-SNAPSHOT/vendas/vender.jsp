@@ -21,54 +21,54 @@
         <label class="form-label">Numero da Venda </label>
         <input type="text" name="cod" size="6" required="true" readonly="true" value=${num_venda}>
         <br>
-        <div class="overflow-scroll">
-            <table class="table table-bordered table-striped mb-0">
-                <thead>
-                    <th scope="col">Cod</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Preco</th>
-                    <th scope="col">Estoque</th>
-                    <th scope="col"></th>
-                </thead>
-                <tbody>
-                    <c:forEach items="${listaProdutos}" var="produto" >
-                    <tr>
-                        <td>${produto.cod}</td>
-                        <td>${produto.nome}</td>
-                        <td>${produto.marca}</td>
-                        <td>R$${produto.preco}</td>
-                        <td>${produto.quantidade}</td>
-                        <td><a href="VendaServlet?cod=${produto.cod}&venda=${num_venda}&status=aberta">Adicionar</a></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
+        <table class="table">
+            <thead>
+                <th scope="col">Cod</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Preco</th>
+                <th scope="col">Estoque</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+                <c:forEach items="${listaProdutos}" var="produto" >
+                <tr>
+                    <td>${produto.cod}</td>
+                    <td>${produto.nome}</td>
+                    <td>${produto.marca}</td>
+                    <td>R$${produto.preco}</td>
+                    <td>${produto.quantidade}</td>
+                    <td><a href="VendaServlet?cod=${produto.cod}&venda=${num_venda}&status=aberta">Adicionar</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
         
         <h1>Carrinho</h1>
         
-        <div>
-            <table class="table table-bordered table-striped mb-0">
-                <thead>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Preco Un.</th>
-                    <th scope="col">Qtd</th>
-                    <th scope="col">Total</th>
-                    <th scope="col"></th>
-                </thead>
-                <tbody>
-                    <c:forEach items="${listaItem}" var="item">
+        <table class="table table-bordered table-striped mb-0">
+            <thead>
+                <th scope="col">Nome</th>
+                <th scope="col">Preco</th>
+                <th scope="col">Qtd</th>
+                <th scope="col">Total Item</th>
+            </thead>
+            <tbody>
+                <c:forEach items="${listaItem}" var="item">
                     <tr>
                         <td>${item.produto}</td>
-                        <td>R$${item.preco_unitario}</td>
-                        <td>${item.quantidade}</td
+                        <td>${item.preco_unitario}</td>
+                        <td>${item.quantidade}</td>
                         <td>${item.total}</td>
                     </tr>
                 </c:forEach>
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
+        
+        <br>
+        <label class="form-label">Numero da Venda </label>
+        <input type="text" name="cod" size="6" required="true" readonly="true" value=${total_venda}>
+
         
         <c:import url="/footer.jsp"/>
     </body>

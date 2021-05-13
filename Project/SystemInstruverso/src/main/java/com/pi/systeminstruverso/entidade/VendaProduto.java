@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.pi.systeminstruverso.entidade;
+import com.pi.systeminstruverso.utils.Convert;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +31,7 @@ public class VendaProduto {
         this.produto = produto;
         this.preco_unitario = preco_unitario;
         this.quantidade = quantidade;
-        this.total = preco_unitario * quantidade;
+        this.total = Convert.RoundDecimal(preco_unitario * quantidade);
     }
 
     public VendaProduto(int cod_venda, int cod_produto, double preco_unitario, int quantidade) {

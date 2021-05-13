@@ -71,24 +71,38 @@ public class VendaServlet extends HttpServlet {
             String cod = "";
             if (!request.getParameter("cod").equals("")) cod = request.getParameter("cod");
             
+            int cod_produto = Convert.ToInt(cod);
             
-            if(!cod.equals("")){
+            
+            // verifica se ja o produto ja foi adicionado
+            boolean ja_adicionado = false;
+            try {
+                ja_adicionado = VendaDAO.verificarProdutoVenda(num_venda, cod_produto);
+            } catch (SQLException ex) {
+                Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if(ja_adicionado){
+                //somar qtd
+                VendaDAO.adicionarItem(num_venda, cod_produto);
+            } else{
                 // Busca info do produto no BD
                 Produto produto = ProdutoDAO.getProduto(cod);
-                
+
                 // Cadastra item da venda
                 VendaProduto vp = new VendaProduto(num_venda, produto.getCod(), produto.getPreco(), 1);
-                boolean teste = VendaDAO.cadastrarProdutoVenda(vp);
-                System.out.println(teste);
-                
-                List<VendaProduto> listaItem;
-                listaItem = VendaDAO.getItensVenda(num_venda);
-                request.setAttribute("listaItem", listaItem);
-
-
-
-                
+                VendaDAO.cadastrarProdutoVenda(vp);
             }
+            
+            List<VendaProduto> listaItem;
+            listaItem = VendaDAO.getItensVenda(num_venda);
+            request.setAttribute("listaItem", listaItem);
+            
+            double total_venda = VendaDAO.getTotalVenda(num_venda);
+            request.setAttribute("total_venda", total_venda);
+
+            
+
             
         } catch (NullPointerException ex) {
             System.out.println("Falta do parm cod, carrinho nao populado");

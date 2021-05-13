@@ -5,6 +5,8 @@
  */
 package com.pi.systeminstruverso.utils;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author victor
@@ -19,6 +21,12 @@ public class Convert {
     public static double ToDouble(String str){
         double num = Double.parseDouble(str);
         return num;
+    }
+    
+    public static double RoundDecimal(double n){
+        DecimalFormat df = new DecimalFormat("#.00");
+        df.format(n);
+        return n;
     }
     
 }

@@ -112,5 +112,72 @@ public class VendaDAO {
         return vp;
         
     }
+
+    public static boolean verificarProdutoVenda(int cod_venda, int cod_produto) throws SQLException {
+        String query = "SELECT * from VENDA_PRODUTO WHERE COD_PRODUTO="+cod_produto+" and COD_VENDA="+cod_venda;
+       
+        Connection con = Conexao.getConexao();
+        PreparedStatement ps = con.prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+        
+        return rs.next();
+    }
+
+    public static void adicionarItem(int cod_venda, int cod_produto) {
+        String query = "UPDATE VENDA_PRODUTO SET quantidade=? WHERE COD_PRODUTO="+cod_produto+" and COD_VENDA="+cod_venda;
+       
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            
+            int qtd_atual = VendaDAO.getQtd(cod_venda, cod_produto);
+            ps.setInt(1, qtd_atual+1);
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
+     public static int getQtd(int cod_venda, int cod_produto) {
+        String query = "SELECT QUANTIDADE FROM VENDA_PRODUTO WHERE COD_PRODUTO="+cod_produto+" and COD_VENDA="+cod_venda;
+        
+        int quantidade = 0;
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                quantidade = rs.getInt("quantidade");
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return quantidade;
+    }
+
+    public static double getTotalVenda(int cod_venda) {
+        String query = "SELECT QUANTIDADE, preco_unitario FROM VENDA_PRODUTO WHERE COD_VENDA="+cod_venda;
+        
+        double total = 0;
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                double preco_unitario = Convert.ToDouble(rs.getString("PRECO_UNITARIO"));
+                int quantidade = rs.getInt("quantidade");
+                total += (preco_unitario * quantidade);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Convert.RoundDecimal(total);
+    }
 }
