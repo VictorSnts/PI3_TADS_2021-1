@@ -181,4 +181,23 @@ public class VendaDAO {
         }
         return Convert.RoundDecimal(total);
     }
+
+    public static boolean fializarVenda(int cod_venda, String forma_pagamento) {
+        String query = "UPDATE VENDA SET finalizada=true, forma_pagamento='"+forma_pagamento+"' WHERE cod="+cod_venda;
+        boolean ok = false;
+
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ps.executeUpdate();
+            
+            ok = true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ok;
+    }
 }

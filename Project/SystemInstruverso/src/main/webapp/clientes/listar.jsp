@@ -46,7 +46,7 @@
                 <a href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
             </div>
 
-            <form action="BuscarClienteServlet" method="HET">
+            <form action="BuscarClienteServlet" method="GET">
                 <label for="busca">  Busca: </label>
 
                 <div class="container">  

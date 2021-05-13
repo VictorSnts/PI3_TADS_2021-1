@@ -21,7 +21,7 @@
         <label class="form-label">Numero da Venda :</label>
         <input type="text" name="num_venda" size="6" required="true" readonly="true" value=${num_venda}>
         <label class="form-label">Cliente :</label>
-        <input type="text" name="cnome_clienteod" size="25" required="true" readonly="true" value="${nome_cliente}">
+        <input type="text" name="nome_cliente" size="25" required="true" readonly="true" value="${nome_cliente}">
         
         <br>
         <table class="table table-bordered table-striped mb-0">
@@ -70,9 +70,20 @@
         
         <br>
         <label class="form-label">Total da Venda </label>
-        <input type="text" name="cod" size="6" required="true" readonly="true" value=${total_venda}>
+        <input type="text" name="total_venda" size="6" required="true" readonly="true" value=${total_venda}>
 
-        
+        <div class="container"> 
+            <form action="FinalizarVendaServlet" method="GET">
+                <label for="forma_pagamento">  Forma Pagamento: </label>
+                <select name="forma_pagamento" required="true">
+                    <option value="dinheiro">Dinheiro</option>
+                    <option value="debito">Debito</option>
+                    <option value="credito">Credito</option>
+                    <option value="pix">PIX</option>
+                </select>
+                <button type="submit" name="venda" value="${num_venda}">Finalizar</button>
+            </form>
+        </div>
         <c:import url="/footer.jsp"/>
     </body>
 </html>

@@ -84,6 +84,14 @@
         <servlet-name>VendaServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.venda.VendaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FinalizarVendaServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.venda.FinalizarVendaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FinlaizarVendaServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.venda.FinlaizarVendaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -167,6 +175,14 @@
     <servlet-mapping>
         <servlet-name>VendaServlet</servlet-name>
         <url-pattern>/VendaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinalizarVendaServlet</servlet-name>
+        <url-pattern>/FinalizarVendaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinlaizarVendaServlet</servlet-name>
+        <url-pattern>/FinlaizarVendaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

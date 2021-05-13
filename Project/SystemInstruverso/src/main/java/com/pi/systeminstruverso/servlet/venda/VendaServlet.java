@@ -103,6 +103,5 @@ public class VendaServlet extends HttpServlet {
         request.setAttribute("total_venda", total_venda);
         
         request.getRequestDispatcher("/vendas/vender.jsp").forward(request, response);
-
     }
 }
