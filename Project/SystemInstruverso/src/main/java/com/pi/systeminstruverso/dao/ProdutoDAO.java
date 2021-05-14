@@ -109,7 +109,7 @@ public class ProdutoDAO {
     public static boolean cadastrar(Produto produto){
         boolean ok = false;
         
-        String query = "INSERT INTO PRODUTO (NOME, MARCA, CUSTO, PRECO, QUANTIDADE, COMISSAO, COD_FORNECEDOR, FILIAL) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO PRODUTO (NOME, MARCA, CUSTO, PRECO, QUANTIDADE, COMISSAO, COD_FORNECEDOR, FILIAL, CATEGORIA) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         Connection con;
         try {
@@ -124,6 +124,8 @@ public class ProdutoDAO {
             ps.setDouble(6, produto.getComissao());
             ps.setInt(7, produto.getCodFornecedor());
             ps.setInt(8, produto.getFilial());
+            ps.setString(9, produto.getCategoria());
+
             ps.executeUpdate();
             
             ok = true;
