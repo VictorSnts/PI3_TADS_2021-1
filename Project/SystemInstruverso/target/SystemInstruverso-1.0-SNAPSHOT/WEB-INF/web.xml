@@ -92,6 +92,10 @@
         <servlet-name>FinlaizarVendaServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.venda.FinlaizarVendaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.relatorio.RelatorioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>FinlaizarVendaServlet</servlet-name>
         <url-pattern>/FinlaizarVendaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioServlet</servlet-name>
+        <url-pattern>/RelatorioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

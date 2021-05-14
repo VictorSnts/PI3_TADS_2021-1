@@ -6,6 +6,7 @@
 package com.pi.systeminstruverso.dao;
 
 import com.pi.systeminstruverso.conexao.Conexao;
+import com.pi.systeminstruverso.entidade.Produto;
 import com.pi.systeminstruverso.entidade.VendaProduto;
 import com.pi.systeminstruverso.utils.Convert;
 import java.sql.Connection;
@@ -183,13 +184,17 @@ public class VendaDAO {
     }
 
     public static boolean fializarVenda(int cod_venda, String forma_pagamento) {
-        String query = "UPDATE VENDA SET finalizada=true, forma_pagamento='"+forma_pagamento+"' WHERE cod="+cod_venda;
+        double total = VendaDAO.getTotalVenda(cod_venda);
+        
+        String query = "UPDATE VENDA SET finalizada=true, forma_pagamento='"+forma_pagamento+"', total_venda="+total+" WHERE cod="+cod_venda;
         boolean ok = false;
 
         Connection con;
         try {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
+            
+            
 
             ps.executeUpdate();
             
@@ -199,5 +204,28 @@ public class VendaDAO {
             Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ok;
+    }
+
+    public static void atualizaEstoque(int cod_venda) {
+        String query_select = "SELECT VENDA_PRODUTO.COD, VENDA_PRODUTO.COD_VENDA, VENDA_PRODUTO.COD_PRODUTO, PRODUTO.NOME as produto, VENDA_PRODUTO.PRECO_UNITARIO, VENDA_PRODUTO.QUANTIDADE FROM VENDA_PRODUTO Inner JOIN PRODUTO ON VENDA_PRODUTO.COD_PRODUTO = PRODUTO.COD WHERE cod_venda = "+cod_venda;
+                
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query_select);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int cod_produto = rs.getInt("COD_PRODUTO");
+                int quantidade_vendida = rs.getInt("quantidade");
+                
+                Produto p = ProdutoDAO.getProduto(String.valueOf(cod_produto));
+                
+                String query_update = "UPDATE produto SET quantidade="+(p.getQuantidade()-quantidade_vendida)+" WHERE cod="+cod_produto;
+                PreparedStatement ps_prod = con.prepareStatement(query_update);
+                ps_prod.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -30,9 +30,12 @@ public class FinalizarVendaServlet extends HttpServlet {
         // Atualiza venda no BD
         boolean ok = VendaDAO.fializarVenda(cod_venda, forma_pagamento);
         
+        
         // Redirecionar para sucesso/erro
         if (ok) {
+            VendaDAO.atualizaEstoque(cod_venda);
             response.sendRedirect("retornos/sucesso.jsp");
+            
         }
         else {
             String msgErro = "Não foi possivel realizar a venda.";

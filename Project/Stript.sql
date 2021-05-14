@@ -375,7 +375,10 @@ CREATE TABLE venda (
     cod_usuario INT NOT NULL,
     cod_cliente INT NOT NULL,
     finalizada BOOLEAN NOT NULL,
-    forma_pagamento VARCHAR(50)
+    forma_pagamento VARCHAR(50),
+    total_venda DOUBLE NOT NULL,
+
+
 );
 
 ALTER TABLE venda ADD FOREIGN KEY (cod_usuario) REFERENCES usuario(COD);
