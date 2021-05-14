@@ -25,7 +25,7 @@
             <a href="UsuarioServlet"><i class="fa fa-fw fa-users"></i> Usuarios</a>
             <a href="ProdutoServlet"><i class="fa fa-fw fa-headphones"></i> Produtos</a>
             <a href="ClienteServlet?action=select"><i class="fa fa-fw fa-shopping-cart"></i> Vender</a>
-            <a href="RelatorioServlet"><i class="fa fa-fw fa-line-chart"></i> Relatorios</a>
+            <a href="RelatorioServlet?intervalo=full"><i class="fa fa-fw fa-line-chart"></i> Relatorios</a>
 
         </div>
   

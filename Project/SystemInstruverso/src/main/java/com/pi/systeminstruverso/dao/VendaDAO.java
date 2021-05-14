@@ -6,7 +6,10 @@
 package com.pi.systeminstruverso.dao;
 
 import com.pi.systeminstruverso.conexao.Conexao;
+import com.pi.systeminstruverso.entidade.Cliente;
 import com.pi.systeminstruverso.entidade.Produto;
+import com.pi.systeminstruverso.entidade.RelatorioCategoria;
+import com.pi.systeminstruverso.entidade.Venda;
 import com.pi.systeminstruverso.entidade.VendaProduto;
 import com.pi.systeminstruverso.utils.Convert;
 import java.sql.Connection;
@@ -228,4 +231,192 @@ public class VendaDAO {
             Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public static List<Venda> getVendas() {
+        String query = "SELECT VENDA.COD, VENDA.FILIAL, VENDA.DATA_VENDA, VENDA.COD_USUARIO, USUARIO.NOME AS NOME_USUARIO, VENDA.COD_CLIENTE, CLIENTE.NOME AS NOME_CLIENTE, VENDA.FORMA_PAGAMENTO, VENDA.TOTAL_VENDA, VENDA.FINALIZADA FROM VENDA INNER JOIN USUARIO ON VENDA.COD_USUARIO = USUARIO.COD INNER JOIN CLIENTE ON VENDA.COD_CLIENTE = CLIENTE.COD WHERE FINALIZADA=TRUE";
+        
+        List<Venda> vendas = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            
+            while(rs.next()){
+                int cod = rs.getInt("cod");
+                int filial = rs.getInt("filial");
+                String data_venda = rs.getString("data_venda");
+                int cod_usuario = rs.getInt("cod_usuario");
+                String usuario = rs.getString("nome_usuario");
+                int cod_cliente = rs.getInt("cod_cliente");
+                String cliente = rs.getString("nome_cliente");
+                String forma_pagamento = rs.getString("forma_pagamento");
+                double total_venda = rs.getDouble("total_venda");
+                                
+                Venda venda =  new Venda(cod, filial, data_venda, cod_usuario, usuario, cod_cliente, cliente, forma_pagamento, total_venda, true);
+                vendas.add(venda);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vendas;
+    }
+
+    public static List<Venda> getVendas(String data_inicial, String data_final) {
+        String query = "SELECT VENDA.COD, VENDA.FILIAL, VENDA.DATA_VENDA, VENDA.COD_USUARIO, USUARIO.NOME AS NOME_USUARIO, VENDA.COD_CLIENTE, CLIENTE.NOME AS NOME_CLIENTE, VENDA.FORMA_PAGAMENTO, VENDA.TOTAL_VENDA, VENDA.FINALIZADA FROM VENDA INNER JOIN USUARIO ON VENDA.COD_USUARIO = USUARIO.COD INNER JOIN CLIENTE ON VENDA.COD_CLIENTE = CLIENTE.COD WHERE FINALIZADA=TRUE AND DATA_VENDA > '"+data_inicial+"' AND DATA_VENDA < '"+data_final+"'";
+        
+        List<Venda> vendas = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            
+            while(rs.next()){
+                int cod = rs.getInt("cod");
+                int filial = rs.getInt("filial");
+                String data_venda = rs.getString("data_venda");
+                int cod_usuario = rs.getInt("cod_usuario");
+                String usuario = rs.getString("nome_usuario");
+                int cod_cliente = rs.getInt("cod_cliente");
+                String cliente = rs.getString("nome_cliente");
+                String forma_pagamento = rs.getString("forma_pagamento");
+                double total_venda = rs.getDouble("total_venda");
+                                
+                Venda venda =  new Venda(cod, filial, data_venda, cod_usuario, usuario, cod_cliente, cliente, forma_pagamento, total_venda, true);
+                vendas.add(venda);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vendas;
+    }
+    
+    public static List<Venda> getVendas(String data_inicial, String data_final, String filial) {
+        String query = "SELECT VENDA.COD, VENDA.FILIAL, VENDA.DATA_VENDA, VENDA.COD_USUARIO, USUARIO.NOME AS NOME_USUARIO, VENDA.COD_CLIENTE, CLIENTE.NOME AS NOME_CLIENTE, VENDA.FORMA_PAGAMENTO, VENDA.TOTAL_VENDA, VENDA.FINALIZADA FROM VENDA INNER JOIN USUARIO ON VENDA.COD_USUARIO = USUARIO.COD INNER JOIN CLIENTE ON VENDA.COD_CLIENTE = CLIENTE.COD WHERE FINALIZADA=TRUE AND DATA_VENDA > '"+data_inicial+"' AND DATA_VENDA < '"+data_final+"' AND VENDA.FILIAL="+filial;
+        
+        List<Venda> vendas = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            
+            while(rs.next()){
+                int cod = rs.getInt("cod");
+                int filial_venda = rs.getInt("filial");
+                String data_venda = rs.getString("data_venda");
+                int cod_usuario = rs.getInt("cod_usuario");
+                String usuario = rs.getString("nome_usuario");
+                int cod_cliente = rs.getInt("cod_cliente");
+                String cliente = rs.getString("nome_cliente");
+                String forma_pagamento = rs.getString("forma_pagamento");
+                double total_venda = rs.getDouble("total_venda");
+                                
+                Venda venda =  new Venda(cod, filial_venda, data_venda, cod_usuario, usuario, cod_cliente, cliente, forma_pagamento, total_venda, true);
+                vendas.add(venda);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vendas;
+    }
+
+    public static List<RelatorioCategoria> getVendasCategoria() {
+        String query = "SELECT VENDA_PRODUTO.COD_VENDA, VENDA.DATA_VENDA, VENDA.FILIAL, PRODUTO.NOME AS PRODUTO, PRODUTO.CATEGORIA, VENDA_PRODUTO.PRECO_UNITARIO, VENDA_PRODUTO.QUANTIDADE FROM VENDA_PRODUTO INNER JOIN PRODUTO ON VENDA_PRODUTO.COD =  PRODUTO.COD INNER JOIN VENDA ON VENDA.COD = VENDA_PRODUTO.COD_VENDA WHERE venda.finalizada = true";
+        
+        List<RelatorioCategoria> relat = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet re = ps.executeQuery();
+
+            
+            while(re.next()){
+                int cod_venda =  re.getInt("cod_venda");
+                String data_venda =  re.getString("data_venda");
+                int filial =  re.getInt("filial");
+                String produto =  re.getString("produto");
+                String categoria =  re.getString("categoria");
+                boolean preco_unitario =  re.getBoolean("preco_unitario");
+                int quantidade =  re.getInt("quantidade");
+                                
+                RelatorioCategoria rc =  new RelatorioCategoria(cod_venda, data_venda, filial, produto, categoria, preco_unitario, quantidade);
+                relat.add(rc);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return relat;
+    }
+    
+    public static List<RelatorioCategoria> getVendasCategoria(String data_inicial, String data_final) {
+        String query = "SELECT VENDA_PRODUTO.COD_VENDA, VENDA.DATA_VENDA, VENDA.FILIAL, PRODUTO.NOME AS PRODUTO, PRODUTO.CATEGORIA, VENDA_PRODUTO.PRECO_UNITARIO, VENDA_PRODUTO.QUANTIDADE FROM VENDA_PRODUTO INNER JOIN PRODUTO ON VENDA_PRODUTO.COD =  PRODUTO.COD INNER JOIN VENDA ON VENDA.COD = VENDA_PRODUTO.COD_VENDA WHERE venda.finalizada = true AND DATA_VENDA > '"+data_inicial+"' AND DATA_VENDA < '"+data_final+"'";
+        
+        List<RelatorioCategoria> relat = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet re = ps.executeQuery();
+
+            
+            while(re.next()){
+                int cod_venda =  re.getInt("cod_venda");
+                String data_venda =  re.getString("data_venda");
+                int filial =  re.getInt("filial");
+                String produto =  re.getString("produto");
+                String categoria =  re.getString("categoria");
+                boolean preco_unitario =  re.getBoolean("preco_unitario");
+                int quantidade =  re.getInt("quantidade");
+                                
+                RelatorioCategoria rc =  new RelatorioCategoria(cod_venda, data_venda, filial, produto, categoria, preco_unitario, quantidade);
+                relat.add(rc);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return relat;
+    }
+    
+    public static List<RelatorioCategoria> getVendasCategoria(String data_inicial, String data_final, String categoria) {
+        String query = "SELECT VENDA_PRODUTO.COD_VENDA, VENDA.DATA_VENDA, VENDA.FILIAL, PRODUTO.NOME AS PRODUTO, PRODUTO.CATEGORIA, VENDA_PRODUTO.PRECO_UNITARIO, VENDA_PRODUTO.QUANTIDADE FROM VENDA_PRODUTO INNER JOIN PRODUTO ON VENDA_PRODUTO.COD =  PRODUTO.COD INNER JOIN VENDA ON VENDA.COD = VENDA_PRODUTO.COD_VENDA WHERE venda.finalizada = true AND DATA_VENDA > '"+data_inicial+"' AND DATA_VENDA < '"+data_final+"' AND PRODUTO.CATEGORIA = '"+categoria+"'";
+        
+        List<RelatorioCategoria> relat = new ArrayList();
+        
+        try {
+            Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet re = ps.executeQuery();
+
+            
+            while(re.next()){
+                int cod_venda =  re.getInt("cod_venda");
+                String data_venda =  re.getString("data_venda");
+                int filial =  re.getInt("filial");
+                String produto =  re.getString("produto");
+                String categoria_prd =  re.getString("categoria");
+                boolean preco_unitario =  re.getBoolean("preco_unitario");
+                int quantidade =  re.getInt("quantidade");
+                                
+                RelatorioCategoria rc =  new RelatorioCategoria(cod_venda, data_venda, filial, produto, categoria_prd, preco_unitario, quantidade);
+                relat.add(rc);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return relat;
+    }
+    
+    
 }
