@@ -31,6 +31,7 @@
                 <th scope="col">Marca</th>
                 <th scope="col">Cod Fornecedor</th>
                 <th scope="col">Fornecedor</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">Custo</th>
                 <th scope="col">Preco</th>
                 <th scope="col">Quantidade</th>
@@ -44,6 +45,7 @@
                     <td>${produto.marca}</td>
                     <td>${produto.codFornecedor}</td>
                     <td>${produto.fornecedor}</td>
+                    <td>${produto.categoria}</td>
                     <td>R$${produto.custo}</td>
                     <td>R$${produto.preco}</td>
                     <td>${produto.quantidade}</td>

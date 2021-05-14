@@ -24,9 +24,7 @@ public class BuscarProdutoServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             String busca = request.getParameter("busca");
-            
-            System.out.println(busca);
-            
+                        
             List<Produto> listaProdutos = ProdutoDAO.searchProduto(busca);
             
             request.setAttribute("listaProdutos", listaProdutos);

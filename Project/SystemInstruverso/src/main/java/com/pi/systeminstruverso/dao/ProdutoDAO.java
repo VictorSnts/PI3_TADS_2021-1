@@ -48,20 +48,23 @@ public class ProdutoDAO {
     public static boolean atualizar(Produto produto){
         boolean ok = false;
         
-        String query = "UPDATE PRODUTO SET NOME=?, MARCA=?, CUSTO=?, PRECO=?, QUANTIDADE=?, COMISSAO=? WHERE cod=?";
+        String query = "UPDATE PRODUTO SET FILIAL=?, NOME=?, MARCA=?, COD_FORNECEDOR=?, CATEGORIA=?, CUSTO=?, PRECO=?, QUANTIDADE=?, COMISSAO=? WHERE cod=?";
         
         Connection con;
         try {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
             
-            ps.setString(1, produto.getNome());
-            ps.setString(2, produto.getMarca());
-            ps.setDouble(3, produto.getCusto());
-            ps.setDouble(4, produto.getPreco());
-            ps.setInt(5, produto.getQuantidade());
-            ps.setDouble(6, produto.getComissao());
-            ps.setInt(7, produto.getCod());
+            ps.setInt(1, produto.getFilial());
+            ps.setString(2, produto.getNome());
+            ps.setString(3, produto.getMarca());
+            ps.setInt(4, produto.getCodFornecedor());
+            ps.setString(5, produto.getCategoria());
+            ps.setDouble(6, produto.getCusto());
+            ps.setDouble(7, produto.getPreco());
+            ps.setInt(8, produto.getQuantidade());
+            ps.setDouble(9, produto.getComissao());
+            ps.setInt(10, produto.getCod());
             ps.executeUpdate();
             
             ok = true;
@@ -72,7 +75,7 @@ public class ProdutoDAO {
     }
     
     public static List<Produto> getProdutos() throws SQLException{
-        String query = "SELECT PRODUTO.COD, PRODUTO.FILIAL, PRODUTO.NOME, PRODUTO.MARCA, PRODUTO.COD_FORNECEDOR, FORNECEDOR.RAZAO_SOCIAL AS FORNECEDOR, PRODUTO.CUSTO, PRODUTO.PRECO, PRODUTO.QUANTIDADE, PRODUTO.COMISSAO FROM PRODUTO Inner JOIN FORNECEDOR ON FORNECEDOR.COD = PRODUTO.COD_FORNECEDOR";
+        String query = "SELECT PRODUTO.COD, PRODUTO.FILIAL, PRODUTO.NOME, PRODUTO.MARCA, PRODUTO.COD_FORNECEDOR, FORNECEDOR.RAZAO_SOCIAL AS FORNECEDOR, PRODUTO.CATEGORIA, PRODUTO.CUSTO, PRODUTO.PRECO, PRODUTO.QUANTIDADE, PRODUTO.COMISSAO FROM PRODUTO Inner JOIN FORNECEDOR ON FORNECEDOR.COD = PRODUTO.COD_FORNECEDOR";
         
         List<Produto> produtos = new ArrayList();
         
@@ -88,12 +91,13 @@ public class ProdutoDAO {
                 String marca = rs.getString("marca");
                 int codFornecedor = rs.getInt("cod_fornecedor");
                 String fornecedor = rs.getString("fornecedor");
+                String categoria = rs.getString("categoria");
                 double custo = rs.getDouble("custo");
                 double preco = rs.getDouble("preco");
                 int quantidade = rs.getInt("quantidade");
                 double comissao = rs.getDouble("comissao");
 
-                Produto produto =  new Produto(cod, filial, nome, marca, codFornecedor, fornecedor, custo, preco, quantidade, comissao);
+                Produto produto =  new Produto(cod, filial, nome, marca, codFornecedor, fornecedor, categoria, custo, preco, quantidade, comissao);
                 produtos.add(produto);
             }
         } catch (SQLException ex) {
@@ -131,7 +135,7 @@ public class ProdutoDAO {
     }
     
     public static Produto getProduto(String cod_produto) {
-        String query = "SELECT * FROM produto WHERE cod = ?";
+        String query = "SELECT PRODUTO.COD, PRODUTO.FILIAL, PRODUTO.NOME, PRODUTO.MARCA, PRODUTO.COD_FORNECEDOR, FORNECEDOR.RAZAO_SOCIAL AS FORNECEDOR, PRODUTO.CATEGORIA, PRODUTO.CUSTO, PRODUTO.PRECO, PRODUTO.QUANTIDADE, PRODUTO.COMISSAO FROM PRODUTO Inner JOIN FORNECEDOR ON FORNECEDOR.COD = PRODUTO.COD_FORNECEDOR WHERE PRODUTO.COD = ?";
         
         Produto produto = null;
         
@@ -147,13 +151,15 @@ public class ProdutoDAO {
                 String nome = rs.getString("nome");
                 String marca = rs.getString("marca");
                 int codFornecedor = rs.getInt("cod_fornecedor");
+                String fornecedor = rs.getString("fornecedor");
+                String categoria = rs.getString("categoria");
                 double custo = rs.getDouble("custo");
                 double preco = rs.getDouble("preco");
                 int quantidade = rs.getInt("quantidade");
                 double comissao = rs.getDouble("comissao");
 
                 
-                produto =  new Produto(cod, filial, nome, marca, codFornecedor, "", custo, preco, quantidade, comissao);
+                produto =  new Produto(cod, filial, nome, marca, codFornecedor, fornecedor, categoria, custo, preco, quantidade, comissao);
             }
             
         } catch (SQLException ex) {
@@ -163,7 +169,7 @@ public class ProdutoDAO {
     }
     
     public static List<Produto> searchProduto(String busca) throws SQLException{
-        String query = "SELECT * FROM produto WHERE nome LIKE '%"+busca+"%' OR marca LIKE '%"+busca+"%'";
+        String query = "SELECT PRODUTO.COD, PRODUTO.FILIAL, PRODUTO.NOME, PRODUTO.MARCA, PRODUTO.COD_FORNECEDOR, FORNECEDOR.RAZAO_SOCIAL AS FORNECEDOR, PRODUTO.CATEGORIA, PRODUTO.CUSTO, PRODUTO.PRECO, PRODUTO.QUANTIDADE, PRODUTO.COMISSAO FROM PRODUTO Inner JOIN FORNECEDOR ON FORNECEDOR.COD = PRODUTO.COD_FORNECEDOR WHERE nome LIKE '%"+busca+"%' OR marca LIKE '%"+busca+"%'";
             
         
         List<Produto> produtos = new ArrayList();
@@ -179,12 +185,14 @@ public class ProdutoDAO {
                 String nome = rs.getString("nome");
                 String marca = rs.getString("marca");
                 int codFornecedor = rs.getInt("cod_fornecedor");
+                String fornecedor = rs.getString("fornecedor");
+                String categoria = rs.getString("categoria");
                 double custo = rs.getDouble("custo");
                 double preco = rs.getDouble("preco");
                 int quantidade = rs.getInt("quantidade");
                 double comissao = rs.getDouble("comissao");
                 
-                Produto produto =  new Produto(cod, filial, nome, marca, codFornecedor, "", custo, preco, quantidade, comissao);
+                Produto produto =  new Produto(cod, filial, nome, marca, codFornecedor, fornecedor, categoria, custo, preco, quantidade, comissao);
                 produtos.add(produto);
             }
 

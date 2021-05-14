@@ -40,7 +40,18 @@
                 <label class="form-label">Marca: </label>
                 <input type="text" name="marca" size="20" required="true"> 
                 <label class="form-label">Nome: </label>
-                <input type="text" name="nome" size="20" required="true">                
+                <input type="text" name="nome" size="20" required="true">
+                <label class="form-label">Categoria: </label>
+                <select name="categoria" required="true">
+                    <option value="audio">Audio</option>
+                    <option value="cordas">Cordas</option>
+                    <option value="teclas">Teclas</option>
+                    <option value="baterias">Baterias</option>
+                    <option value="percursao">Percursao</option>
+                    <option value="sopro">Sopro</option>
+                    <option value="iluminacao">Iluminacao</option>
+                    <option value="outros">Outros</option>
+                </select>
                 <br><br>
                 
                 <label class="form-label">Custo: </label>
@@ -96,27 +107,120 @@
                     </c:if>
                 </select>
                 <label class="form-label">Codigo: </label>
-                <input type="text" name="cod" size="6" required="true" readonly="true" value=${produto.cod}> 
+                <input type="text" name="cod" size="6" required="true" readonly="true" value="${produto.cod}"> 
                 <label class="form-label">Codigo Fornecedor: </label>
-                <input type="text" name="codFornecedor" size="5" required="true" value=${produto.codFornecedor}> 
+                <input type="text" name="codFornecedor" size="5" required="true" value="${produto.codFornecedor}"> 
                 <br><br>
 
                 <label class="form-label">Marca: </label>
-                <input type="text" name="marca" size="20" required="true" value=${produto.marca}> 
+                <input type="text" name="marca" size="20" required="true" value="${produto.marca}"> 
                 <label class="form-label">Nome: </label>
-                <input type="text" name="nome" size="20" required="true" value=${produto.marca}>                
+                <input type="text" name="nome" size="20" required="true" value="${produto.nome}">
+                <label class="form-label">Categoria: </label>
+                <select name="categoria" required="true">
+                    <option value="audio">Audio</option>
+                    <option value="cordas">Cordas</option>
+                    <option value="teclas">Teclas</option>
+                    <option value="baterias">Baterias</option>
+                    <option value="percursao">Percursao</option>
+                    <option value="sopro">Sopro</option>
+                    <option value="iluminacao">Iluminacao</option>
+                    <option value="outros">Outros</option>
+                
+                    <c:if test="${produto.categoria == 'audio'}">
+                        <option value="audio" selected="selected">Audio</option>
+                        <option value="cordas">Cordas</option>
+                        <option value="teclas">Teclas</option>
+                        <option value="baterias">Baterias</option>
+                        <option value="percursao">Percursao</option>
+                        <option value="sopro">Sopro</option>
+                        <option value="iluminacao">Iluminacao</option>
+                        <option value="outros">Outros</option>
+                    </c:if>
+                    <c:if test="${produto.categoria == 'cordas'}">
+                        <option value="audio">Audio</option>
+                        <option value="cordas" selected="selected">Cordas</option>
+                        <option value="teclas">Teclas</option>
+                        <option value="baterias">Baterias</option>
+                        <option value="percursao">Percursao</option>
+                        <option value="sopro">Sopro</option>
+                        <option value="iluminacao">Iluminacao</option>
+                        <option value="outros">Outros</option>
+                    </c:if>
+                    <c:if test="${produto.categoria == 'teclas'}">
+                        <option value="audio">Audio</option>
+                        <option value="cordas">Cordas</option>
+                        <option value="teclas" selected="selected">Teclas</option>
+                        <option value="baterias">Baterias</option>
+                        <option value="percursao">Percursao</option>
+                        <option value="sopro">Sopro</option>
+                        <option value="iluminacao">Iluminacao</option>
+                        <option value="outros">Outros</option>
+                    </c:if>
+                    <c:if test="${produto.categoria == 'baterias'}">
+                        <option value="audio">Audio</option>
+                        <option value="cordas">Cordas</option>
+                        <option value="teclas">Teclas</option>
+                        <option value="baterias" selected="selected">Baterias</option>
+                        <option value="percursao">Percursao</option>
+                        <option value="sopro">Sopro</option>
+                        <option value="iluminacao">Iluminacao</option>
+                        <option value="outros">Outros</option>
+                    </c:if>
+                    <c:if test="${produto.categoria == 'percursao'}">
+                        <option value="audio">Audio</option>
+                        <option value="cordas">Cordas</option>
+                        <option value="teclas">Teclas</option>
+                        <option value="baterias">Baterias</option>
+                        <option value="percursao" selected="selected">Percursao</option>
+                        <option value="sopro">Sopro</option>
+                        <option value="iluminacao">Iluminacao</option>
+                        <option value="outros">Outros</option>
+                    </c:if>
+                    <c:if test="${produto.categoria == 'sopro'}">
+                        <option value="audio">Audio</option>
+                        <option value="cordas">Cordas</option>
+                        <option value="teclas">Teclas</option>
+                        <option value="baterias">Baterias</option>
+                        <option value="percursao">Percursao</option>
+                        <option value="sopro" selected="selected">Sopro</option>
+                        <option value="iluminacao">Iluminacao</option>
+                        <option value="outros">Outros</option>
+                    </c:if>
+                    <c:if test="${produto.categoria == 'iluminacao'}">
+                        <option value="audio">Audio</option>
+                        <option value="cordas">Cordas</option>
+                        <option value="teclas">Teclas</option>
+                        <option value="baterias">Baterias</option>
+                        <option value="percursao">Percursao</option>
+                        <option value="sopro">Sopro</option>
+                        <option value="iluminacao" selected="selected">Iluminacao</option>
+                        <option value="outros">Outros</option>
+                    </c:if>
+                    <c:if test="${produto.categoria == 'outros'}">
+                        <option value="audio">Audio</option>
+                        <option value="cordas">Cordas</option>
+                        <option value="teclas">Teclas</option>
+                        <option value="baterias">Baterias</option>
+                        <option value="percursao">Percursao</option>
+                        <option value="sopro">Sopro</option>
+                        <option value="iluminacao">Iluminacao</option>
+                        <option value="outros" selected="selected">Outros</option>
+                    </c:if>
+                </select>
+                        
                 <br><br>
                 
                 <label class="form-label">Custo: </label>
-                <input type="text" name="custo" size="8" required="true" value=${produto.custo}> 
+                <input type="text" name="custo" size="8" required="true" value="${produto.custo}"> 
                 <label class="form-label">Preco: </label>
-                <input type="text" name="preco" size="8" required="true" value=${produto.preco}> 
+                <input type="text" name="preco" size="8" required="true" value="${produto.preco}"> 
                 <label class="form-label">Quantidade: </label>
-                <input type="text" name="quantidade" size="5" required="true" value=${produto.quantidade}> 
+                <input type="text" name="quantidade" size="5" required="true" value="${produto.quantidade}"> 
                 <br><br>
 
                 <label class="form-label">Comissao pela venda: </label>
-                <input type="text" name="comissao" size="5" required="true" value=${produto.comissao}> 
+                <input type="text" name="comissao" size="5" required="true" value="${produto.comissao}"> 
 
                 <br><br>
                 

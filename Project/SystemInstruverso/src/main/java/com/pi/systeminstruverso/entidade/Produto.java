@@ -22,18 +22,20 @@ public class Produto {
     private String marca;
     private int codFornecedor;
     private String fornecedor;
+    private String categoria;
     private double custo;
     private double preco;
     private int quantidade;
     private double comissao;
     
-    public Produto(int cod, int filial, String nome, String marca, int codFornecedor, String fornecedor, double custo, double preco, int quantidade, double comissao){
+    public Produto(int cod, int filial, String nome, String marca, int codFornecedor, String fornecedor, String categoria, double custo, double preco, int quantidade, double comissao){
         this.cod = cod;
         this.filial = filial;
         this.nome = nome;
         this.marca = marca;
         this.codFornecedor = codFornecedor;
         this.fornecedor = fornecedor;
+        this.categoria = categoria;
         this.custo = custo;
         this.preco = preco;
         this.quantidade = quantidade;
