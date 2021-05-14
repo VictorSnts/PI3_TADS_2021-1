@@ -81,6 +81,13 @@
                     <option value="credito">Credito</option>
                     <option value="pix">PIX</option>
                 </select>
+                <label for="filial">  Filial: </label>
+                <select name="filial" required="true">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
                 <button type="submit" name="venda" value="${num_venda}">Finalizar</button>
             </form>
         </div>

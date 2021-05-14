@@ -183,10 +183,10 @@ public class VendaDAO {
         return Convert.RoundDecimal(total);
     }
 
-    public static boolean fializarVenda(int cod_venda, String forma_pagamento) {
+    public static boolean fializarVenda(int cod_venda, String forma_pagamento, int filial) {
         double total = VendaDAO.getTotalVenda(cod_venda);
         
-        String query = "UPDATE VENDA SET finalizada=true, forma_pagamento='"+forma_pagamento+"', total_venda="+total+" WHERE cod="+cod_venda;
+        String query = "UPDATE VENDA SET finalizada=true, forma_pagamento='"+forma_pagamento+"', total_venda="+total+", filial="+filial+" WHERE cod="+cod_venda;
         boolean ok = false;
 
         Connection con;
