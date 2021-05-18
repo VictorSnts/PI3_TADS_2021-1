@@ -8,58 +8,99 @@ and open the template in the editor.
     Author     : victor
 */
 
-div.scrollmenu {
-    background-color: #333;
-    overflow: auto;
-    white-space: nowrap;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-div.scrollmenu a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-}
-
-div.scrollmenu a:hover {
-    background-color: #777;
-}
-
-
-/* Style the sidebar - fixed full height */
+/*Barra de Menus*/
 .sidebar {
-  height: 100%;
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 16px;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 16px;
 }
 
-/* Style sidebar links */
 .sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  display: block;
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
 }
 
-/* Style links on mouse-over */
 .sidebar a:hover {
-  color: #f1f1f1;
+    color: #f1f1f1;
+}
+/*Fim Barra de Menus*/
+
+#titulo {
+    font-family: sans-serif;
+    color: black;
+    margin-left: 0%;
+    font-size: 2.5em;
+} 
+
+#subtitulo {
+    font-family: sans-serif;
+    color:black;
+    font-size: 2em;
+    margin-left: 5%;
+} 
+
+body{
+    font-family: sans-serif;
+    font-size: 1em;
+    color: black;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 2%;
+    justify-content: center;
 }
 
-/* Style the main content */
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
+hr{
+    border: 3px solid black;
 }
 
+input, select, button {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: black;
+    border-radius: 5px;
+}
+
+.campo label {
+    margin-bottom: 0.2em;
+    color: black;
+}
+
+fieldset.grupo .campo {
+    float:  left;
+    margin-right: 1em;
+}
+
+.campo select option {
+    padding-right: 1em;
+}
+
+.botao {
+    font-size: 1.5em;
+    background: black;
+    border: 0;
+    margin-bottom: 1em;
+    color: #ffffff;
+    padding: 0.2em 0.6em;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    margin-left: 10%;
+    margin-top: 2.5%;
+    transform: translate(-50%, -50%)
+}
 /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}

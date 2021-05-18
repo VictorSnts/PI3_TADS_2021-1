@@ -19,15 +19,6 @@
         <c:import url="header.jsp"/>
         <h1>Pagina Inicial</h1>
             
-        <div class="sidebar">
-            <a href="ClienteServlet"><i class="fa fa-fw fa-user"></i> Clientes</a>
-            <a href="FornecedorServlet"><i class="fa fa-fw fa-industry"></i> Fornecedores</a>
-            <a href="UsuarioServlet"><i class="fa fa-fw fa-users"></i> Usuarios</a>
-            <a href="ProdutoServlet"><i class="fa fa-fw fa-headphones"></i> Produtos</a>
-            <a href="ClienteServlet?action=select"><i class="fa fa-fw fa-shopping-cart"></i> Vender</a>
-            <a href="RelatorioServlet?intervalo=full"><i class="fa fa-fw fa-line-chart"></i> Relatorios</a>
-
-        </div>
   
         <br/>
         

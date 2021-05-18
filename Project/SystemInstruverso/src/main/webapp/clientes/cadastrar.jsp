@@ -7,81 +7,109 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Cadastro de Clientes</title>
-    </head>
-    <body class="container">
-        <c:import url="../header.jsp"/>
-        
-        <h1>Cadastro de Clientes</h1><br/><br/>
-        <!-- CADASTRO -->
-        <c:if test="${empty cliente}">
-            <form action="../CadastrarClienteServlet" method="POST">
-                
-                <h3>-| Dados Pessoais |-</h3>
-                <label class="form-label">Filial: </label>                
-                <select name="filial_cadastro" required="true">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-                <label class="form-label">Codigo: </label>
-                <input type="text" name="cod" size="6" readonly="true">
-                <br><br>
-                
-                <label class="form-label">Nome: </label>
-                <input type="text" name="nome" required="true" size="50">
-                <br><br>
-                
-                <label class="form-label">E-Mail: </label>
-                <input type="text" name="email" required="true" size="50">
-                <br><br>
-                
-                <label class="form-label">Telefone: </label>
-                <input type="text" name="telefone" required="true" size="11" maxlength="11">
-                <label class="form-label">CPF: </label>
-                <input type="text" name="cpf" required="true" size="11" maxlength="11">
-                <br/><br/>
-                
-                <label class="form-label">Data de Nascimento: </label>
-                <input type="date" name="data_nasc" required="true">
-                <br/><br/>
-                
-                <h3>-| Endereco |-</h3>
-                <label class="form-label">Endereco: </label>
-                <input type="text" name="endereco" required="true" size="50">                
-                <label class="form-label">Numero: </label>
-                <input type="text" name="numero" required="true" size="10">
-                <br/><br/>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/style.css"/>">
+    <title>Cadastro de Clientes</title>
+</head>
+<body>
+    <c:import url="/header.jsp"/>
 
-                <label class="form-label">CEP: </label>
-                <input type="text" name="cep" required="true" size="9">
-                <label class="form-label">UF: </label>
-                <input type="text" name="uf" required="true" size="2" maxlength="2">                
-                <label class="form-label">Bairro: </label>
-                <input type="text" name="bairro" required="true" size="25">
-                <label class="form-label">Cidade: </label>
-                <input type="text" name="cidade" required="true" size="25">
-                <br><br>
 
-                <button type="submit" class="btn-primary">Cadastrar</button>
-                
-            </form>
-        </c:if>
-        
-        <!-- ATUALIZACAO -->
-        <c:if test="${not empty cliente}">
-            <form action="AlterarClienteServlet" method="POST">
-                
-                <h3>-| Dados Pessoais |-</h3>
-                
-                <label class="form-label">Filial: </label>
-                <select name="filial_cadastro" required="true" value="${cliente.filial_cadastro}">
+
+    <!-- CADASTRO -->
+    <c:if test="${empty cliente}">
+        <form action="../CadastrarClienteServlet" method="POST">
+ 
+            <div>
+                <h1 id="titulo">Cadastro de Clientes</h1>
+                <p id="subtitulo">Insira as informações do Cliente</p>
+                <br>
+            </div>
+
+            <fieldset class="grupo">
+                <div class="campo">
+                    <label for="filial_cadastro"><strong>Filial:</strong></label>
+                    <select name="filial_cadastro" id="filial_cadastro" required="true">
+                        <option value="" selected disabled> </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    
+                </div>
+            </fieldset>
+            <hr/>
+
+            <h4 id="item">Dados Pessoais</h4>
+            <fieldset class="grupo">
+
+                <div class="campo">
+                    <label for="nome"><strong>Nome:</strong> </label>
+                    <input type="text" name="nome" id="nome" required="true" size="60">
+                    <label for="cpf"><strong>CPF:</strong> </label>
+                    <input type="text" name="cpf" id="cpf" required="true" size="30" maxlength="11"><br><br>
+                    <label for="data_nasc"><strong>Data de Nascimento:</strong> </label>
+                    <input type="date" name="data_nasc" id="data_nasc" required="true"><br><br>
+                </div>
+
+                <div class="campo">
+                    <label for="email"><strong>E-Mail: </strong></label>
+                    <input type="email" name="email" id="email" required="true" size="60">
+                    <label for="telefone"><strong>Telefone:</strong> </label>
+                    <input type="text" name="telefone" id="telefone" required="true" size="30" maxlength="11"> 
+                </div>
+
+            </fieldset>
+            <hr>
+
+            <h4 id="item">Endereço: </h4>
+            <fieldset class="grupo">
+
+                <div class="campo">
+                    <label for="endereco"><strong>Logradouro:</strong> </label>
+                    <input type="text" name="endereco" id="endereco" required="true" size="60">                
+                    <label for="numero"><strong>Numero:</strong> </label>
+                    <input type="text" name="numero" id="numero" required="true" size="10"><br><br>
+                </div>
+
+                <div class="campo">
+                    <label for="bairro"><strong>Bairro:</strong> </label>
+                    <input type="text" name="bairro" id="bairro" required="true" size="30">
+                    <label for="cidade"><strong>Cidade:</strong> </label>
+                    <input type="text" name="cidade" id="cidade" required="true" size="30"> 
+                    <label for="uf"><strong>UF:</strong> </label>
+                    <input type="text" name="uf" id="uf" required="true" size="4" maxlength="2"> 
+                    <label for="cep"><strong>CEP:</strong> </label>
+                    <input type="text" name="cep" id="cep" required="true" size="17" maxlength="8">
+                </div>
+
+            </fieldset>
+            <hr/>
+            
+            <button class="botao" type="submit"><strong>Cadastrar</strong></button>
+        </form>
+    </c:if>
+
+    <c:if test="${not empty cliente}">
+    <form action="AlterarClienteServlet" method="POST">
+ 
+        <div>
+            <h1 id="titulo">Atualização de Clientes</h1>
+            <p id="subtitulo">Altere as informações do Cliente</p>
+            <br>
+        </div>
+
+        <fieldset class="grupo">
+            <div class="campo">
+                <label for="filial_cadastro"><strong>Filial:</strong></label>
+                <select name="filial_cadastro" id="filial_cadastro" required="true" value="${cliente.filial_cadastro}">
                     <c:if test="${cliente.filial_cadastro == '1'}">
                         <option value="1" selected="selected">1</option>
                         <option value="2">2</option>
@@ -107,54 +135,64 @@
                         <option value="4"  selected="selected">4</option>
                     </c:if>
                 </select>
-                
-                <label class="form-label">Codigo: </label>
-                <input type="text" name="cod" size="6" readonly="true" value="${cliente.cod}">
-                <br><br>
-                
-                <label class="form-label">Nome: </label>
-                <input type="text" name="nome" required="true" size="50" value="${cliente.nome}">
-                <br><br>
-                
-                <label class="form-label">E-Mail: </label>
-                <input type="text" name="email" required="true" size="50" value="${cliente.email}">
-                <br><br>
-                
-                <label class="form-label">Telefone: </label>
-                <input type="text" name="telefone" required="true" size="11" maxlength="11" value="${cliente.telefone}">
-                <label class="form-label">CPF: </label>
-                <input type="text" name="cpf" required="true" size="11" maxlength="11" value="${cliente.cpf}">
-                <br/><br/>
-                
-                <label class="form-label">Data de Nascimento: </label>
-                <input type="date" name="data_nasc" required="true"  value="${cliente.data_nasc}">
-                <br/><br/>
-                
-                
-                <h3>-| Endereco |-</h3>
-                <label class="form-label">Endereco: </label>
-                <input type="text" name="endereco" required="true" size="50" value="${cliente.endereco}">
-                <label class="form-label">Numero: </label>
-                <input type="text" name="numero" required="true" size="10" value="${cliente.numero}">
-                <br/><br/>
-                
-                <label class="form-label">CEP: </label>
-                <input type="text" name="cep" required="true" size="9" value="${cliente.cep}">
-                <label class="form-label">UF: </label>
-                <input type="text" name="uf" required="true" size="2" maxlength="2" value="${cliente.uf}">
-                <label class="form-label">Bairro: </label>
-                <input type="text" name="bairro" required="true" size="25" value="${cliente.bairro}">
-                <label class="form-label">Cidade: </label>
-                <input type="text" name="cidade" required="true" size="25" value="${cliente.cidade}">
-                <br><br>
+                <label for="cod"><strong>Código:</strong> </label>
+                <input type="text" name="cod" id="cod" readonly="true" size="10" value="${cliente.cod}">
+                <!-- Retirar essa parte na realizacao do cadastro -->
+            </div>
+        </fieldset>
+        <hr/>
 
-            
-            <button type="submit" class="btn-primary">Atualizar</button>
-            </form>
-        </c:if>
+        <h4 id="item">Dados Pessoais</h4>
+        <fieldset class="grupo">
+
+            <div class="campo">
+                <label for="nome"><strong>Nome:</strong> </label>
+                <input type="text" name="nome" id="nome" required="true" size="60" value="${cliente.nome}">
+                <label for="cpf"><strong>CPF:</strong> </label>
+                <input type="text" name="cpf" id="cpf" required="true" size="30" maxlength="11" value="${cliente.cpf}"><br><br>
+                <label for="data_nasc"><strong>Data de Nascimento:</strong> </label>
+                <input type="date" name="data_nasc" id="data_nasc" required="true" value="${cliente.data_nasc}"><br><br>
+            </div>
+
+            <div class="campo">
+                <label for="email"><strong>E-Mail: </strong></label>
+                <input type="email" name="email" id="email" required="true" size="60" value="${cliente.email}">
+                <label for="telefone"><strong>Telefone:</strong> </label>
+                <input type="text" name="telefone" id="telefone" required="true" size="30" maxlength="11" value="${cliente.telefone}"> 
+            </div>
+
+        </fieldset>
+        <hr>
+
+        <h4 id="item">Endereço: </h4>
+        <fieldset class="grupo">
+
+            <div class="campo">
+                <label for="endereco"><strong>Logradouro:</strong> </label>
+                <input type="text" name="endereco" id="endereco" required="true" size="60" value="${cliente.endereco}">                
+                <label for="numero"><strong>Numero:</strong> </label>
+                <input type="text" name="numero" id="numero" required="true" size="10" value="${cliente.numero}"><br><br>
+            </div>
+
+            <div class="campo">
+                <label for="bairro"><strong>Bairro:</strong> </label>
+                <input type="text" name="bairro" id="bairro" required="true" size="30"  value="${cliente.bairro}">
+                <label for="cidade"><strong>Cidade:</strong> </label>
+                <input type="text" name="cidade" id="cidade" required="true" size="30" value="${cliente.cidade}"> 
+                <label for="uf"><strong>UF:</strong> </label>
+                <input type="text" name="uf" id="uf" required="true" size="4" maxlength="2"  value="${cliente.uf}"> 
+                <label for="cep"><strong>CEP:</strong> </label>
+                <input type="text" name="cep" id="cep" required="true" size="17" maxlength="8" value="${cliente.cep}">
+            </div>
+
+        </fieldset>
+        <hr/>
         
-        
-        
-        <c:import url="../footer.jsp"/>
-    </body>
+        <button class="botao" type="submit"><strong>Cadastrar</strong></button>
+    </form>
+</c:if>
+    
+    
+
+</body>
 </html>
