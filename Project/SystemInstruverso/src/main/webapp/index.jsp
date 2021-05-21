@@ -7,33 +7,45 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/login.css"/>">
-        
-        <title>Tela de Login</title>
-    </head>
-    <body>        
-        <div id="login">
-            <h1>Login</h1>
-            <form action="Inicio.jsp">
-                <label for="usuario">Usuario</label>
-                <input type="text" name="usuario" id="usuario">
-                
-                
-                <label for="senha">Senha</label>
-                <input type="password" name="senha" id="senha">
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+                        <link rel="stylesheet" type="text/css" href="newcss.css">
 
-                
-                <button type="submit" class="btn-primary">Entrar</button>
-            </form>
-            
-        </div>
-        
-        
-        
-        
-    </body>
+	
+		<title>Tela de Login</title>
+	</head>
+	<body>
+		<div id="login">
+			<h3 class="text-center text-info pt-5">INSTRUVERSO</h3>
+			<div class="container">
+				<div id="login-row" class="row justify-content-center align-items-center">
+					<div id="login-column" class="col-md-6">
+						<div id="login-box" class="col-md-12">
+							<form id="login-form" class="form" action="LoginServlet" method="post">
+								<h3 class="text-center text-info">Login</h3>
+                                                                <c:if test="${not empty erro}">
+                                                                    <h4 id="alert_erro">${erro}</h4>
+                                                                </c:if>
+                                                                
+								<div class="form-group">
+									<label for="username" class"="text-info">Usuario: </label><br>
+									<input type="text" name="username" id="username" class="form-control" required="true">
+								</div>
+								<div class="form-group">
+									<label for="password" class="text-info">Senha: </label><br>
+									<input type="password" name="password" id="password" class="form-control"  required="true>
+								</div>
+								<div class="form-group">
+									<input type="submit" name="submit" class="btn btn-info btn-md" value="Entrar">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
