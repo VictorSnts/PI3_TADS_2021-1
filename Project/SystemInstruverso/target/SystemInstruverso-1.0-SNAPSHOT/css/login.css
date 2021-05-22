@@ -1,7 +1,17 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 20, 2021, 11:33:53 PM
+    Author     : victor
+*/
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #17a2b8;
+  background-color: activeborder;
   height: 100vh;
 }
 #login .container #login-row #login-column #login-box {
@@ -21,3 +31,20 @@ body {
 .text-info {
     color: #000000!important;
 }
+h4 {
+    color: red;
+}
+
+.btn {
+    font-size: 1.5em;
+    background: black;
+    margin-bottom: 1em;
+    color: #ffffff;
+    padding: 0.2em 0.6em;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    margin-left: 10%;
+    margin-top: 7.5%;
+    transform: translate(-50%, -50%)
+}
+

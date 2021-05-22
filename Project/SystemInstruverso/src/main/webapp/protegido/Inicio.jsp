@@ -15,8 +15,8 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
         <title>Pagina Inicial</title>
     </head>
-    <body>
-        <c:import url="header.jsp"/>
+    <body>'
+        <c:import url="../header.jsp"/>
         <h1>Pagina Inicial</h1>
             
   

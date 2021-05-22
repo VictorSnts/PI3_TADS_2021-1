@@ -24,7 +24,7 @@
 
     <!-- CADASTRO -->
     <c:if test="${empty cliente}">
-        <form action="../CadastrarClienteServlet" method="POST">
+        <form action="<c:url value="/CadastrarClienteServlet"/>" method="POST">
  
             <div>
                 <h1 id="titulo">Cadastro de Clientes</h1>
@@ -188,7 +188,7 @@
         </fieldset>
         <hr/>
         
-        <button class="botao" type="submit"><strong>Cadastrar</strong></button>
+        <button class="botao" type="submit"><strong>Atualizar</strong></button>
     </form>
 </c:if>
     

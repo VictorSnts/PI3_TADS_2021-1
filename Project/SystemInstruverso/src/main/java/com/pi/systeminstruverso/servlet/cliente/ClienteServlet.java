@@ -29,7 +29,7 @@ public class ClienteServlet extends HttpServlet {
             request.setAttribute("action", action);
 
             
-            request.getRequestDispatcher("/clientes/listar.jsp").forward(request, response);
+            request.getRequestDispatcher("protegido/clientes/listar.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

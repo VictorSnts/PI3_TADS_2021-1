@@ -6,12 +6,14 @@
 package com.pi.systeminstruverso.servlet.login;
 
 import com.pi.systeminstruverso.dao.LoginDAO;
+import com.pi.systeminstruverso.entidade.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,20 +27,18 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("username");
         String pass = request.getParameter("password");
         
-        System.out.println("Servlet");
-        System.out.println(user);
-        System.out.println(pass);
-        System.out.println("Servlet");
-
-        
-        boolean validacao =  LoginDAO.validar(user, pass);
-            
-        if(validacao){
-             response.sendRedirect("Inicio.jsp");
+        // Pega o usuario logado
+        Usuario usuario =  LoginDAO.validar(user, pass);
+           
+        if(usuario != null){
+            HttpSession sessao = request.getSession();
+            sessao.setAttribute("usuario_logado", usuario);
+            response.sendRedirect("protegido/inicio.jsp");
+             
         } else{
             String msg = "Usuario ou senha invalido!";
             request.setAttribute("erro", msg);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
             
     }

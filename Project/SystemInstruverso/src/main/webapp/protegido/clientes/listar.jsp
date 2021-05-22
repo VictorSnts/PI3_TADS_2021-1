@@ -15,14 +15,14 @@
         <title>Lista de Clientes</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         
         <c:if test="${empty action}">
             <h1>Selecione o Cliente</h1>
 
 
             <div class="scrollmenu">
-                <a href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
+                <a href="protegido/clientes/cadastrar.jsp">Cadastrar Clientes</a>
             </div>
 
             <form action="BuscarClienteServlet" method="GET">
