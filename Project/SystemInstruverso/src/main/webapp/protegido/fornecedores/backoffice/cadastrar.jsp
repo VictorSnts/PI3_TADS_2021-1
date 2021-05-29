@@ -15,12 +15,13 @@
         <title>Cadastro de Fornecedores</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
+
         
         <h1>Cadastro de Fornecedores</h1><br/><br/>
         <!-- CADASTRO -->
         <c:if test="${empty fornecedor}">
-            <form action="../CadastrarFornecedorServlet" method="POST">
+            <form action="<c:url value="/CadastrarFornecedorServlet"/>" method="POST">
                 
                 <h3>-| Dados da Empresa |-</h3>
                 
@@ -91,7 +92,7 @@
         
         <!-- ATUALIZACAO -->
         <c:if test="${not empty fornecedor}">
-            <form action="AlterarFornecedorServlet" method="POST">
+            <form action="<c:url value="/AlterarFornecedorServlet"/>" method="POST">
                 
                 <h3>-| Dados da Empresa |-</h3>
                 
@@ -184,7 +185,6 @@
         </c:if>
         
         
-        
-        <c:import url="../footer.jsp"/>
+        <c:import url="/footer.jsp"/>
     </body>
 </html>

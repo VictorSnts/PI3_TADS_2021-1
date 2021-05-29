@@ -27,7 +27,7 @@ public class AlterarFornecedorServlet extends HttpServlet {
             Fornecedor fornecedor = FornecedorDAO.getFornecedor(cod);            
             request.setAttribute("fornecedor", fornecedor);
             
-            request.getRequestDispatcher("fornecedores/cadastrar.jsp").forward(request, response);
+            request.getRequestDispatcher("protegido/fornecedores/backoffice/cadastrar.jsp").forward(request, response);
             
             
         } catch (SQLException ex) {

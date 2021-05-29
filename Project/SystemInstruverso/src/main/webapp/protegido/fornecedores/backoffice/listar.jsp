@@ -15,12 +15,23 @@
         <title>Lista de Fornecedores</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         <h1>Fornecedores</h1>
         
         <div class="scrollmenu">
-            <a href="fornecedores/cadastrar.jsp">Cadastrar Fornecedores</a>
+            <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
+                <a href="protegido/fornecedores/backoffice/cadastrar.jsp">Cadastrar Fornecedores</a>
+            </c:if>
         </div>   
+        
+        <form action="BuscarFornecedorServlet" method="GET">
+            <label for="busca">  Busca: </label>
+            
+            <div class="container">  
+                <input type="search" id="busca" name="busca">
+                <button type="submit">OK</button>
+            </div>
+        </form>
         
         <table class="table table-striped table-bordered table-sm ">
             <thead>
@@ -62,8 +73,10 @@
                     <td>${fornecedor.bairro}</td>
                     <td>${fornecedor.cidade}</td>
                     <td>${fornecedor.filial_cadastro}</td>
-                    <td><a href="AlterarFornecedorServlet?cod=${fornecedor.cod}">Atualizar</a></td>
-                    <td><a href="ExcluirFornecedorServlet?cod=${fornecedor.cod}">Excluir</a></td>
+                    <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
+                        <td><a href="AlterarFornecedorServlet?cod=${fornecedor.cod}">Atualizar</a></td>
+                        <td><a href="ExcluirFornecedorServlet?cod=${fornecedor.cod}">Excluir</a></td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>

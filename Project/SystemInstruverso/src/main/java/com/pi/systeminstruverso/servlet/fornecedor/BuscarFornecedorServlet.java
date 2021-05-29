@@ -30,7 +30,7 @@ public class BuscarFornecedorServlet extends HttpServlet {
             List<Fornecedor> listaFornecedores = FornecedorDAO.searchFornecedor(busca);
             
             request.setAttribute("listaFornecedores", listaFornecedores);
-            request.getRequestDispatcher("/fornecedores/buscar.jsp").forward(request, response);
+            request.getRequestDispatcher("protegido/fornecedores/backoffice/buscar.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
