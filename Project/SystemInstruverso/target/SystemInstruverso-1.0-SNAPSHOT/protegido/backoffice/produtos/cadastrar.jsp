@@ -15,7 +15,7 @@
         <title>Cadastro de Fornecedores</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         
         <h1>Cadastro de Fornecedores</h1><br/><br/>
         <!-- CADASTRO -->
@@ -231,6 +231,6 @@
         
         
         
-        <c:import url="../footer.jsp"/>
+        <c:import url="/footer.jsp"/>
     </body>
 </html>

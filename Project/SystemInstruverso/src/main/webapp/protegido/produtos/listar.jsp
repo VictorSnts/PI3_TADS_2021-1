@@ -15,11 +15,13 @@
         <title>Lista de Produtos</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         <h1>Produtos</h1>
         
         <div class="scrollmenu">
-            <a href="produtos/cadastrar.jsp">Cadastrar Produtos</a>
+            <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
+                <a href=<c:url value="/protegido/backoffice/produtos/cadastrar.jsp"/>>Cadastrar Produtos</a>
+            </c:if>
         </div>   
         
         <form action="BuscarProdutoServlet" method="GET">
@@ -58,8 +60,10 @@
                     <td>R$${produto.preco}</td>
                     <td>${produto.quantidade}</td>
                     <td>${produto.comissao}%</td>
-                    <td><a href="AlterarProdutoServlet?cod=${produto.cod}">Atualizar</a></td>
-                    <td><a href="ExcluirProdutoServlet?cod=${produto.cod}">Excluir</a></td>
+                    <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
+                        <td><a href="AlterarProdutoServlet?cod=${produto.cod}">Atualizar</a></td>
+                        <td><a href="ExcluirProdutoServlet?cod=${produto.cod}">Excluir</a></td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>

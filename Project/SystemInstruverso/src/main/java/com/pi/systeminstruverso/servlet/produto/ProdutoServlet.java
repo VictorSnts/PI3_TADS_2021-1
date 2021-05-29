@@ -26,7 +26,7 @@ public class ProdutoServlet extends HttpServlet {
             List<Produto> listaProdutos = ProdutoDAO.getProdutos();
             
             request.setAttribute("listaProdutos", listaProdutos);
-            request.getRequestDispatcher("/produtos/listar.jsp").forward(request, response);
+            request.getRequestDispatcher("/protegido/produtos/listar.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

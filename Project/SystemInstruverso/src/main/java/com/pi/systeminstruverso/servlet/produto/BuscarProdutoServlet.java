@@ -28,7 +28,7 @@ public class BuscarProdutoServlet extends HttpServlet {
             List<Produto> listaProdutos = ProdutoDAO.searchProduto(busca);
             
             request.setAttribute("listaProdutos", listaProdutos);
-            request.getRequestDispatcher("/produtos/buscar.jsp").forward(request, response);
+            request.getRequestDispatcher("/protegido/produtos/buscar.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

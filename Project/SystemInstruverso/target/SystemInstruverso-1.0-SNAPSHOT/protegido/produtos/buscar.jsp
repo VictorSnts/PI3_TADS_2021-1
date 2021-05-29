@@ -15,13 +15,21 @@
         <title>Lista de Produtos</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         <h1>Produtos</h1>
         
         <div class="scrollmenu">
             <a href="produtos/cadastrar.jsp">Cadastrar Produtos</a>
         </div>   
         
+        <form action="BuscarProdutoServlet" method="GET">
+            <label for="busca">  Busca: </label>
+            
+            <div class="container">  
+                <input type="search" id="busca" name="busca">
+                <button type="submit">OK</button>
+            </div>
+        </form>
         
         <table class="table table-striped table-bordered table-sm ">
             <thead>
