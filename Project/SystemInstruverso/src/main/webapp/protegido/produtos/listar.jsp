@@ -20,7 +20,7 @@
         
         <div class="scrollmenu">
             <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
-                <a href=<c:url value="/protegido/backoffice/produtos/cadastrar.jsp"/>>Cadastrar Produtos</a>
+                <a href=<c:url value="/protegido/produtos/backoffice/cadastrar.jsp"/>>Cadastrar Produtos</a>
             </c:if>
         </div>   
         
