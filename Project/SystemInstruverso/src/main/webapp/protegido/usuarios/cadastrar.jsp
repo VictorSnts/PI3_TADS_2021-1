@@ -40,6 +40,8 @@
                 
                 <label class="form-label">Perfil: </label>
                 <input type="text" name ="perfil" required="true" size="25">
+                <label class="form-label">Nivel: </label>
+                <input type="text" name ="nivel" required="true" size="25">
                 <label class="form-label">CPF: </label>
                 <input type="text" name ="cpf" required="true" size="13">
                 <br><br>

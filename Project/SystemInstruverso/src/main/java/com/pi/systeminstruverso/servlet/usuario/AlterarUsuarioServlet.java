@@ -35,6 +35,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
         String nome = request.getParameter("nome");
         String perfil = request.getParameter("perfil");
         int filial = Convert.ToInt(request.getParameter("filial"));
+        String nivel = request.getParameter("nivel");
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         String telefone = request.getParameter("telefone");
@@ -42,7 +43,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String status = request.getParameter("status");
         
-        Usuario usuario =  new Usuario(cod, nome, filial, perfil, login, senha, telefone, email, cpf, status);
+        Usuario usuario =  new Usuario(cod, nome, filial, perfil, nivel, login, senha, telefone, email, cpf, status);
         boolean ok = UsuarioDAO.atualizar(usuario);
         
         

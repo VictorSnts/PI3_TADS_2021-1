@@ -21,6 +21,7 @@ public class Usuario {
     private String nome;
     private int filial;
     private String perfil;
+    private String nivel;
     private String login;
     private String senha;
     private String telefone;
@@ -28,11 +29,12 @@ public class Usuario {
     private String cpf;
     private String status;
     
-    public Usuario(int cod,String nome, int filial, String perfil,String login,String senha,String telefone,String email,String cpf,String status) {
+    public Usuario(int cod,String nome, int filial, String perfil, String nivel, String login,String senha,String telefone,String email,String cpf,String status) {
         this.cod = cod;
         this.nome = nome;
         this.filial = filial;
         this.perfil = perfil;
+        this.nivel = nivel;
         this.login = login;
         this.senha = senha;
         this.telefone = telefone;

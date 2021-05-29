@@ -30,6 +30,7 @@ public class CadastrarUsuarioServlet extends HttpServlet {
         }
         String nome = request.getParameter("nome");
         String perfil = request.getParameter("perfil");
+        String nivel = request.getParameter("nivel");
         int filial = Convert.ToInt(request.getParameter("filial"));
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
@@ -39,7 +40,7 @@ public class CadastrarUsuarioServlet extends HttpServlet {
         String status = request.getParameter("status");
         
         // Inserir oi cliente no BD
-        Usuario usuario =  new Usuario(cod, nome, filial, perfil, login, senha, telefone, email, cpf, status);
+        Usuario usuario =  new Usuario(cod, nome, filial, perfil, nivel, login, senha, telefone, email, cpf, status);
         boolean ok = UsuarioDAO.cadastrar(usuario);
         
         // Redirecionar para sucesso/erro

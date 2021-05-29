@@ -247,6 +247,7 @@ Create TABLE usuario (
     nome VARCHAR(255) NOT NULL,
     filial INTEGER NOT NULL ,
     perfil VARCHAR(255) NOT NULL,
+    nivel VARCHAR(255) NOT NULL,
     login VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
     telefone VARCHAR(11) NOT NULL,
@@ -254,52 +255,52 @@ Create TABLE usuario (
     cpf VARCHAR(11) NOT NULL,
     status VARCHAR(255) NOT NULL
 );
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Uehudah Hack', 3, 'Gerente', 'uehudah.hack', '123', '11995824282', 'uehudah.hack@instruverso.com', '1983998547', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Edison Drye', 1, 'TI', 'edison.drye', '123', '11995748995', 'edison.drye@instruverso.com', '1983990313', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Mihoko Scholl', 4, 'Vendedor(a)', 'mihoko.scholl', '123', '11995673708', 'mihoko.scholl@instruverso.com', '1983982079', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Ajani Harding', 2, 'TI', 'ajani.harding', '123', '11995598421', 'ajani.harding@instruverso.com', '1983973845', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Ruthie Coco', 3, 'TI', 'ruthie.coco', '123', '11995523134', 'ruthie.coco@instruverso.com', '1983965611', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Orazio Hart', 1, 'Gerente', 'orazio.hart', '123', '11995447847', 'orazio.hart@instruverso.com', '1983957377', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Vinaya Justus', 2, 'Vendedor(a)', 'vinaya.justus', '123', '11995372560', 'vinaya.justus@instruverso.com', '1983949143', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Tristan Karns', 3, 'Vendedor(a)', 'tristan.karns', '123', '11995297273', 'tristan.karns@instruverso.com', '1983940909', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Ardath Enriquez', 1, 'Vendedor(a)', 'ardath.enriquez', '123', '11995221986', 'ardath.enriquez@instruverso.com', '1983932675', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Usagi Denny', 4, 'Vendedor(a)', 'usagi.denny', '123', '11995146699', 'usagi.denny@instruverso.com', '1983924441', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Sevita Hershberger', 2, 'Vendedor(a)', 'sevita.hershberger', '123', '11995071412', 'sevita.hershberger@instruverso.com', '1983916207', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Carnation Dingman', 3, 'Vendedor(a)', 'carnation.dingman', '123', '11994996125', 'carnation.dingman@instruverso.com', '1983907973', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Niven Glaser', 1, 'Vendedor(a)', 'niven.glaser', '123', '11994920838', 'niven.glaser@instruverso.com', '1983999739', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Derwyn Devers', 2, 'TI', 'derwyn.devers', '123', '11994845551', 'derwyn.devers@instruverso.com', '1983991505', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Rossa Fanning', 3, 'TI', 'rossa.fanning', '123', '11994770264', 'rossa.fanning@instruverso.com', '1983983271', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Tod Phan', 1, 'Gerente', 'tod.phan', '123', '11994694977', 'tod.phan@instruverso.com', '1983975037', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Eddie Hulse', 4, 'Vendedor(a)', 'eddie.hulse', '123', '11994619690', 'eddie.hulse@instruverso.com', '1983966803', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Welford Yepez', 2, 'Vendedor(a)', 'welford.yepez', '123', '11994544403', 'welford.yepez@instruverso.com', '1983958569', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Rishley Snyder', 3, 'Vendedor(a)', 'rishley.snyder', '123', '11994469116', 'rishley.snyder@instruverso.com', '1983950335', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Milo Mccurdy', 1, 'Vendedor(a)', 'milo.mccurdy', '123', '11995372560', 'milo.mccurdy@instruverso.com', '1983942101', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Sammi Zepeda', 3, 'Vendedor(a)', 'sammi.zepeda', '123', '11995297273', 'sammi.zepeda@instruverso.com', '1983933867', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Romaine Dingman', 2, 'Vendedor(a)', 'romaine.dingman', '123', '11995221986', 'romaine.dingman@instruverso.com', '1983925633', 'Ativo');
-INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
-    VALUES ('Almeda Hack', 1, 'Vendedor(a)', 'almeda.hack', '123', '11995146699', 'almeda.hack@instruverso.com', '1983957377', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Uehudah Hack',3, 'Gerente Geral','N2', 'uehudah.hack', '123', '11995824282', 'uehudah.hack@instruverso.com', '1983998547', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Edison Drye',1, 'TI','N4', 'edison.drye', '123', '11995748995', 'edison.drye@instruverso.com', '1983990313', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Mihoko Scholl',4, 'Vendedor(a)','N4', 'mihoko.scholl', '123', '11995673708', 'mihoko.scholl@instruverso.com', '1983982079', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Ajani Harding',2, 'TI','N4', 'ajani.harding', '123', '11995598421', 'ajani.harding@instruverso.com', '1983973845', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Ruthie Coco',3, 'TI','N4', 'ruthie.coco', '123', '11995523134', 'ruthie.coco@instruverso.com', '1983965611', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Orazio Hart',1, 'Gerente','N3', 'orazio.hart', '123', '11995447847', 'orazio.hart@instruverso.com', '1983957377', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Vinaya Justus',2, 'Vendedor(a)','N4', 'vinaya.justus', '123', '11995372560', 'vinaya.justus@instruverso.com', '1983949143', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Tristan Karns',3, 'Vendedor(a)','N4', 'tristan.karns', '123', '11995297273', 'tristan.karns@instruverso.com', '1983940909', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Ardath Enriquez',1, 'Vendedor(a)','N4', 'ardath.enriquez', '123', '11995221986', 'ardath.enriquez@instruverso.com', '1983932675', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Usagi Denny',4, 'Vendedor(a)','N4', 'usagi.denny', '123', '11995146699', 'usagi.denny@instruverso.com', '1983924441', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Sevita Hershberger',2, 'Vendedor(a)','N4', 'sevita.hershberger', '123', '11995071412', 'sevita.hershberger@instruverso.com', '1983916207', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Carnation Dingman',3, 'Vendedor(a)','N4', 'carnation.dingman', '123', '11994996125', 'carnation.dingman@instruverso.com', '1983907973', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Niven Glaser',1, 'Vendedor(a)','N4', 'niven.glaser', '123', '11994920838', 'niven.glaser@instruverso.com', '1983999739', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Derwyn Devers',2, 'TI','N4', 'derwyn.devers', '123', '11994845551', 'derwyn.devers@instruverso.com', '1983991505', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Rossa Fanning',3, 'TI','N4', 'rossa.fanning', '123', '11994770264', 'rossa.fanning@instruverso.com', '1983983271', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Tod Phan',1, 'Gerente Geral','N2', 'tod.phan', '123', '11994694977', 'tod.phan@instruverso.com', '1983975037', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Eddie Hulse',4, 'Vendedor(a)','N4', 'eddie.hulse', '123', '11994619690', 'eddie.hulse@instruverso.com', '1983966803', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Welford Yepez',2, 'Vendedor(a)','N4', 'welford.yepez', '123', '11994544403', 'welford.yepez@instruverso.com', '1983958569', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Rishley Snyder',3, 'Vendedor(a)','N4', 'rishley.snyder', '123', '11994469116', 'rishley.snyder@instruverso.com', '1983950335', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Milo Mccurdy',1, 'Vendedor(a)','N4', 'milo.mccurdy', '123', '11995372560', 'milo.mccurdy@instruverso.com', '1983942101', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Sammi Zepeda',3, 'Vendedor(a)','N4', 'sammi.zepeda', '123', '11995297273', 'sammi.zepeda@instruverso.com', '1983933867', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Romaine Dingman',2, 'Vendedor(a)','N4', 'romaine.dingman', '123', '11995221986', 'romaine.dingman@instruverso.com', '1983925633', 'Ativo');
+INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) 
+    VALUES ('Almeda Hack',1, 'Vendedor(a)','N4', 'almeda.hack', '123', '11995146699', 'almeda.hack@instruverso.com', '1983957377', 'Ativo');
 
 CREATE TABLE produto (
     cod INT GENERATED ALWAYS AS IDENTITY not null primary key,

@@ -38,6 +38,7 @@ public class LoginDAO {
                 String nome = rs.getString("nome");
                 int filial = rs.getInt("filial");
                 String perfil = rs.getString("perfil");
+                String nivel = rs.getString("nivel");
                 String login = rs.getString("login");
                 String senha = rs.getString("senha");
                 String telefone = rs.getString("telefone");
@@ -46,7 +47,7 @@ public class LoginDAO {
                 String status = rs.getString("status");
 
                 
-                usuario =  new Usuario(cod, nome, filial, perfil, login, senha, telefone, email, cpf, status);
+                usuario =  new Usuario(cod, nome, filial, perfil, nivel, login, senha, telefone, email, cpf, status);
             }
             
         } catch (SQLException ex) {

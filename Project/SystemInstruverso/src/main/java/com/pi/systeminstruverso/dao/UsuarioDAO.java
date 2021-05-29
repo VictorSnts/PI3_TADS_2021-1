@@ -23,7 +23,7 @@ public class UsuarioDAO {
     public static boolean cadastrar(Usuario usuario){
         boolean ok = false;
         
-        String query = "INSERT INTO USUARIO (NOME, FILIAL, PERFIL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO USUARIO (NOME, FILIAL, PERFIL, NIVEL, LOGIN, SENHA, TELEFONE, EMAIL, CPF, STATUS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         Connection con;
         try {
@@ -33,12 +33,13 @@ public class UsuarioDAO {
            ps.setString(1, usuario.getNome());
             ps.setInt(2, usuario.getFilial());
             ps.setString(3, usuario.getPerfil());
-            ps.setString(4, usuario.getLogin());
-            ps.setString(5, usuario.getSenha());
-            ps.setString(6, usuario.getTelefone());
-            ps.setString(7, usuario.getEmail());
-            ps.setString(8, usuario.getCpf());
-            ps.setString(9, usuario.getStatus());
+            ps.setString(4, usuario.getNivel());
+            ps.setString(5, usuario.getLogin());
+            ps.setString(6, usuario.getSenha());
+            ps.setString(7, usuario.getTelefone());
+            ps.setString(8, usuario.getEmail());
+            ps.setString(9, usuario.getCpf());
+            ps.setString(10, usuario.getStatus());
             ps.executeUpdate();
             
             ok = true;
@@ -64,6 +65,7 @@ public class UsuarioDAO {
                 int cod = rs.getInt("cod");
                 String nome = rs.getString("nome");
                 int filial = rs.getInt("filial");
+                String nivel = rs.getString("nivel");
                 String perfil = rs.getString("perfil");
                 String login = rs.getString("login");
                 String senha = rs.getString("senha");
@@ -72,7 +74,7 @@ public class UsuarioDAO {
                 String cpf = rs.getString("cpf");
                 String status = rs.getString("status");
 
-                Usuario usuario =  new Usuario(cod, nome, filial, perfil, login, senha, telefone, email, cpf, status);
+                Usuario usuario =  new Usuario(cod, nome, filial, perfil, nivel, login, senha, telefone, email, cpf, status);
                 usuarios.add(usuario);
             }
         } catch (SQLException ex) {
@@ -97,6 +99,7 @@ public class UsuarioDAO {
                 String nome = rs.getString("nome");
                 int filial = rs.getInt("filial");
                 String perfil = rs.getString("perfil");
+                String nivel = rs.getString("nivel");
                 String login = rs.getString("login");
                 String senha = rs.getString("senha");
                 String telefone = rs.getString("telefone");
@@ -105,7 +108,7 @@ public class UsuarioDAO {
                 String status = rs.getString("status");
 
                 
-                usuario =  new Usuario(cod, nome, filial, perfil, login, senha, telefone, email, cpf, status);
+                usuario =  new Usuario(cod, nome, filial, perfil, nivel, login, senha, telefone, email, cpf, status);
             }
             
         } catch (SQLException ex) {
@@ -117,7 +120,7 @@ public class UsuarioDAO {
      public static boolean atualizar(Usuario usuario){
         boolean ok = false;
         
-        String query = "UPDATE usuario SET NOME=?, FILIAL=?, PERFIL=?, LOGIN=?, SENHA=?, TELEFONE=?, EMAIL=?, CPF=?, STATUS=? WHERE cod=?";
+        String query = "UPDATE usuario SET NOME=?, FILIAL=?, PERFIL=?, NIVEL=?, LOGIN=?, SENHA=?, TELEFONE=?, EMAIL=?, CPF=?, STATUS=? WHERE cod=?";
         
         Connection con;
         try {
@@ -128,12 +131,13 @@ public class UsuarioDAO {
             ps.setInt(2, usuario.getFilial());
             ps.setString(3, usuario.getPerfil());
             ps.setString(4, usuario.getLogin());
-            ps.setString(5, usuario.getSenha());
-            ps.setString(6, usuario.getTelefone());
-            ps.setString(7, usuario.getEmail());
-            ps.setString(8, usuario.getCpf());
-            ps.setString(9, usuario.getStatus());
-            ps.setInt(10, usuario.getCod());
+            ps.setString(5, usuario.getNivel());
+            ps.setString(6, usuario.getSenha());
+            ps.setString(7, usuario.getTelefone());
+            ps.setString(8, usuario.getEmail());
+            ps.setString(9, usuario.getCpf());
+            ps.setString(10, usuario.getStatus());
+            ps.setInt(11, usuario.getCod());
             ps.executeUpdate();
             
             ok = true;
@@ -179,6 +183,7 @@ public class UsuarioDAO {
                 String nome = rs.getString("nome");
                 int filial = rs.getInt("filial");
                 String perfil = rs.getString("perfil");
+                String nivel = rs.getString("nivel");
                 String login = rs.getString("login");
                 String senha = rs.getString("senha");
                 String telefone = rs.getString("telefone");
@@ -186,7 +191,7 @@ public class UsuarioDAO {
                 String cpf = rs.getString("cpf");
                 String status = rs.getString("status");
                 
-                Usuario usuario =  new Usuario(cod, nome, filial, perfil, login, senha, telefone, email, cpf, status);
+                Usuario usuario =  new Usuario(cod, nome, filial, perfil, nivel, login, senha, telefone, email, cpf, status);
                 usuarios.add(usuario);
             }
 

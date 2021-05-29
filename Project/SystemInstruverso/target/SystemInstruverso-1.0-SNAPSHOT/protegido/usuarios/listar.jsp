@@ -37,6 +37,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Filial</th>
                 <th scope="col">Perfil</th>
+                <th scope="col">Nivel</th>
                 <th scope="col">Login</th>
                 <th scope="col">Senha</th>
                 <th scope="col">Telefone</th>
@@ -53,6 +54,7 @@
                     <td>${usuario.cod}</td>
                     <td>${usuario.nome}</td>
                     <td>${usuario.filial}</td>
+                    <td>${usuario.perfil}</td>
                     <td>${usuario.perfil}</td>
                     <td>${usuario.login}</td>
                     <td>${usuario.senha}</td>
