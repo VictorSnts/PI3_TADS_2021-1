@@ -16,7 +16,7 @@
     </head>
     <body class="container">
         <br/>
-        <a href="<c:url value="/index.jsp"/>">Voltar</a>
+        <a href="<c:url value="/protegido/inicio.jsp"/>">Voltar</a>
     </body>
     
 </html>
