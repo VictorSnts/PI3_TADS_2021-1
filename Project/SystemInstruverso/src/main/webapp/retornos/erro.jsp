@@ -15,7 +15,7 @@
         <title>Sucesso</title>
     </head>
     <body class="container">
-        <h1>Operação nao realizada.. Algo deu errado!!</h1>
+        <h1>Oops, Algo deu errado!!</h1>
         <h3 style="color:red">${msgErro}</h3>
         
     <c:import url="../footer.jsp"/>

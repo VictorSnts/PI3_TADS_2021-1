@@ -22,7 +22,7 @@ public class AlterarProdutoServlet extends HttpServlet {
         String cod = request.getParameter("cod");
         Produto produto = ProdutoDAO.getProduto(cod);
         request.setAttribute("produto", produto);
-        request.getRequestDispatcher("protegido/produtos/backoffice/cadastrar.jsp").forward(request, response);
+        request.getRequestDispatcher("protegido/backoffice/produtos/cadastrar.jsp").forward(request, response);
     }
     
     // Persistir novos dados no BD

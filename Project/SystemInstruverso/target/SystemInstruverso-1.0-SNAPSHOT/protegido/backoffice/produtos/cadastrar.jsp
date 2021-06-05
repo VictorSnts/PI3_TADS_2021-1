@@ -25,14 +25,8 @@
                 <h3>-| Dados do Produto |-</h3>
                 
                 <label class="form-label">Filial: </label>                
-                <select name="filial" required="true">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-                <label class="form-label">Codigo: </label>
-                <input type="text" name="cod" size="6" required="true" readonly="true"> 
+                <input type="text" name="filial" size="1" required="true" readonly="true" value="${usuario_logado.filial}"> 
+
                 <label class="form-label">Codigo Fornecedor: </label>
                 <input type="text" name="codFornecedor" size="5" required="true"> 
                 <br><br>
@@ -80,32 +74,8 @@
                 <h3>-| Dados do Produto |-</h3>
                 
                 <label class="form-label">Filial: </label>                
-                <select name="filial" required="true">
-                    <c:if test="${produto.filial == '1'}">
-                        <option value="1" selected="selected">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                    <c:if test="${produto.filial == '2'}">
-                        <option value="1">1</option>
-                        <option value="2" selected="selected">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                    <c:if test="${produto.filial == '3'}">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected="selected">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                     <c:if test="${produto.filial == '4'}">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4"  selected="selected">4</option>
-                    </c:if>
-                </select>
+                <input type="text" name="filial" size="1" required="true" readonly="true" value="${usuario_logado.filial}"> 
+
                 <label class="form-label">Codigo: </label>
                 <input type="text" name="cod" size="6" required="true" readonly="true" value="${produto.cod}"> 
                 <label class="form-label">Codigo Fornecedor: </label>

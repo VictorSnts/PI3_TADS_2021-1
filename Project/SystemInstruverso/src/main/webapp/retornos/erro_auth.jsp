@@ -16,7 +16,7 @@
     </head>
     <body class="container">
         <h1>Oops, Algo deu errado!!</h1>
-        <h3 style="color:red">${msgErro}</h3>
+        <h3 style="color:red">Voce nao tem permissao para acessar esta pagina!</h3>
         
     <c:import url="../footer.jsp"/>
     </body>

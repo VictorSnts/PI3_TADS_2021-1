@@ -17,11 +17,10 @@
     <body class="container">
         <c:import url="/header.jsp"/>
         <h1>Produtos</h1>
+        <h2>Filial ${usuario_logado.filial}</h2>
         
         <div class="scrollmenu">
-            <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
-                <a href=<c:url value="/protegido/produtos/backoffice/cadastrar.jsp"/>>Cadastrar Produtos</a>
-            </c:if>
+            <a href=<c:url value="/protegido/backoffice/produtos/cadastrar.jsp"/>>Cadastrar Produtos</a>
         </div>   
         
         <form action="BuscarProdutoServlet" method="GET">
@@ -60,10 +59,8 @@
                     <td>R$${produto.preco}</td>
                     <td>${produto.quantidade}</td>
                     <td>${produto.comissao}%</td>
-                    <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
-                        <td><a href="AlterarProdutoServlet?cod=${produto.cod}">Atualizar</a></td>
-                        <td><a href="ExcluirProdutoServlet?cod=${produto.cod}">Excluir</a></td>
-                    </c:if>
+                    <td><a href="AlterarProdutoServlet?cod=${produto.cod}">Atualizar</a></td>
+                    <td><a href="ExcluirProdutoServlet?cod=${produto.cod}">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>
