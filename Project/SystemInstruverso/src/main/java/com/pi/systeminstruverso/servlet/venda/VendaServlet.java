@@ -11,6 +11,7 @@ import com.pi.systeminstruverso.dao.VendaDAO;
 import com.pi.systeminstruverso.entidade.Cliente;
 import com.pi.systeminstruverso.servlet.cliente.ClienteServlet;
 import com.pi.systeminstruverso.entidade.Produto;
+import com.pi.systeminstruverso.entidade.Usuario;
 import com.pi.systeminstruverso.entidade.VendaProduto;
 import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -60,8 +62,11 @@ public class VendaServlet extends HttpServlet {
         
         // Popula tabela de produtos
         try {
+            HttpSession session = request.getSession();
+            Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
             List<Produto> listaProdutos;
-            listaProdutos = ProdutoDAO.getProdutos();
+            listaProdutos = ProdutoDAO.getProdutos(usuario_logado.getFilial());
+            
             request.setAttribute("listaProdutos", listaProdutos);
         } catch (SQLException ex) {
             Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);

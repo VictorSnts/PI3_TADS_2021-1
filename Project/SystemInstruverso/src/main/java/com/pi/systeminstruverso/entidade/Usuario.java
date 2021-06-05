@@ -17,6 +17,8 @@ import lombok.Setter;
  */
 public class Usuario {
     
+    
+    
     private int cod;
     private String nome;
     private int filial;
@@ -41,5 +43,9 @@ public class Usuario {
         this.email = email;
         this.cpf = cpf;
         this.status = status;
+    }
+    
+    public boolean isBackoffice(){
+        return perfil.equals("BACKOFFICE");
     }
 }

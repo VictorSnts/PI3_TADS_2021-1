@@ -148,8 +148,8 @@ public class FornecedorDAO {
         return ok;
     }
     
-    public static List<Fornecedor> getFornecedores() throws SQLException{
-        String query = "SELECT * FROM fornecedor";
+    public static List<Fornecedor> getFornecedores(int filial_usuario) throws SQLException{
+        String query = "SELECT * FROM fornecedor WHERE FILIAL_CADASTRO = " + filial_usuario + " OR FILIAL_CADASTRO = 1";
         
         List<Fornecedor> fornecedores = new ArrayList();
         

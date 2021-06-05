@@ -4,14 +4,6 @@
         <filter-name>AutorizacaoFilter</filter-name>
         <filter-class>com.pi.systeminstruverso.fiilter.AutorizacaoFilter</filter-class>
     </filter>
-    <filter>
-        <filter-name>BackofficeFilter</filter-name>
-        <filter-class>com.pi.systeminstruverso.fiilter.BackofficeFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>BackofficeFilter</filter-name>
-        <url-pattern>/protegido/backoffice/*</url-pattern>
-    </filter-mapping>
     <filter-mapping>
         <filter-name>AutorizacaoFilter</filter-name>
         <url-pattern>/protegido/*</url-pattern>

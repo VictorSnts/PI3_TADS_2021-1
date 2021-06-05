@@ -2,12 +2,14 @@ package com.pi.systeminstruverso.servlet.produto;
 
 import com.pi.systeminstruverso.dao.ProdutoDAO;
 import com.pi.systeminstruverso.entidade.Produto;
+import com.pi.systeminstruverso.entidade.Usuario;
 import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,10 +21,18 @@ public class AlterarProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cod = request.getParameter("cod");
-        Produto produto = ProdutoDAO.getProduto(cod);
-        request.setAttribute("produto", produto);
-        request.getRequestDispatcher("protegido/backoffice/produtos/cadastrar.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
+        
+        if (usuario_logado.getPerfil().equals("BACKOFFICE")) {
+            String cod = request.getParameter("cod");
+            Produto produto = ProdutoDAO.getProduto(cod);
+            request.setAttribute("produto", produto);
+            request.getRequestDispatcher("protegido/backoffice/produtos/cadastrar.jsp").forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/retornos/erro_auth.jsp");
+        }
+
     }
     
     // Persistir novos dados no BD
@@ -43,12 +53,12 @@ public class AlterarProdutoServlet extends HttpServlet {
         double preco = Convert.ToDouble(request.getParameter("preco"));
         int quantidade = Convert.ToInt(request.getParameter("quantidade"));
         double comissao = Convert.ToDouble(request.getParameter("comissao"));
-        
-        
+
+
         Produto produto =  new Produto(cod, filial, nome, marca, codFornecedor, "", categoria, custo, preco, quantidade, comissao);
         boolean ok = ProdutoDAO.atualizar(produto);
-        
-        
+
+
         if (ok) {
             response.sendRedirect("retornos/sucesso.jsp");
         }
@@ -57,7 +67,7 @@ public class AlterarProdutoServlet extends HttpServlet {
             request.setAttribute("msgErro", msgErro);
             request.getRequestDispatcher("retornos/cerro.jsp").forward(request, response);
         }
-        
+
     }
 
 }

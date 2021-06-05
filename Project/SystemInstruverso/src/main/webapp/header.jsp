@@ -19,9 +19,7 @@
         <div class="sidebar">
             <a href="<c:url value="/protegido/inicio.jsp"/>"><i class="fa fa-fw fa-home"></i> Inicio</a>
             <a href="<c:url value="/ClienteServlet"/>"><i class="fa fa-fw fa-user"></i> Clientes</a>
-            <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
-                <a href="<c:url value="/FornecedorServlet"/>"><i class="fa fa-fw fa-industry"></i> Fornecedores</a>
-            </c:if>
+            <a href="<c:url value="/FornecedorServlet"/>" ><i class="fa fa-fw fa-industry"></i> Fornecedores</a>
             <a href="<c:url value="/UsuarioServlet"/>"><i class="fa fa-fw fa-users"></i> Usuarios</a>
             <a href="<c:url value="/ProdutoServlet"/>"><i class="fa fa-fw fa-headphones"></i> Produtos</a>
             <a href="<c:url value="/ClienteServlet?action=select"/>"><i class="fa fa-fw fa-shopping-cart"></i> Vender</a>

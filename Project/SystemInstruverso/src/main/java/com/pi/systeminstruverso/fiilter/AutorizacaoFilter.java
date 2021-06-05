@@ -5,6 +5,7 @@
  */
 package com.pi.systeminstruverso.fiilter;
 
+import com.pi.systeminstruverso.entidade.Usuario;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -47,10 +48,17 @@ public class AutorizacaoFilter implements Filter {
         if(session.getAttribute("usuario_logado") == null){
             servletResponse.sendRedirect(servletRequest.getContextPath() + "/login.jsp");
         }
-            
+        
+        // verifica se usuario tem permissao
+        Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
+        String url = servletRequest.getRequestURI();
+        if(url.contains("/protegido/backoffice") && (!usuario_logado.getPerfil().equals("BACKOFFICE"))){
+            servletResponse.sendRedirect(servletRequest.getContextPath() + "/retornos/erro_auth.jsp");
+        }
     }    
     
     
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
@@ -64,12 +72,11 @@ public class AutorizacaoFilter implements Filter {
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
-        } catch (Throwable t) {
+        } catch (IOException | ServletException t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
             // rethrow the problem after that.
             problem = t;
-            t.printStackTrace();
         }
         
         // If there was a problem, we want to rethrow it if it is
@@ -87,6 +94,7 @@ public class AutorizacaoFilter implements Filter {
 
     /**
      * Return the filter configuration object for this filter.
+     * @return 
      */
     public FilterConfig getFilterConfig() {
         return (this.filterConfig);
@@ -104,12 +112,15 @@ public class AutorizacaoFilter implements Filter {
     /**
      * Destroy method for this filter
      */
+    @Override
     public void destroy() {        
     }
 
     /**
      * Init method for this filter
+     * @param filterConfig
      */
+    @Override
     public void init(FilterConfig filterConfig) {        
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
@@ -127,7 +138,7 @@ public class AutorizacaoFilter implements Filter {
         if (filterConfig == null) {
             return ("AutorizacaoFilter()");
         }
-        StringBuffer sb = new StringBuffer("AutorizacaoFilter(");
+        StringBuilder sb = new StringBuilder("AutorizacaoFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
@@ -139,26 +150,24 @@ public class AutorizacaoFilter implements Filter {
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
-                pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
-
-                // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
-                pw.print("</pre></body>\n</html>"); //NOI18N
-                pw.close();
-                ps.close();
+                try (PrintStream ps = new PrintStream(response.getOutputStream()); PrintWriter pw = new PrintWriter(ps)) {
+                    pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
+                    
+                    // PENDING! Localize this for next official release
+                    pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                    pw.print(stackTrace);
+                    pw.print("</pre></body>\n</html>"); //NOI18N
+                }
                 response.getOutputStream().close();
-            } catch (Exception ex) {
+            } catch (IOException ex) {
             }
         } else {
             try {
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                t.printStackTrace(ps);
-                ps.close();
+                try (PrintStream ps = new PrintStream(response.getOutputStream())) {
+                    t.printStackTrace(ps);
+                }
                 response.getOutputStream().close();
-            } catch (Exception ex) {
+            } catch (IOException ex) {
             }
         }
     }
@@ -172,7 +181,7 @@ public class AutorizacaoFilter implements Filter {
             pw.close();
             sw.close();
             stackTrace = sw.getBuffer().toString();
-        } catch (Exception ex) {
+        } catch (IOException ex) {
         }
         return stackTrace;
     }

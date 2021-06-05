@@ -1,8 +1,10 @@
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/entidade/Venda.java
+/Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/login/LogoutServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/fornecedor/FornecedorServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/cliente/CadastrarClienteServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/usuario/UsuarioServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/entidade/RelatorioCategoria.java
+/Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/utils/Data.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/entidade/Cliente.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/relatorio/RelatorioServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/fornecedor/BuscarFornecedorServlet.java
@@ -14,6 +16,7 @@
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/dao/ClienteDAO.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/usuario/AlterarUsuarioServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/produto/CadastrarProdutoServlet.java
+/Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/dao/LoginDAO.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/produto/AlterarProdutoServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/produto/BuscarProdutoServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/fornecedor/ExcluirFornecedorServlet.java
@@ -30,9 +33,11 @@
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/usuario/ExcluirUsuarioServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/utils/Convert.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/dao/ProdutoDAO.java
+/Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/fiilter/AutorizacaoFilter.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/relatorio/RelatorioCategoriasServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/entidade/Usuario.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/venda/FinalizarVendaServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/usuario/BuscarUsuarioServlet.java
+/Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/login/LoginServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/servlet/fornecedor/AlterarFornecedorServlet.java
 /Users/victor/Documents/PI3_TADS_2021-1/Project/SystemInstruverso/src/main/java/com/pi/systeminstruverso/dao/UsuarioDAO.java
