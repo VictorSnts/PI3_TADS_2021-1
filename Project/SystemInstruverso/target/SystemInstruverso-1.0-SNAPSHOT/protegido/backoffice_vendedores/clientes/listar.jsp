@@ -22,7 +22,7 @@
 
 
             <div class="scrollmenu">
-                <a href="protegido/clientes/cadastrar.jsp">Cadastrar Clientes</a>
+                <a href="protegido/backoffice_vendedores/clientes/cadastrar.jsp">Cadastrar Clientes</a>                
             </div>
 
             <form action="BuscarClienteServlet" method="GET">
@@ -43,7 +43,7 @@
 
 
             <div class="scrollmenu">
-                <a href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
+                <a href="protegido/backoffice_vendedores/clientes/cadastrar.jsp">Cadastrar Clientes</a>                
             </div>
 
             <form action="BuscarClienteServlet" method="GET">
