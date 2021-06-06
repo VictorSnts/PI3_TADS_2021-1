@@ -11,31 +11,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
         <title>Lista de Clientes</title>
     </head>
     <body class="container">
-        <c:import url="/header.jsp"/>
+        <c:import url="../header.jsp"/>
         
         <c:if test="${empty action}">
-            <h1>Selecione o Cliente</h1>
 
+            <h1>Clientes</h1>
 
             <div class="scrollmenu">
-                <a href="protegido/clientes/cadastrar.jsp">Cadastrar Clientes</a>
+                <a href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
             </div>
-
-            <form action="BuscarClienteServlet" method="GET">
-                <label for="busca">  Busca: </label>
-
-                <div class="container">  
-                    <input type="search" id="busca" name="busca">
-                    <button type="submit">OK</button>
-                </div>
-            </form>
-        <br>
         </c:if>
-
         
         <c:if test="${action.equals('select')}">
 
@@ -46,16 +35,10 @@
                 <a href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
             </div>
 
-            <form action="BuscarClienteServlet" method="GET">
-                <label for="busca">  Busca: </label>
-
-                <div class="container">  
-                    <input type="search" id="busca" name="busca">
-                    <button type="submit" name="action" value="select">OK</button>
-                </div>
-            </form>
+            
         <br>
         </c:if>
+        
         
         <table class="table table-striped table-bordered table-sm">
             <thead>
@@ -100,6 +83,7 @@
             </c:if>
             <c:if test="${action.equals('select')}">
                 <c:forEach items="${listaClientes}" var="cliente">
+                    <tr>
                         <td>${cliente.cod}</td>
                         <td>${cliente.nome}</td>
                         <td>${cliente.data_nasc}</td>
@@ -117,6 +101,7 @@
                     </tr>
                 </c:forEach>
             </c:if>
+
         </table>
         
         <c:import url="/footer.jsp"/>

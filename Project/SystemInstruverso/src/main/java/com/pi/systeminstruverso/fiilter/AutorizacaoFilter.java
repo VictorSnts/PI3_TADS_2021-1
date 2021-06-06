@@ -48,22 +48,29 @@ public class AutorizacaoFilter implements Filter {
         if(session.getAttribute("usuario_logado") == null){
             servletResponse.sendRedirect(servletRequest.getContextPath() + "/login.jsp");
         }
+        System.out.println("USUARIO LOGADO");
         
         // verifica se usuario tem permissao
         Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
         String url = servletRequest.getRequestURI();
-        if(url.contains("/protegido/backoffice") && (!usuario_logado.getPerfil().equals("BACKOFFICE"))){
+        if(naoPermitido(url, usuario_logado.getPerfil())){
             servletResponse.sendRedirect(servletRequest.getContextPath() + "/retornos/erro_auth.jsp");
         }
     }    
     
+    public boolean naoPermitido(String url, String perfil){
+        boolean backoffice = url.contains("/protegido/backoffice/") && !perfil.equals("BACKOFFICE");
+        boolean backoffice_vendedores = url.contains("/protegido/backoffice_vendedores/") && (!perfil.equals("BACKOFFICE") && !perfil.equals("VENDEDOR"));
+         
+        return backoffice || backoffice_vendedores;
+    }
     
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
         
-        if (debug) {
+        if (debug) { 
             log("AutorizacaoFilter:doFilter()");
         }
         

@@ -48,4 +48,13 @@ public class Usuario {
     public boolean isBackoffice(){
         return perfil.equals("BACKOFFICE");
     }
+    
+    public boolean isVendedor(){
+        return perfil.equals("VENDEDOR");
+    }
+    
+    public boolean isTI(){
+        return perfil.equals("TI");
+    }
+    
 }

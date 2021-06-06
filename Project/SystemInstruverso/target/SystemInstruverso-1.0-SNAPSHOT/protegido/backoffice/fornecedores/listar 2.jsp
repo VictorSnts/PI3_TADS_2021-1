@@ -19,9 +19,7 @@
         <h1>Fornecedores</h1>
         
         <div class="scrollmenu">
-            <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
-                <a href="protegido/fornecedores/backoffice/cadastrar.jsp">Cadastrar Fornecedores</a>
-            </c:if>
+            <a href="protegido/backoffice/fornecedores/cadastrar.jsp">Cadastrar Fornecedores</a>
         </div>   
         
         <form action="BuscarFornecedorServlet" method="GET">
@@ -73,10 +71,8 @@
                     <td>${fornecedor.bairro}</td>
                     <td>${fornecedor.cidade}</td>
                     <td>${fornecedor.filial_cadastro}</td>
-                    <c:if test="${usuario_logado.perfil == 'Backoffice' || usuario_logado.nivel == 'N1'}">
-                        <td><a href="AlterarFornecedorServlet?cod=${fornecedor.cod}">Atualizar</a></td>
-                        <td><a href="ExcluirFornecedorServlet?cod=${fornecedor.cod}">Excluir</a></td>
-                    </c:if>
+                    <td><a href="AlterarFornecedorServlet?cod=${fornecedor.cod}">Atualizar</a></td>
+                    <td><a href="ExcluirFornecedorServlet?cod=${fornecedor.cod}">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

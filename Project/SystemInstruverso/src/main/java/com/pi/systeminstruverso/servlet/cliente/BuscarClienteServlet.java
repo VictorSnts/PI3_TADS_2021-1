@@ -2,6 +2,7 @@ package com.pi.systeminstruverso.servlet.cliente;
 
 import com.pi.systeminstruverso.dao.ClienteDAO;
 import com.pi.systeminstruverso.entidade.Cliente;
+import com.pi.systeminstruverso.entidade.Usuario;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,23 +23,31 @@ public class BuscarClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String busca = request.getParameter("busca");
-            
-            System.out.println(busca);
-            
-            List<Cliente> listaClientes = ClienteDAO.searchClientes(busca);
-            request.setAttribute("listaClientes", listaClientes);
-            
-            String action = request.getParameter("action");
-            request.setAttribute("action", action);
-            System.out.println(action);
-            
-            request.getRequestDispatcher("/clientes/buscar.jsp").forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
+        HttpSession session = request.getSession();
+        Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
+        
+        if (usuario_logado.isBackoffice() || usuario_logado.isVendedor()){
+            try {
+
+                String busca = request.getParameter("busca");
+
+                System.out.println(busca);
+
+                List<Cliente> listaClientes = ClienteDAO.searchClientes(busca, usuario_logado.getFilial());
+                request.setAttribute("listaClientes", listaClientes);
+
+                String action = request.getParameter("action");
+                request.setAttribute("action", action);
+                System.out.println(action);
+
+                request.getRequestDispatcher("/protegido/backoffice_vendedores/clientes/listar.jsp").forward(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            response.sendRedirect(request.getContextPath() + "/retornos/erro_auth.jsp");
+        }
     }
     
 }

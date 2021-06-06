@@ -138,8 +138,8 @@ public class ClienteDAO {
         return ok;
     }
     
-    public static List<Cliente> getClientes() throws SQLException{
-        String query = "SELECT * FROM cliente";
+    public static List<Cliente> getClientes(int filial_usuario) throws SQLException{
+        String query = "SELECT * FROM cliente where FILIAL_CADASTRO = " + filial_usuario + " OR FILIAL_CADASTRO = 1";
         
         List<Cliente> clientes = new ArrayList();
         
@@ -173,8 +173,8 @@ public class ClienteDAO {
         return clientes;
     }
     
-    public static List<Cliente> searchClientes(String busca) throws SQLException{
-        String query = "SELECT * FROM cliente WHERE nome LIKE '%"+busca+"%' OR cpf LIKE '%"+busca+"%'";
+    public static List<Cliente> searchClientes(String busca, int filial_usuario) throws SQLException{
+        String query = "SELECT * FROM cliente WHERE (nome LIKE '%"+busca+"%' OR cpf LIKE '%"+busca+"%') AND (FILIAL_CADASTRO = " + filial_usuario + " OR FILIAL_CADASTRO = 1)";
             
         
         List<Cliente> clientes = new ArrayList();

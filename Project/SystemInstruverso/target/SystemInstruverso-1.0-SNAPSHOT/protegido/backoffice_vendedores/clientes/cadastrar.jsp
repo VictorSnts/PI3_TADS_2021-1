@@ -32,19 +32,8 @@
                 <br>
             </div>
 
-            <fieldset class="grupo">
-                <div class="campo">
-                    <label for="filial_cadastro"><strong>Filial:</strong></label>
-                    <select name="filial_cadastro" id="filial_cadastro" required="true">
-                        <option value="" selected disabled> </option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    
-                </div>
-            </fieldset>
+            <label class="form-label">Filial: </label>                
+            <input type="text" name="filial" size="1" required="true" readonly="true" value="${usuario_logado.filial}">
             <hr/>
 
             <h4 id="item">Dados Pessoais</h4>
@@ -108,33 +97,9 @@
 
         <fieldset class="grupo">
             <div class="campo">
-                <label for="filial_cadastro"><strong>Filial:</strong></label>
-                <select name="filial_cadastro" id="filial_cadastro" required="true" value="${cliente.filial_cadastro}">
-                    <c:if test="${cliente.filial_cadastro == '1'}">
-                        <option value="1" selected="selected">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                    <c:if test="${cliente.filial_cadastro == '2'}">
-                        <option value="1">1</option>
-                        <option value="2" selected="selected">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                    <c:if test="${cliente.filial_cadastro == '3'}">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected="selected">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                     <c:if test="${cliente.filial_cadastro == '4'}">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4"  selected="selected">4</option>
-                    </c:if>
-                </select>
+                <label class="form-label">Filial: </label>                
+                <input type="text" name="filial" size="1" required="true" readonly="true" value="${usuario_logado.filial}">
+            
                 <label for="cod"><strong>Código:</strong> </label>
                 <input type="text" name="cod" id="cod" readonly="true" size="10" value="${cliente.cod}">
                 <!-- Retirar essa parte na realizacao do cadastro -->
