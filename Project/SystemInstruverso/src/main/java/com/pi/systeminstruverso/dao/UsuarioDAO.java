@@ -130,8 +130,8 @@ public class UsuarioDAO {
             ps.setString(1, usuario.getNome());
             ps.setInt(2, usuario.getFilial());
             ps.setString(3, usuario.getPerfil());
-            ps.setString(4, usuario.getLogin());
-            ps.setString(5, usuario.getNivel());
+            ps.setString(4, usuario.getNivel());
+            ps.setString(5, usuario.getLogin());
             ps.setString(6, usuario.getSenha());
             ps.setString(7, usuario.getTelefone());
             ps.setString(8, usuario.getEmail());

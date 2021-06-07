@@ -15,11 +15,11 @@
         <title>Lista de Usuarios</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         <h1>Usuarios</h1>
         
         <div class="scrollmenu">
-            <a href="usuarios/cadastrar.jsp">Cadastrar Usuarios</a>
+            <a href="protegido/ti/usuarios/cadastrar.jsp">Cadastrar Usuarios</a>
         </div>   
         
         <form action="BuscarUsuarioServlet" method="GET">

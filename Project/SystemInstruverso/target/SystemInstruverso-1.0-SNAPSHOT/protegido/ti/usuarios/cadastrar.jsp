@@ -15,12 +15,12 @@
         <title>Cadastro de Usuario</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         
         <h1>Cadastro de Usuarios</h1><br/><br/> 
         <!-- CADASTRO -->
         <c:if test="${empty usuario}">
-            <form action="../CadastrarUsuarioServlet" method="POST">
+            <form action="<c:url value="/CadastrarUsuarioServlet"/>" method="POST">
                 
                 <h3>-| Dados do Usuario |-</h3>
                 <label class="form-label">Codigo: </label>
@@ -67,7 +67,7 @@
         
         <!-- ATUALIZACAO -->
         <c:if test="${not empty usuario}">
-            <form action="AlterarUsuarioServlet" method="POST">
+            <form action="<c:url value="/AlterarUsuarioServlet"/>" method="POST">
                 
                 <h3>-| Dados do Usuario |-</h3>
                 
@@ -108,6 +108,8 @@
                 
                 <label class="form-label">Perfil: </label>
                 <input type="text" name ="perfil" required="true" size="25" value=${usuario.perfil}>
+                <label class="form-label">Nivel: </label>
+                <input type="text" name ="nivel" required="true" size="25" value=${usuario.perfil}>
                 <label class="form-label">CPF: </label>
                 <input type="text" name ="cpf" required="true" size="13" value=${usuario.cpf}>
                 <br><br>
@@ -138,6 +140,6 @@
         
         
         
-        <c:import url="../footer.jsp"/>
+        <c:import url="/footer.jsp"/>
     </body>
 </html>

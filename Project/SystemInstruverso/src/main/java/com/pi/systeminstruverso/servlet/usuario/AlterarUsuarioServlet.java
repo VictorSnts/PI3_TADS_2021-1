@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,10 +20,17 @@ public class AlterarUsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cod = request.getParameter("cod");
-        Usuario usuario = UsuarioDAO.getUsuario(cod);
-        request.setAttribute("usuario", usuario);
-        request.getRequestDispatcher("usuarios/cadastrar.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
+        if (usuario_logado.isTI()){
+            String cod = request.getParameter("cod");
+            Usuario usuario = UsuarioDAO.getUsuario(cod);
+            request.setAttribute("usuario", usuario);
+            request.getRequestDispatcher("protegido/ti/usuarios/cadastrar.jsp").forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/retornos/erro_auth.jsp");
+
+        }
     }
     
     // Persistir novos dados no BD
@@ -37,6 +45,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
         int filial = Convert.ToInt(request.getParameter("filial"));
         String nivel = request.getParameter("nivel");
         String login = request.getParameter("login");
+        System.out.println(login);
         String senha = request.getParameter("senha");
         String telefone = request.getParameter("telefone");
         String email = login+"@instruverso.com";
@@ -53,7 +62,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
         else {
             String msgErro = "Não foi possivel realizar o exclusao desse Usuario.";
             request.setAttribute("msgErro", msgErro);
-            request.getRequestDispatcher("retornos/cerro.jsp").forward(request, response);
+            request.getRequestDispatcher("retornos/erro.jsp").forward(request, response);
         }
         
     }

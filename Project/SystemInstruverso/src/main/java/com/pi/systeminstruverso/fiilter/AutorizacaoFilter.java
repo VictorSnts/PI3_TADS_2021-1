@@ -53,16 +53,17 @@ public class AutorizacaoFilter implements Filter {
         // verifica se usuario tem permissao
         Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
         String url = servletRequest.getRequestURI();
-        if(naoPermitido(url, usuario_logado.getPerfil())){
+        if(naoPermitido(url, usuario_logado)){
             servletResponse.sendRedirect(servletRequest.getContextPath() + "/retornos/erro_auth.jsp");
         }
     }    
     
-    public boolean naoPermitido(String url, String perfil){
-        boolean backoffice = url.contains("/protegido/backoffice/") && !perfil.equals("BACKOFFICE");
-        boolean backoffice_vendedores = url.contains("/protegido/backoffice_vendedores/") && (!perfil.equals("BACKOFFICE") && !perfil.equals("VENDEDOR"));
-         
-        return backoffice || backoffice_vendedores;
+    public boolean naoPermitido(String url, Usuario usuario){
+        boolean backoffice = url.contains("/protegido/backoffice/") && !usuario.isBackoffice();
+        boolean backoffice_vendedores = url.contains("/protegido/backoffice_vendedores/") && (!usuario.isBackoffice() && !usuario.isVendedor());
+        boolean ti = url.contains("/protegido/ti/") && !usuario.isTI();
+        
+        return backoffice || backoffice_vendedores || ti;
     }
     
     @Override
