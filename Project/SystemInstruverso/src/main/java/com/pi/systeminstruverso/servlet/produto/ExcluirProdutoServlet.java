@@ -28,7 +28,7 @@ public class ExcluirProdutoServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
         
-        if (usuario_logado.getPerfil().equals("BACKOFFICE")) {
+        if (usuario_logado.isBackoffice()) {
             // Recuperar os parametros
             int cod = Convert.ToInt(request.getParameter("cod"));
 

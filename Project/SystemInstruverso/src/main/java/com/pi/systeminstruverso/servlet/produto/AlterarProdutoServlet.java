@@ -24,7 +24,7 @@ public class AlterarProdutoServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
         
-        if (usuario_logado.getPerfil().equals("BACKOFFICE")) {
+        if (usuario_logado.isBackoffice()) {
             String cod = request.getParameter("cod");
             Produto produto = ProdutoDAO.getProduto(cod);
             request.setAttribute("produto", produto);
