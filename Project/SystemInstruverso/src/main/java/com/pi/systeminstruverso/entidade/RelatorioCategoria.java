@@ -19,10 +19,10 @@ public class RelatorioCategoria {
     private int filial;
     private String produto;
     private String categoria;
-    private boolean preco_unitario;
+    private double preco_unitario;
     private int quantidade;
 
-    public RelatorioCategoria(int cod_venda, String data_venda, int filial, String produto, String categoria, boolean preco_unitario, int quantidade) {
+    public RelatorioCategoria(int cod_venda, String data_venda, int filial, String produto, String categoria, double preco_unitario, int quantidade) {
         this.cod_venda = cod_venda;
         this.data_venda = data_venda;
         this.filial = filial;

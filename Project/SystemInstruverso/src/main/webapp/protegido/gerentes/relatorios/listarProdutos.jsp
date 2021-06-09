@@ -15,7 +15,7 @@
         <title>Lista de Vendas</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         <h1>Produtos</h1>
         
         <form action="RelatorioCategoriasServlet" method="GET">
@@ -47,12 +47,12 @@
         <table class="table table-striped table-bordered table-sm ">
             <thead>
                 <th scope="col">Cod Venda</th>
-                <th scope="col">Filial</th>
                 <th scope="col">Data Venda</th>
-                <th scope="col">produto</th>
-                <th scope="col">categoria</th>
-                <th scope="col">preco_unitario</th>
-                <th scope="col">quantidade</th>
+                <th scope="col">Filial</th>
+                <th scope="col">Produto</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Preço Unitario</th>
+                <th scope="col">Qtd</th>
                 <th scope="col"> </th>
 
             </thead>
@@ -65,10 +65,14 @@
                     <td>${produto.categoria}</td>
                     <td>${produto.preco_unitario}</td>
                     <td>${produto.quantidade}</td>
-                    <td><a href="AlterarUsuarioServlet?cod=${usuario.cod}">Detalhar</a></td>
                 </tr>
             </c:forEach>
         </table>
+        <br><br><br>
+        
+        <h2>Receita no Periodo: R$${soma_preco}</h2>
+        <h2>Numero de Itens Vendidos no Periodo: ${itens}</h2>
+
         
         <c:import url="/footer.jsp"/>
     </body>

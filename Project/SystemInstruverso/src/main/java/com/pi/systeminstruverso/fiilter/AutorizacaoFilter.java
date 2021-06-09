@@ -63,8 +63,9 @@ public class AutorizacaoFilter implements Filter {
         boolean backoffice_vendedores = url.contains("/protegido/backoffice_vendedores/") && (!usuario.isBackoffice() && !usuario.isVendedor());
         boolean ti = url.contains("/protegido/ti/") && !usuario.isTI();
         boolean vendedores = url.contains("/protegido/vendedores/") && !usuario.isVendedor();
+        boolean gerentes = url.contains("/protegido/gerentes/") && !usuario.isGerente();
         
-        return backoffice || backoffice_vendedores || ti || vendedores;
+        return backoffice || backoffice_vendedores || ti || vendedores || gerentes;
     }
     
     @Override

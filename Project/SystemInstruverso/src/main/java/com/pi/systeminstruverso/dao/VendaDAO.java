@@ -12,6 +12,7 @@ import com.pi.systeminstruverso.entidade.RelatorioCategoria;
 import com.pi.systeminstruverso.entidade.Venda;
 import com.pi.systeminstruverso.entidade.VendaProduto;
 import com.pi.systeminstruverso.utils.Convert;
+import com.pi.systeminstruverso.utils.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,7 +41,7 @@ public class VendaDAO {
             PreparedStatement ps = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
             
             ps.setInt(1, filial);
-            ps.setString(2, "2021-01-01"); // Incluir data atual nesse passo
+            ps.setString(2, Data.getDate()); // Incluir data atual nesse passo
             ps.setInt(3, cod_usuario);
             ps.setInt(4, cod_cliente);
             ps.setBoolean(5, false);
@@ -346,7 +347,7 @@ public class VendaDAO {
                 int filial =  re.getInt("filial");
                 String produto =  re.getString("produto");
                 String categoria =  re.getString("categoria");
-                boolean preco_unitario =  re.getBoolean("preco_unitario");
+                double preco_unitario =  re.getDouble("preco_unitario");
                 int quantidade =  re.getInt("quantidade");
                                 
                 RelatorioCategoria rc =  new RelatorioCategoria(cod_venda, data_venda, filial, produto, categoria, preco_unitario, quantidade);
@@ -376,7 +377,7 @@ public class VendaDAO {
                 int filial =  re.getInt("filial");
                 String produto =  re.getString("produto");
                 String categoria =  re.getString("categoria");
-                boolean preco_unitario =  re.getBoolean("preco_unitario");
+                double preco_unitario =  re.getDouble("preco_unitario");
                 int quantidade =  re.getInt("quantidade");
                                 
                 RelatorioCategoria rc =  new RelatorioCategoria(cod_venda, data_venda, filial, produto, categoria, preco_unitario, quantidade);
@@ -406,7 +407,7 @@ public class VendaDAO {
                 int filial =  re.getInt("filial");
                 String produto =  re.getString("produto");
                 String categoria_prd =  re.getString("categoria");
-                boolean preco_unitario =  re.getBoolean("preco_unitario");
+                double preco_unitario =  re.getDouble("preco_unitario");
                 int quantidade =  re.getInt("quantidade");
                                 
                 RelatorioCategoria rc =  new RelatorioCategoria(cod_venda, data_venda, filial, produto, categoria_prd, preco_unitario, quantidade);

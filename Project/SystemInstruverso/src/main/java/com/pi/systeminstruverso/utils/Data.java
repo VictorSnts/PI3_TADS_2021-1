@@ -8,6 +8,9 @@ package com.pi.systeminstruverso.utils;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 /**
  *
@@ -15,9 +18,9 @@ import java.text.SimpleDateFormat;
  */
 public class Data {
 
-    public static String getDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        return dateFormat.format(date);
+    public static String getDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+        LocalDateTime now = LocalDateTime.now();  
+        return dtf.format(now);
     }
 }

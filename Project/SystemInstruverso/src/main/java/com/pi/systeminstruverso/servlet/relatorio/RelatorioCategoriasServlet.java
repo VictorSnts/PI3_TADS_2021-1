@@ -27,25 +27,37 @@ public class RelatorioCategoriasServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        double soma_preco = 0;
+        int itens = 0;
         
         String intervalo = request.getParameter("intervalo");
         System.out.println(intervalo);
         List<RelatorioCategoria> listaProdutosVenda = null ;
+        
         if(intervalo.equals("full")){
             listaProdutosVenda = VendaDAO.getVendasCategoria();
+            
         } else if(intervalo.equals("dates")){
             String data_inicial = request.getParameter("data_inicial");
             String data_final = request.getParameter("data_final");
             String categoria = request.getParameter("categoria");
+            
             if(categoria.equals("none")){
                 listaProdutosVenda = VendaDAO.getVendasCategoria(data_inicial, data_final);
+
             } else {
                 listaProdutosVenda = VendaDAO.getVendasCategoria(data_inicial, data_final, categoria);
-                System.out.println("tem categotia");
             }
         }
+        for(RelatorioCategoria produto : listaProdutosVenda){
+            soma_preco += (produto.getPreco_unitario() * produto.getQuantidade());
+            itens += produto.getQuantidade();
+        }
+        request.setAttribute("soma_preco", soma_preco);
+        request.setAttribute("itens", itens);
         request.setAttribute("listaProdutosVenda", listaProdutosVenda);
-        request.getRequestDispatcher("/relatorios/listarProdutos.jsp").forward(request, response);
+
+        request.getRequestDispatcher("/protegido/gerentes/relatorios/listarProdutos.jsp").forward(request, response);
 
     }
 }

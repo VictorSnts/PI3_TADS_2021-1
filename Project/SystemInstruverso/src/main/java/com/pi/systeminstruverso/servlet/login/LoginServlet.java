@@ -9,6 +9,8 @@ import com.pi.systeminstruverso.dao.LoginDAO;
 import com.pi.systeminstruverso.entidade.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +36,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("usuario_logado", usuario);
             response.sendRedirect("protegido/inicio.jsp");
-             
+           
         } else{
             String msg = "Usuario ou senha invalido!";
             request.setAttribute("erro", msg);

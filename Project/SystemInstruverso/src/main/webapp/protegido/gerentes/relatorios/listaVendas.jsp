@@ -15,14 +15,14 @@
         <title>Lista de Vendas</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         <h1>Vendas</h1>
         
         <form action="RelatorioCategoriasServlet" method="GET">
             <button type="submit" name="intervalo" value="full">Filtar Produtos Vendidos por Categoria</button>
         </form>
         <br>
-        <form action="RelatorioProdutosServlet" method="GET">
+        <form action="RelatorioClientesServlet" method="GET">
             <button type="submit" name="filtro" value="cliente">Filtar Produtos Vendidos por Cliente</button>
         </form>
         <br><br>
@@ -31,16 +31,23 @@
             <label for="busca">  Filtrar por Intervalo: </label>
             
             <div class="container">  
-                <input type="date" id="data_inicial" name="data_inicial" required="true">
+                <input type="date" id="data_inicial" name="data_inicial" required="true" >
                 <input type="date" id="data_final" name="data_final" required="true">
                 <label class="form-label">Filial: </label>
-                <select name="filial" required="true">
-                    <option value="none"> </option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+                <c:if test="${usuario_logado.getNivel() == 'GERENTE GERAL'}">
+                    <select name="filial" required="true">
+                        <option value="none"> </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>"
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </c:if>
+                <c:if test="${usuario_logado.getNivel() != 'GERENTE GERAL'}">
+                    <input type="text" id="filial" name="filial" required="true" value=${usuario_logado.getFilial()}>
+                </c:if>
+                
+                
                 
                 <button type="submit" name="intervalo" value="dates">Filtrar</button>
             </div>
@@ -70,10 +77,12 @@
                     <td>${vendas.cliente}</td>
                     <td>${vendas.forma_pagamento}</td>
                     <td>${vendas.total_venda}</td>
-                    <td><a href="AlterarUsuarioServlet?cod=${usuario.cod}">Detalhar</a></td>
                 </tr>
             </c:forEach>
         </table>
+        
+        <h2>Receita no Periodo: R$${soma_preco}</h2>
+
         
         <c:import url="/footer.jsp"/>
     </body>

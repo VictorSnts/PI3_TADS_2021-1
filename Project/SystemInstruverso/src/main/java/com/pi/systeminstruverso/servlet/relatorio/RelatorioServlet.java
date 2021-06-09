@@ -1,8 +1,10 @@
 package com.pi.systeminstruverso.servlet.relatorio;
 
 import com.pi.systeminstruverso.dao.VendaDAO;
+import com.pi.systeminstruverso.entidade.RelatorioCategoria;
 import com.pi.systeminstruverso.entidade.Venda;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,15 +39,16 @@ public class RelatorioServlet extends HttpServlet {
             }
             
         }
-        
-        
+        double soma_preco = 0;
+        for(Venda venda : listaVendas){
+            soma_preco += (venda.getTotal_venda());
+        }
+        request.setAttribute("soma_preco", soma_preco);
+
         request.setAttribute("listaVendas", listaVendas);
 
         
-        
-        
-        request.getRequestDispatcher("/relatorios/listaVendas.jsp").forward(request, response);
-        
+        request.getRequestDispatcher("/protegido/gerentes/relatorios/listaVendas.jsp").forward(request, response);
     }
     
 }

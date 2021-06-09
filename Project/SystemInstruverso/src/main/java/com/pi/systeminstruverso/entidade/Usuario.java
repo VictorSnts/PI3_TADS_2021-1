@@ -50,11 +50,15 @@ public class Usuario {
     }
     
     public boolean isVendedor(){
-        return perfil.equals("VENDEDOR");
+        return perfil.equals("VENDAS");
     }
     
     public boolean isTI(){
         return perfil.equals("TI");
+    }
+    
+    public boolean isGerente(){
+        return nivel.equals("GERENTE");
     }
     
 }
