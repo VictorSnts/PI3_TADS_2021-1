@@ -14,8 +14,8 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body class="container">
-        <h1>  ---||| INSTRUVERSO |||---</h1>
-        <h3>Usuario: ${usuario_logado.nome}</h3>
+        <img src="<c:url value="/img/logo.jpg"/>" width="475" height="125" alt=""/>
+        <h4>Usuario: ${usuario_logado.nome}</h4>
         <div class="sidebar">
             <a href="<c:url value="/protegido/inicio.jsp"/>"><i class="fa fa-fw fa-home"></i> Inicio</a>
             <a href="<c:url value="/ClienteServlet"/>"><i class="fa fa-fw fa-user"></i> Clientes</a>

@@ -25,14 +25,17 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
-        if (usuario_logado.isBackoffice() || usuario_logado.isVendedor()) {
+        
+        String action = request.getParameter("action");
+        request.setAttribute("action", action);
+                
+        if ((usuario_logado.isBackoffice() && !action.equals("select")) || usuario_logado.isVendedor()) {
             try {
             
                 List<Cliente> listaClientes = ClienteDAO.getClientes(usuario_logado.getFilial());
                 request.setAttribute("listaClientes", listaClientes);
 
-                String action = request.getParameter("action");
-                request.setAttribute("action", action);
+                
 
 
                 request.getRequestDispatcher("protegido/backoffice_vendedores/clientes/listar.jsp").forward(request, response);

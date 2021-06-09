@@ -15,7 +15,7 @@
         <title>Vender</title>
     </head>
     <body class="container">
-        <c:import url="../header.jsp"/>
+        <c:import url="/header.jsp"/>
         <h1>Vender</h1>
         
         <label class="form-label">Numero da Venda :</label>

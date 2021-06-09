@@ -65,7 +65,7 @@ public class AlterarProdutoServlet extends HttpServlet {
         else {
             String msgErro = "Não foi possivel realizar o exclusao desse Produto.";
             request.setAttribute("msgErro", msgErro);
-            request.getRequestDispatcher("retornos/cerro.jsp").forward(request, response);
+            request.getRequestDispatcher("retornos/erro.jsp").forward(request, response);
         }
 
     }

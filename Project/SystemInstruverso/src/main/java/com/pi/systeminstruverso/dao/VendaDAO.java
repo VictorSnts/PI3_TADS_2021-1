@@ -29,7 +29,7 @@ public class VendaDAO {
     
     public static int novaVenda(int filial, int cod_usuario, int cod_cliente){
         
-        String query = "INSERT INTO VENDA (filial, data_venda, cod_usuario, cod_cliente, finalizada) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO VENDA (filial, data_venda, cod_usuario, cod_cliente, finalizada, forma_pagamento, total_venda) VALUES (?, ?, ?, ?, ?, '-', 0)";
         
         Connection con;
         int last_inserted_id = 0;
@@ -51,6 +51,7 @@ public class VendaDAO {
             if(rs.next())
             {
                 last_inserted_id = rs.getInt(1);
+                System.out.println(last_inserted_id);
             }
             
         } catch (SQLException ex) {

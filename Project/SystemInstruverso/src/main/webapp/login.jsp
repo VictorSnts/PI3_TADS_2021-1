@@ -10,19 +10,17 @@
 <html lang="pt-br">
 <head>
         <meta charset="utf-8">
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/login.css">
         <title>Tela de Login</title>
 </head>
 <body>
     <div id="login">
-        <h3 class="text-center text-info pt-5">INSTRUVERSO</h3>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="LoginServlet" method="post">
+                            <img src="<c:url value="/img/logo.jpg"/>" width="475" height="125" alt=""/>
                             <h3 class="text-center text-info">Login</h3>
                             <c:if test="${not empty erro}">
                                 <h4 id="alert_erro">${erro}</h4>
