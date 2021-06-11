@@ -21,8 +21,8 @@ import java.util.logging.Logger;
  */
 public class LoginDAO {
     
-    public static Usuario validar(String user, String pass){
-        String query = "SELECT * FROM usuario WHERE login = ? AND senha = ? AND status = 'Ativo'";
+    public static Usuario getUsuario(String user){
+        String query = "SELECT * FROM usuario WHERE login = ? AND status = 'Ativo'";
         
         Usuario usuario = null;
         
@@ -30,7 +30,6 @@ public class LoginDAO {
             Connection con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, user);
-            ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){

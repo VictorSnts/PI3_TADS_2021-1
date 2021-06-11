@@ -7,6 +7,8 @@ package com.pi.systeminstruverso.servlet.login;
 
 import com.pi.systeminstruverso.dao.LoginDAO;
 import com.pi.systeminstruverso.entidade.Usuario;
+import com.pi.systeminstruverso.utils.Criptografia;
+import com.pi.systeminstruverso.utils.CryptoUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
@@ -30,9 +32,9 @@ public class LoginServlet extends HttpServlet {
         String pass = request.getParameter("password");
         
         // Pega o usuario logado
-        Usuario usuario =  LoginDAO.validar(user, pass);
+        Usuario usuario =  LoginDAO.getUsuario(user);
            
-        if(usuario != null){
+        if(usuario != null && Criptografia.verificarSenha(pass, usuario.getSenha())){
             HttpSession sessao = request.getSession();
             sessao.setAttribute("usuario_logado", usuario);
             response.sendRedirect("protegido/inicio.jsp");

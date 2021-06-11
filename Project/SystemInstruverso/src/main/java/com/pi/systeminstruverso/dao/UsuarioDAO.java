@@ -3,6 +3,8 @@ package com.pi.systeminstruverso.dao;
 import com.pi.systeminstruverso.conexao.Conexao;
 import com.pi.systeminstruverso.entidade.Usuario;
 import com.pi.systeminstruverso.utils.Convert;
+import com.pi.systeminstruverso.utils.Criptografia;
+import com.pi.systeminstruverso.utils.CryptoUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,12 +32,14 @@ public class UsuarioDAO {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
             
+            String sc = usuario.getSenha();
+            
            ps.setString(1, usuario.getNome());
             ps.setInt(2, usuario.getFilial());
             ps.setString(3, usuario.getPerfil());
             ps.setString(4, usuario.getNivel());
             ps.setString(5, usuario.getLogin());
-            ps.setString(6, usuario.getSenha());
+            ps.setString(6, Criptografia.hashSenha(sc));
             ps.setString(7, usuario.getTelefone());
             ps.setString(8, usuario.getEmail());
             ps.setString(9, usuario.getCpf());
