@@ -9,6 +9,7 @@ import com.pi.systeminstruverso.dao.FornecedorDAO;
 import com.pi.systeminstruverso.entidade.Fornecedor;
 import com.pi.systeminstruverso.entidade.Usuario;
 import com.pi.systeminstruverso.utils.Convert;
+import com.pi.systeminstruverso.utils.Data;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ public class CadastrarFornecedorServlet extends HttpServlet {
         if (usuario_logado.getPerfil().equals("BACKOFFICE")){
             String razao_social = request.getParameter("razao_social");
             String nome_fantasia = request.getParameter("nome_fantasia");
-            String data_registro = request.getParameter("data_registro");
+            String data_registro = Data.getDate();
             String nome_contato = request.getParameter("nome_contato");
             String telefone = request.getParameter("telefone");
             String email = request.getParameter("email");

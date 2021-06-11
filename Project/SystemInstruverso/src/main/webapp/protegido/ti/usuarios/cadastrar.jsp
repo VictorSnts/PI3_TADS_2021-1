@@ -7,122 +7,125 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
-        <title>Cadastro de Usuario</title>
-    </head>
-    <body class="container">
-        <c:import url="/header.jsp"/>
-        
-        <h1>Cadastro de Usuarios</h1><br/><br/> 
-        <!-- CADASTRO -->
-        <c:if test="${empty usuario}">
-            <form action="<c:url value="/CadastrarUsuarioServlet"/>" method="POST">
-                
-                <h3>-| Dados do Usuario |-</h3>
-                <label class="form-label">Codigo: </label>
-                <input type="text" name ="cod" readonly="true" size="6">
-                <label class="form-label">Filial </label>
-                <select name="filial" required="true">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-                <br><br>
-                
-                <label class="form-label">Nome: </label>
-                <input type="text" name ="nome" required="true" size="50">
-                <br><br>
-                
-                <label class="form-label">Perfil: </label>
-                <input type="text" name ="perfil" required="true" size="25">
-                <label class="form-label">Nivel: </label>
-                <input type="text" name ="nivel" required="true" size="25">
-                <label class="form-label">CPF: </label>
-                <input type="text" name ="cpf" required="true" size="13">
-                <br><br>
-                
-                <label class="form-label">Login: </label>
-                <input type="text" name ="login" required="true">
-                <label class="form-label">Senha: </label>
-                <input type="password" name ="senha" required="true">
-                <br><br>
-                
-                <label class="form-label">Telefone: </label>
-                <input type="text" name ="telefone" required="true"size="13">
-                <label class="form-label">Status: </label>
-                <select name="status" required="true">
-                    <option value="Ativo" selected="selected">Ativo</option>
-                    <option value="Inativo">Inativo</option>
-                </select>      
-                <br><br>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
+    <title>Cadastro de Usuarios</title>
+</head>
+<body>
+    <c:import url="/header.jsp"/>
 
-                <button type="submit" class="btn-primary">Cadastrar</button>
-            </form>
-        </c:if>
-        
-        <!-- ATUALIZACAO -->
-        <c:if test="${not empty usuario}">
-            <form action="<c:url value="/AlterarUsuarioServlet"/>" method="POST">
-                
-                <h3>-| Dados do Usuario |-</h3>
-                
-                <label class="form-label">Codigo: </label>
-                <input type="text" name ="cod" readonly="true" size="6" value="${usuario.cod}">
-                <label class="form-label">Filial </label>
-                <select name="filial" required="true">
-                    <c:if test="${usuario.filial == '1'}">
-                        <option value="1" selected="selected">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                    <c:if test="${usuario.filial == '2'}">
-                        <option value="1">1</option>
-                        <option value="2" selected="selected">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                    <c:if test="${usuario.filial == '3'}">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected="selected">3</option>
-                        <option value="4">4</option>
-                    </c:if>
-                     <c:if test="${usuario.filial == '4'}">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4"  selected="selected">4</option>
-                    </c:if>
-                </select>
-                <br><br>
-                
-                <label class="form-label">Nome: </label>
-                <input type="text" name ="nome" required="true" size="50" value="${usuario.nome}">
-                <br><br>
-                
-                <label class="form-label">Perfil: </label>
-                <input type="text" name ="perfil" required="true" size="25" value=${usuario.perfil}>
-                <label class="form-label">Nivel: </label>
-                <input type="text" name ="nivel" required="true" size="25" value=${usuario.perfil}>
-                <label class="form-label">CPF: </label>
-                <input type="text" name ="cpf" required="true" size="13" value=${usuario.cpf}>
-                <br><br>
-                
-                <label class="form-label">Login: </label>
-                <input type="text" name ="login" required="true" value=${usuario.login}>
-                <label class="form-label">Senha: </label>
-                <input type="password" name ="senha" required="true" value=${usuario.senha}>
-                <br><br>
-                
-                <label class="form-label">Telefone: </label>
-                <input type="text" name ="telefone" required="true"size="13" value=${usuario.telefone}>
-                <label class="form-label">Status: </label>
+
+
+    <!-- CADASTRO -->
+    <c:if test="${empty usuario}">
+        <form action="<c:url value="/CadastrarUsuarioServlet"/>" method="POST">
+ 
+            <div>
+                <h1 id="titulo">Cadastro de Usuarios</h1>
+                <p id="subtitulo">Insira as informações do Usuario</p>
+                <br>
+            </div>
+
+            <hr/>
+
+            <h4 id="item">Dados Da Usuario:</h4>
+            <fieldset class="grupo">
+
+                <div class="campo">
+                    <label for="nome"><strong>Nome: </strong> </label>
+                    <input type="text" name="nome" id="nome" required="true" size="30">
+
+                    <label for="perfil"><strong>Area: </strong> </label>
+                    <input type="text" name="perfil" id="perfil" required="true" size="30">
+
+                    <label for="nivel"><strong>Nivel: </strong> </label>
+                    <input type="text" name="nivel" id="nivel" required="true" size="30">
+
+                    <label for="cpf"><strong>CPF: </strong> </label>
+                    <input type="text" name="cpf" id="cpf" required="true" size="15" maxlength="11"><br><br>
+                </div>
+
+                <div class="campo">
+                    <label for="login"><strong>Login: </strong> </label>
+                    <input type="text" name="login" id="login" required="true" size="20">
+
+                    <label for="senha"><strong>Senha: </strong></label>
+                    <input type="password" name="senha" id="senha" required="true" size="25"><br><br>
+                </div>
+
+                <div class="campo">
+
+                    <label for="telefone"><strong>Telefone: </strong> </label>
+                    <input type="text" name="telefone" id="telefone" required="true" size="25" maxlength="11">
+
+                    <label for="status"><strong>Status:</strong> </label>
+                    <select name="status" required="true">
+                        <option value="Ativo" selected="selected">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                    </select><br><br>
+                </div>
+
+            </fieldset>
+            
+            <hr/>
+            
+            <button class="botao" type="submit"><strong>Cadastrar</strong></button>
+        </form>
+    </c:if>
+
+    <c:if test="${not empty usuario}">
+    <form action="<c:url value="/AlterarUsuarioServlet"/>" method="POST">
+ 
+        <div>
+            <h1 id="titulo">Atualização de Usuarios</h1>
+            <p id="subtitulo">Altere as informações do usuario</p>
+            <br>
+        </div>
+
+        <fieldset class="grupo">
+            <div class="campo">            
+                <label for="cod"><strong>Código:</strong> </label>
+                <input type="text" name="cod" id="cod" readonly="true" size="10" value="${usuario.cod}">
+            </div>
+        </fieldset>
+        <hr/>
+
+        <h4 id="item">Dados da Usuario</h4>
+        <fieldset class="grupo">
+
+            <div class="campo">
+
+                <label for="nome"><strong>Nome: </strong> </label>
+                <input type="text" name="nome" id="nome" required="true" size="30" value="${usuario.nome}">
+
+                <label for="perfil"><strong>Area: </strong> </label>
+                <input type="text" name="perfil" id="perfil" required="true" size="30" value="${usuario.perfil}">
+
+                <label for="nivel"><strong>Nivel: </strong> </label>
+                <input type="text" name="nivel" id="nivel" required="true" size="30" value="${usuario.nivel}">
+
+                <label for="cpf"><strong>CPF: </strong> </label>
+                <input type="text" name="cpf" id="cpf" required="true" size="15" maxlength="11" value="${usuario.cpf}"><br><br>
+            </div>
+
+            <div class="campo">
+                <label for="login"><strong>Login: </strong> </label>
+                <input type="text" name="login" id="login" required="true" size="20" value=${usuario.login}>
+
+            </div>
+
+            <div class="campo">
+
+                <label for="telefone"><strong>Telefone: </strong> </label>
+                <input type="text" name="telefone" id="telefone" required="true" size="25" value=${usuario.telefone}>
+
+                <label for="status"><strong>Status:</strong> </label>
                 <select name="status" required="true">
                     <c:if test="${usuario.status == 'Ativo'}">
                         <option value="Ativo" selected="selected">Ativo</option>
@@ -132,14 +135,17 @@
                         <option value="Ativo">Ativo</option>
                         <option value="Inativo" selected="selected">Inativo</option>
                     </c:if>
-                </select>
-                <br><br>
-            <button type="submit" class="btn-primary">Atualizar</button>
-            </form>
-        </c:if>
+                </select><br><br>
+            </div>
+
+        </fieldset>
+        <hr/>
         
-        
-        
-        <c:import url="/footer.jsp"/>
-    </body>
+        <button class="botao" type="submit"><strong>Atualizar</strong></button>
+    </form>
+</c:if>
+    
+    
+
+</body>
 </html>

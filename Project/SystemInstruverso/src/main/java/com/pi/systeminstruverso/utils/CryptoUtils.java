@@ -22,5 +22,11 @@ public class CryptoUtils {
         return verifica.verified;
     }
     
-
+    
+    public static void main(String[] args) {
+        String teste = "123";
+        System.out.println(hashSenha(teste));
+        
+        System.out.println(verificarSenha(teste, "$2a$12$MM2iTape7fdgtc5G7wrE/.RWOup4tx/Z9mkvmwchOpH.Q5CsuUnLe"));
+    }
 }

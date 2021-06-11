@@ -38,21 +38,23 @@ public class AlterarUsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        HttpSession session = request.getSession();
+        Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
+        
         int cod;
         cod = Convert.ToInt(request.getParameter("cod"));
         String nome = request.getParameter("nome");
         String perfil = request.getParameter("perfil");
-        int filial = Convert.ToInt(request.getParameter("filial"));
+        int filial = usuario_logado.getFilial();
         String nivel = request.getParameter("nivel");
         String login = request.getParameter("login");
         System.out.println(login);
-        String senha = request.getParameter("senha");
         String telefone = request.getParameter("telefone");
         String email = login+"@instruverso.com";
         String cpf = request.getParameter("cpf");
         String status = request.getParameter("status");
         
-        Usuario usuario =  new Usuario(cod, nome, filial, perfil, nivel, login, senha, telefone, email, cpf, status);
+        Usuario usuario =  new Usuario(cod, nome, filial, perfil, nivel, login, "", telefone, email, cpf, status);
         boolean ok = UsuarioDAO.atualizar(usuario);
         
         

@@ -21,6 +21,7 @@ com/pi/systeminstruverso/servlet/cliente/BuscarClienteServlet.class
 com/pi/systeminstruverso/entidade/Categorias.class
 com/pi/systeminstruverso/servlet/usuario/UsuarioServlet.class
 com/pi/systeminstruverso/servlet/relatorio/RelatorioFiltrarServlet.class
+com/pi/systeminstruverso/utils/CryptoUtils.class
 com/pi/systeminstruverso/conexao/Conexao.class
 com/pi/systeminstruverso/servlet/produto/AlterarProdutoServlet.class
 com/pi/systeminstruverso/entidade/VendaProduto.class
@@ -32,9 +33,9 @@ com/pi/systeminstruverso/servlet/produto/ExcluirProdutoServlet.class
 com/pi/systeminstruverso/servlet/produto/CadastrarProdutoServlet.class
 com/pi/systeminstruverso/servlet/venda/FinalizarVendaServlet.class
 com/pi/systeminstruverso/servlet/fornecedor/AlterarFornecedorServlet.class
+com/pi/systeminstruverso/utils/Criptografia.class
 com/pi/systeminstruverso/servlet/relatorio/RelatorioCategoriasServlet.class
 com/pi/systeminstruverso/servlet/fornecedor/FornecedorServlet.class
-.netbeans_automatic_build
 com/pi/systeminstruverso/dao/FornecedorDAO.class
 com/pi/systeminstruverso/entidade/Venda.class
 com/pi/systeminstruverso/servlet/cliente/ExcluirClienteServlet.class

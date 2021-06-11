@@ -7,151 +7,181 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
-        <title>Cadastro de Fornecedores</title>
-    </head>
-    <body class="container">
-        <c:import url="/header.jsp"/>
-
-        
-        <h1>Cadastro de Fornecedores</h1><br/><br/>
-        <!-- CADASTRO -->
-        <c:if test="${empty fornecedor}">
-            <form action="<c:url value="/CadastrarFornecedorServlet"/>" method="POST">
-                
-                <h3>-| Dados da Empresa |-</h3>
-                
-                <label class="form-label">Filial: </label>                
-                <input type="text" name="filial" size="1" required="true" readonly="true" value="${usuario_logado.filial}"> 
-
-                <br><br>
-                
-                <label class="form-label">Razao Social: </label>
-                <input type="text" name ="razao_social"required="true" size="52">
-                <br><br>
-                
-                <label class="form-label">Nome Fantasia: </label>
-                <input type="text" name ="nome_fantasia" required="true" size="50">
-                <br><br>
-                
-                <label class="form-label">Cnpj: </label>
-                <input type="text" name ="cnpj"required="true" size="15" maxlength="14"/>
-                <label class="form-label">Data Registro: </label >
-                <input type="date" name ="data_registro" required="true">
-                <br><br>
-                
-                <label class="form-label">Nome para Contato: </label>
-                <input type="text" name ="nome_contato"required="true" size="20">
-                <label class="form-label">Telefone: </label>
-                <input type="text" name ="telefone"required="true" size="13" maxlength="11">
-                <br><br>
-                
-                <label class="form-label">Email: </label>
-                <input type="text" name ="email"required="true" size="25">
-                <label class="form-label">Site: </label>
-                <input type="text" name ="site"required="true" size="25">
-                <br><br>
-                
-                <h3>-| Endereco |-</h3>
-                <label class="form-label">Endereco: </label>
-                <input type="text" name ="endereco"required="true" size="50">
-                <label class="form-label">Numero: </label>
-                <input type="text" name ="numero"required="true" size="5">
-                <br><br>
-
-                <label class="form-label">Cep: </label>
-                <input type="text" name ="cep"required="true" size="10" maxlength="8">               
-                <label class="form-label">Bairro: </label>
-                <input type="text" name ="bairro"required="true" size="15">
-                <label class="form-label">Cidade: </label>
-                <input type="text" name ="cidade"required="true" size="15">
-                <label class="form-label">UF: </label>
-                <input type="text" name ="uf"required="true" size="3" maxlength="2">
-                <br><br>
-                
-                <label class="form-label">Pais: </label>
-                <input type="text" name ="pais"required="true" size="15">
-                <br><br>
-                
-                
-
-                <button type="submit" class="btn-primary">Cadastrar</button>
-                
-            </form>
-        </c:if>
-        
-        <!-- ATUALIZACAO -->
-        <c:if test="${not empty fornecedor}">
-            <form action="<c:url value="/AlterarFornecedorServlet"/>" method="POST">
-                
-                <h3>-| Dados da Empresa |-</h3>
-                
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>">
+    <title>Cadastro de Fornecedores</title>
+</head>
+<body>
+    <c:import url="/header.jsp"/>
 
 
-                <label class="form-label">Filial: </label>                
-                <input type="text" name="filial" size="1" required="true" readonly="true" value="${usuario_logado.filial}"> 
 
-                <label class="form-label">Codigo: </label>
-                <input type="text" name="cod" size="6" readonly="true" value="${fornecedor.cod}">
-                <br><br>
+    <!-- CADASTRO -->
+    <c:if test="${empty fornecedor}">
+        <form action="<c:url value="/CadastrarFornecedorServlet"/>" method="POST">
+ 
+            <div>
+                <h1 id="titulo">Cadastro de Fornecedores</h1>
+                <p id="subtitulo">Insira as informações do Fornecedor</p>
+                <br>
+            </div>
 
-                <label class="form-label">Razao Social: </label>
-                <input type="text" name ="razao_social"required="true" size="52" value=${fornecedor.razao_social}>
-                <br><br>  
+            <hr/>
 
-                <label class="form-label">Nome Fantasia: </label>
-                <input type="text" name ="nome_fantasia" required="true" size="50" value=${fornecedor.nome_fantasia}>
-                <br><br>
+            <h4 id="item">Dados Da Empresa:</h4>
+            <fieldset class="grupo">
 
-                <label class="form-label">Cnpj: </label>
-                <input type="text" name ="cnpj"required="true" size="15" maxlength="14" value="${fornecedor.cnpj}"/>
-                <label class="form-label">Data Registro: </label >
-                <input type="date" name ="data_registro" required="true" value=${fornecedor.data_registro}>
-                <br><br>
+                <div class="campo">
+                    <label for="razao_social"><strong>Razao Social: </strong> </label>
+                    <input type="text" name="razao_social" id="razao_social" required="true" size="30">
 
-                <label class="form-label">Nome para Contato: </label>
-                <input type="text" name ="nome_contato"required="true" size="20" value=${fornecedor.nome_contato}>
-                <label class="form-label">Telefone: </label>
-                <input type="text" name ="telefone"required="true" size="13" maxlength="11" value=${fornecedor.telefone}>
-                <br><br>
+                    <label for="nome_fantasia"><strong>Nome Fantasia: </strong> </label>
+                    <input type="text" name="nome_fantasia" id="nome_fantasia" required="true" size="30">
 
-                <label class="form-label">Email: </label>
-                <input type="text" name ="email"required="true" size="25" value=${fornecedor.email}>
-                <label class="form-label">Site: </label>
-                <input type="text" name ="site"required="true" size="25" value=${fornecedor.site}>
-                <br><br>
+                    <label for="cnpj"><strong>CNPJ: </strong> </label>
+                    <input type="text" name="cnpj" id="cnpj" required="true" size="15" maxlength="11"><br><br>
+                </div>
 
+                <div class="campo">
+                    <label for="nome_contato"><strong>Nome Para Contato: </strong> </label>
+                    <input type="text" name="nome_contato" id="nome_contato" required="true" size="20">
 
-                <h3>-| Endereco |-</h3>
-                <label class="form-label">Endereco: </label>
-                <input type="text" name ="endereco"required="true" size="50" value=${fornecedor.endereco}>
-                <label class="form-label">Numero: </label>
-                <input type="text" name ="numero"required="true" size="5" value=${fornecedor.numero}>
-                <br><br>
+                    <label for="email"><strong>E-Mail: </strong></label>
+                    <input type="email" name="email" id="email" required="true" size="25">
 
-                <label class="form-label">Cep: </label>
-                <input type="text" name ="cep"required="true" size="10" maxlength="8" value=${fornecedor.cep}>               
-                <label class="form-label">Bairro: </label>
-                <input type="text" name ="bairro"required="true" size="15" value=${fornecedor.bairro}>
-                <label class="form-label">Cidade: </label>
-                <input type="text" name ="cidade"required="true" size="15" value=${fornecedor.cidade}>
-                <label class="form-label">UF: </label>
-                <input type="text" name ="uf"required="true" size="3" maxlength="2" value=${fornecedor.uf}>
-                <br><br>
+                    <label for="site"><strong>Site: </strong> </label>
+                    <input type="text" name="site" id="site" required="true" size="25">
 
-                <label class="form-label">Pais: </label>
-                <input type="text" name ="pais"required="true" size="15" value=${fornecedor.pais}>
-                <br><br>
+                    <label for="telefone"><strong>Telefone:</strong> </label>
+                    <input type="text" name="telefone" id="telefone" required="true" size="15" maxlength="11"> 
+                </div>
+
+            </fieldset>
+            <hr>
+
+            <h4 id="item">Endereço: </h4>
+            <fieldset class="grupo">
+
+                <div class="campo">
+                    <label for="endereco"><strong>Logradouro:</strong> </label>
+                    <input type="text" name="endereco" id="endereco" required="true" size="60">
+
+                    <label for="numero"><strong>Numero:</strong> </label>
+                    <input type="text" name="numero" id="numero" required="true" size="10">
+                    
+                    <label for="bairro"><strong>Bairro:</strong> </label>
+                    <input type="text" name="bairro" id="bairro" required="true" size="25"><br><br>
+                </div>
+
+                <div class="campo">
+                    <label for="cidade"><strong>Cidade:</strong> </label>
+                    <input type="text" name="cidade" id="cidade" required="true" size="30"> 
+
+                    <label for="uf"><strong>UF:</strong> </label>
+                    <input type="text" name="uf" id="uf" required="true" size="4" maxlength="2"> 
+
+                    <label for="cep"><strong>CEP:</strong> </label>
+                    <input type="text" name="cep" id="cep" required="true" size="17" maxlength="8">
+                </div>
+
+            </fieldset>
+            <hr/>
             
-            <button type="submit" class="btn-primary">Atualizar</button>
-            </form>
-        </c:if>
+            <button class="botao" type="submit"><strong>Cadastrar</strong></button>
+        </form>
+    </c:if>
+
+    <c:if test="${not empty fornecedor}">
+    <form action="AlterarFornecedorServlet" method="POST">
+ 
+        <div>
+            <h1 id="titulo">Atualização de Fornecedores</h1>
+            <p id="subtitulo">Altere as informações do Fornecedor</p>
+            <br>
+        </div>
+
+        <fieldset class="grupo">
+            <div class="campo">            
+                <label for="cod"><strong>Código:</strong> </label>
+                <input type="text" name="cod" id="cod" readonly="true" size="10" value="${fornecedor.cod}">
+            </div>
+        </fieldset>
+        <hr/>
+
+        <h4 id="item">Dados da Empresa</h4>
+        <fieldset class="grupo">
+
+            <div class="campo">
+                <label for="razao_social"><strong>Razao Social: </strong> </label>
+                <input type="text" name="razao_social" id="razao_social" required="true" size="30" value="${fornecedor.razao_social}">
+
+                <label for="nome_fantasia"><strong>Nome Fantasia: </strong> </label>
+                <input type="text" name="nome_fantasia" id="nome_fantasia" required="true" size="30" value="${fornecedor.nome_fantasia}">
+
+                <label for="cnpj"><strong>CNPJ: </strong> </label>
+                <input type="text" name="cnpj" id="cnpj" required="true" size="15" maxlength="14" value="${fornecedor.cnpj}"><br><br>
+            </div>
+
+            <div class="campo">
+                <label for="nome_contato"><strong>Nome Para Contato: </strong> </label>
+                <input type="text" name="nome_contato" id="nome_contato" required="true" size="20" value="${fornecedor.nome_contato}">
+
+                <label for="email"><strong>E-Mail: </strong></label>
+                <input type="email" name="email" id="email" required="true" size="25" value="${fornecedor.email}">
+
+                <label for="site"><strong>Site: </strong> </label>
+                <input type="text" name="site" id="site" required="true" size="25" value="${fornecedor.site}">
+
+                <label for="telefone"><strong>Telefone:</strong> </label>
+                <input type="text" name="telefone" id="telefone" required="true" size="15" maxlength="11" value="${fornecedor.telefone}"> 
+            </div>
+
+        </fieldset>
+        <hr>
+
+        <h4 id="item">Endereço: </h4>
+        <fieldset class="grupo">
+
+            <div class="campo">
+                <label for="endereco"><strong>Logradouro: </strong> </label>
+                <input type="text" name="endereco" id="endereco" required="true" size="60" value="${fornecedor.endereco}">
+
+                <label for="numero"><strong>Numero:</strong> </label>
+                <input type="text" name="numero" id="numero" required="true" size="10" value="${fornecedor.numero}">
+
+                <label for="bairro"><strong>Bairro:</strong> </label>
+                <input type="text" name="bairro" id="bairro" required="true" size="25"  value="${fornecedor.bairro}"><br><br>
+            </div>
+
+            <div class="campo">
+                <label for="cidade"><strong>Cidade:</strong> </label>
+                <input type="text" name="cidade" id="cidade" required="true" size="30" value="${fornecedor.cidade}"> 
+
+                <label for="uf"><strong>UF:</strong> </label>
+                <input type="text" name="uf" id="uf" required="true" size="4" maxlength="2"  value="${fornecedor.uf}"> 
+                
+                <label for="cep"><strong>CEP:</strong> </label>
+                <input type="text" name="cep" id="cep" required="true" size="17" maxlength="8" value="${fornecedor.cep}">
+                
+                <label for="pais"><strong>Pais: </strong> </label>
+                <input type="text" name="pais" id="pais" required="true" size="17" value="${fornecedor.pais}">
+                
+            </div>
+
+        </fieldset>
+        <hr/>
         
-        
-        <c:import url="/footer.jsp"/>
-    </body>
+        <button class="botao" type="submit"><strong>Atualizar</strong></button>
+    </form>
+</c:if>
+    
+    
+
+</body>
 </html>

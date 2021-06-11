@@ -124,7 +124,7 @@ public class UsuarioDAO {
      public static boolean atualizar(Usuario usuario){
         boolean ok = false;
         
-        String query = "UPDATE usuario SET NOME=?, FILIAL=?, PERFIL=?, NIVEL=?, LOGIN=?, SENHA=?, TELEFONE=?, EMAIL=?, CPF=?, STATUS=? WHERE cod=?";
+        String query = "UPDATE usuario SET NOME=?, FILIAL=?, PERFIL=?, NIVEL=?, LOGIN=?, TELEFONE=?, EMAIL=?, CPF=?, STATUS=? WHERE cod=?";
         
         Connection con;
         try {
@@ -136,12 +136,11 @@ public class UsuarioDAO {
             ps.setString(3, usuario.getPerfil());
             ps.setString(4, usuario.getNivel());
             ps.setString(5, usuario.getLogin());
-            ps.setString(6, usuario.getSenha());
-            ps.setString(7, usuario.getTelefone());
-            ps.setString(8, usuario.getEmail());
-            ps.setString(9, usuario.getCpf());
-            ps.setString(10, usuario.getStatus());
-            ps.setInt(11, usuario.getCod());
+            ps.setString(6, usuario.getTelefone());
+            ps.setString(7, usuario.getEmail());
+            ps.setString(8, usuario.getCpf());
+            ps.setString(9, usuario.getStatus());
+            ps.setInt(10, usuario.getCod());
             ps.executeUpdate();
             
             ok = true;
