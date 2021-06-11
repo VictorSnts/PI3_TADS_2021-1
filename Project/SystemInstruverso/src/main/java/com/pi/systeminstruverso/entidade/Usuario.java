@@ -61,4 +61,8 @@ public class Usuario {
         return nivel.equals("GERENTE");
     }
     
+    public boolean isGerenteGeral(){
+        return nivel.equals("GERENTE GERAL");
+    }
+    
 }

@@ -17,36 +17,63 @@
     <body class="container">
         <c:import url="/header.jsp"/>
         <h1>Produtos</h1>
-        
-        <form action="RelatorioCategoriasServlet" method="GET">
-            <label for="busca">  Filtrar por Intervalo: </label>
+
+        <c:if test="${tipo == 'categoria'}">
+            <form action="RelatorioCategoriasServlet" method="GET">
+                <label for="busca">  Filtrar por Intervalo: </label>
+                <div class="container">  
+                    <input type="date" id="data_inicial" name="data_inicial" required="true">
+                    <input type="date" id="data_final" name="data_final" required="true">
+                    <label class="form-label">Categoria: </label>
+                    <select name="categoria" required="true">
+                        <option value="none"> </option>
+                        <c:forEach items="${listaCategoria}" var="categoria">
+                            <option value="${categoria.getCategoria()}">${categoria.getCategoria()}</option>
+                        </c:forEach>
+                    </select>
+                    
+                    <button type="submit" name="intervalo" value="dates">Filtrar</button>
+                </div>
+            </form>
+        </c:if>
+
+        <c:if test="${tipo == 'cliente'}">
+            <form action="RelatorioClienteServlet" method="GET">
+                <label for="busca">  Filtrar por Intervalo: </label>
+                <div class="container">
+                    <input type="date" id="data_inicial" name="data_inicial" required="true">
+                    <input type="date" id="data_final" name="data_final" required="true">
+
+                    <label class="form-label">Cliente: </label>
+                    <select name="cliente" required="true">
+                        <option value="none"> </option>
+                        <c:forEach items="${listaCliente}" var="cliente">
+                            <option value="${cliente.getCod_cliente()}">${cliente.getNome_cliente()}</option>
+                        </c:forEach>
+                    </select>
+                    <label class="form-label">Filial: </label>
+                    <c:if test="${usuario_logado.getNivel() == 'GERENTE GERAL'}">
+                        <select name="filial" required="true">
+                            <option value="none"> </option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>"
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </c:if>
+                    
+                    <button type="submit" name="intervalo" value="dates">Filtrar</button>
+                </div>
+            </form>
+        </c:if>
             
-            <div class="container">  
-                <input type="date" id="data_inicial" name="data_inicial" required="true">
-                <input type="date" id="data_final" name="data_final" required="true">
-                <label class="form-label">Categoria: </label>
-                <select name="categoria" required="true">
-                    <option value="none"> </option>
-                    <option value="Audio">Audio</option>
-                    <option value="Cordas">Cordas</option>
-                    <option value="Teclas">Teclas</option>
-                    <option value="Baterias">Baterias</option>
-                    <option value="Percursao">Percursao</option>
-                    <option value="Sopro">Sopro</option>
-                    <option value="Iluminacao">Iluminacao</option>
-                    <option value="Outros">Outros</option>
-                </select>
-                
-                <button type="submit" name="intervalo" value="dates">Filtrar</button>
-            </div>
-        </form>
-        
+
         <br>
 
         
         <table class="table table-striped table-bordered table-sm ">
             <thead>
-                <th scope="col">Cod Venda</th>
+                <th scope="col">Nome Cliente</th>
                 <th scope="col">Data Venda</th>
                 <th scope="col">Filial</th>
                 <th scope="col">Produto</th>
@@ -58,7 +85,7 @@
             </thead>
             <c:forEach items="${listaProdutosVenda}" var="produto">
                 <tr>
-                    <td>${produto.cod_venda}</td>
+                    <td>${produto.nomeCliente}</td>
                     <td>${produto.data_venda}</td>
                     <td>${produto.filial}</td>
                     <td>${produto.produto}</td>

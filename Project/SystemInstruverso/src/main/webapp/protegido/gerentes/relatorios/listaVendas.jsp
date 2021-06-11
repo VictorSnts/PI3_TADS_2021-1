@@ -23,7 +23,7 @@
         </form>
         <br>
         <form action="RelatorioClientesServlet" method="GET">
-            <button type="submit" name="filtro" value="cliente">Filtar Produtos Vendidos por Cliente</button>
+            <button type="submit" name="intervalo" value="full">Filtar Produtos Vendidos por Cliente</button>
         </form>
         <br><br>
         
@@ -44,7 +44,7 @@
                     </select>
                 </c:if>
                 <c:if test="${usuario_logado.getNivel() != 'GERENTE GERAL'}">
-                    <input type="text" id="filial" name="filial" required="true" value=${usuario_logado.getFilial()}>
+                    <input type="text" id="filial" name="filial" required="true" readyonly="true" value=${usuario_logado.getFilial()}>
                 </c:if>
                 
                 

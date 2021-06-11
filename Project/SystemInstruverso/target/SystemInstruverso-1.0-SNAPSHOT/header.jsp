@@ -15,7 +15,7 @@
     </head>
     <body class="container">
         <img src="<c:url value="/img/logo.jpg"/>" width="475" height="125" alt=""/>
-        <h4>Usuario: ${usuario_logado.nome}</h4>
+        <h4>Usuario: ${usuario_logado.nome}  Filial: ${usuario_logado.filial}</h4>
         <div class="sidebar">
             <a href="<c:url value="/protegido/inicio.jsp"/>"><i class="fa fa-fw fa-home"></i> Inicio</a>
             <a href="<c:url value="/ClienteServlet"/>"><i class="fa fa-fw fa-user"></i> Clientes</a>

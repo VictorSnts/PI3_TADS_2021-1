@@ -116,6 +116,18 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.pi.systeminstruverso.servlet.login.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioClientesServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.relatorio.RelatorioClientesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RelatorioFiltrarServlet</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.servlet.relatorio.RelatorioFiltrarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Comprador</servlet-name>
+        <servlet-class>com.pi.systeminstruverso.entidade.Comprador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -223,6 +235,18 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioClientesServlet</servlet-name>
+        <url-pattern>/RelatorioClientesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioFiltrarServlet</servlet-name>
+        <url-pattern>/RelatorioFiltrarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Comprador</servlet-name>
+        <url-pattern>/Comprador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
