@@ -2,12 +2,14 @@ package com.pi.systeminstruverso.servlet.cliente;
 
 import com.pi.systeminstruverso.dao.ClienteDAO;
 import com.pi.systeminstruverso.entidade.Cliente;
+import com.pi.systeminstruverso.entidade.Usuario;
 import com.pi.systeminstruverso.utils.Convert;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,10 +20,13 @@ public class CadastrarClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
+        
         // Recuperar os parametros      
         String nome = request.getParameter("nome");
         String telefone = request.getParameter("telefone");
-        int filial_cadastro = Convert.ToInt(request.getParameter("filial_cadastro"));
+        int filial_cadastro = usuario_logado.getFilial();
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String data_nasc = request.getParameter("data_nasc");

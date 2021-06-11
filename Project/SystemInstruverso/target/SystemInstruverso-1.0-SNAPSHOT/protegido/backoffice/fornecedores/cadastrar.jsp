@@ -169,8 +169,6 @@
                 <label for="cep"><strong>CEP:</strong> </label>
                 <input type="text" name="cep" id="cep" required="true" size="17" maxlength="8" value="${fornecedor.cep}">
                 
-                <label for="pais"><strong>Pais: </strong> </label>
-                <input type="text" name="pais" id="pais" required="true" size="17" value="${fornecedor.pais}">
                 
             </div>
 

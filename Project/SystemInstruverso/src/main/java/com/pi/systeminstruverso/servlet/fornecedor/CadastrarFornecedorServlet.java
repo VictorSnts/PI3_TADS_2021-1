@@ -42,7 +42,7 @@ public class CadastrarFornecedorServlet extends HttpServlet {
             String cep = request.getParameter("cep");
             String endereco = request.getParameter("endereco");
             int numero = Convert.ToInt(request.getParameter("numero"));
-            String pais = request.getParameter("pais");
+            String pais = "";
             String uf = request.getParameter("uf");
             String bairro = request.getParameter("bairro");
             String cidade = request.getParameter("cidade");

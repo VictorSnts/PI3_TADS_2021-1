@@ -52,10 +52,13 @@ public class AlterarClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        HttpSession session = request.getSession();
+        Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
+        
         int cod = Convert.ToInt(request.getParameter("cod"));
         String nome = request.getParameter("nome");
         String telefone = request.getParameter("telefone");
-        int filial_cadastro = Convert.ToInt(request.getParameter("filial_cadastro"));
+        int filial_cadastro = usuario_logado.getFilial();
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
         String data_nasc = request.getParameter("data_nasc");

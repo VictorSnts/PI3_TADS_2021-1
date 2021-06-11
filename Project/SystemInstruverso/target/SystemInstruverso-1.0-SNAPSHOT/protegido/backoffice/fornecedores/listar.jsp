@@ -45,7 +45,6 @@
                 <th scope="col">Cep</th>
                 <th scope="col">Endereco</th>
                 <th scope="col">Numero</th>
-                <th scope="col">Pais</th>
                 <th scope="col">Uf</th>
                 <th scope="col">Bairro</th>
                 <th scope="col">Cidade</th>
@@ -66,7 +65,6 @@
                     <td>${fornecedor.cep}</td>
                     <td>${fornecedor.endereco}</td>
                     <td>${fornecedor.numero}</td>
-                    <td>${fornecedor.pais}</td>
                     <td>${fornecedor.uf}</td>
                     <td>${fornecedor.bairro}</td>
                     <td>${fornecedor.cidade}</td>
