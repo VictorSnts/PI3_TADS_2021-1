@@ -38,7 +38,7 @@
         </c:if>
 
         <c:if test="${tipo == 'cliente'}">
-            <form action="RelatorioClienteServlet" method="GET">
+            <form action="RelatorioClientesServlet" method="GET">
                 <label for="busca">  Filtrar por Intervalo: </label>
                 <div class="container">
                     <input type="date" id="data_inicial" name="data_inicial" required="true">

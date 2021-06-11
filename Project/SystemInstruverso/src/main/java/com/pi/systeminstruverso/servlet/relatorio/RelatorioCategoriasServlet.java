@@ -31,58 +31,60 @@ public class RelatorioCategoriasServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
         
-        // Define variaveis que serao somadas para mostrar na tela
-        double soma_preco = 0;
-        int itens = 0;
-        
-        // Define as listas
-        List<Relatorio> listaProdutosVenda = null ;
-        List<Categorias> listaCategoria = null;
-        
-        String intervalo = request.getParameter("intervalo");
+        if (usuario_logado.isGerenteGeral()|| usuario_logado.isGerente()){
+            // Define variaveis que serao somadas para mostrar na tela
+            double soma_preco = 0;
+            int itens = 0;
 
-        if(intervalo.equals("full")){
-            if(usuario_logado.isGerente()){
-                listaProdutosVenda = RelatorioDAO.getVendas(usuario_logado.getFilial());
-                listaCategoria = RelatorioDAO.getCategorias(usuario_logado.getFilial());
-            }
-            else if(usuario_logado.isGerenteGeral()){
-                listaProdutosVenda = RelatorioDAO.getVendas();
-                listaCategoria = RelatorioDAO.getCategorias();
-            }
-        } else if(intervalo.equals("dates")){
-            String data_inicial = request.getParameter("data_inicial");
-            String data_final = request.getParameter("data_final");
-            String categoria = request.getParameter("categoria");
-            
-            if(usuario_logado.isGerente()){
-                if(categoria.equals("none")) listaProdutosVenda = RelatorioDAO.getVendasIntervalo(usuario_logado.getFilial(), data_inicial, data_final);
-                else listaProdutosVenda = RelatorioDAO.getVendasIntervalo(usuario_logado.getFilial(), data_inicial, data_final, categoria);
-                listaCategoria = RelatorioDAO.getCategoriasIntervalo(usuario_logado.getFilial(), data_inicial, data_final);
-            }
-            else if(usuario_logado.isGerenteGeral()){
-                if(categoria == null) listaProdutosVenda = RelatorioDAO.getVendasIntervalo(data_inicial, data_final);
-                else listaProdutosVenda = RelatorioDAO.getVendasIntervalo(data_inicial, data_final, categoria);
-                listaCategoria = RelatorioDAO.getCategoriasIntervalo(data_inicial, data_final);
-            }
-        }
-        
-        // se o usuario for Gerente, a lista é por filial, se for Geral é completa
-            
-        
-        for(Relatorio produto : listaProdutosVenda){
-            soma_preco += (produto.getPreco_unitario() * produto.getQuantidade());
-            itens += produto.getQuantidade();
-        }
-        
-        String tipo = "categoria";
-        request.setAttribute("soma_preco", new DecimalFormat("#,##0.00").format(soma_preco));
-        request.setAttribute("itens", itens);
-        request.setAttribute("tipo", tipo);
-        request.setAttribute("listaCategoria", listaCategoria);
-        request.setAttribute("listaProdutosVenda", listaProdutosVenda);
+            // Define as listas
+            List<Relatorio> listaProdutosVenda = null ;
+            List<Categorias> listaCategoria = null;
 
-        request.getRequestDispatcher("/protegido/gerentes/relatorios/listarProdutos.jsp").forward(request, response);
+            String intervalo = request.getParameter("intervalo");
+
+            if(intervalo.equals("full")){
+                if(usuario_logado.isGerente()){
+                    listaProdutosVenda = RelatorioDAO.getVendas(usuario_logado.getFilial());
+                    listaCategoria = RelatorioDAO.getCategorias(usuario_logado.getFilial());
+                }
+                else if(usuario_logado.isGerenteGeral()){
+                    listaProdutosVenda = RelatorioDAO.getVendas();
+                    listaCategoria = RelatorioDAO.getCategorias();
+                }
+            } else if(intervalo.equals("dates")){
+                String data_inicial = request.getParameter("data_inicial");
+                String data_final = request.getParameter("data_final");
+                String categoria = request.getParameter("categoria");
+
+
+                if(usuario_logado.isGerente()){
+                    if(categoria.equals("none")) listaProdutosVenda = RelatorioDAO.getVendasIntervalo(usuario_logado.getFilial(), data_inicial, data_final);
+                    else listaProdutosVenda = RelatorioDAO.getVendasIntervalo(usuario_logado.getFilial(), data_inicial, data_final, categoria);
+                    listaCategoria = RelatorioDAO.getCategoriasIntervalo(usuario_logado.getFilial(), data_inicial, data_final);
+                }
+                else if(usuario_logado.isGerenteGeral()){
+                    if(categoria == null) listaProdutosVenda = RelatorioDAO.getVendasIntervalo(data_inicial, data_final);
+                    else listaProdutosVenda = RelatorioDAO.getVendasIntervalo(data_inicial, data_final, categoria);
+                    listaCategoria = RelatorioDAO.getCategoriasIntervalo(data_inicial, data_final);
+                }
+            }            
+
+            for(Relatorio produto : listaProdutosVenda){
+                soma_preco += (produto.getPreco_unitario() * produto.getQuantidade());
+                itens += produto.getQuantidade();
+            }
+
+            String tipo = "categoria";
+            request.setAttribute("soma_preco", new DecimalFormat("#,##0.00").format(soma_preco));
+            request.setAttribute("itens", itens);
+            request.setAttribute("tipo", tipo);
+            request.setAttribute("listaCategoria", listaCategoria);
+            request.setAttribute("listaProdutosVenda", listaProdutosVenda);
+
+            request.getRequestDispatcher("/protegido/gerentes/relatorios/listarProdutos.jsp").forward(request, response);
+        } else{
+            response.sendRedirect(request.getContextPath() + "/retornos/erro_auth.jsp");
+        }
 
     }
 }

@@ -25,41 +25,46 @@ public class RelatorioServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Usuario usuario_logado = (Usuario) session.getAttribute("usuario_logado");
         
-        String intervalo = request.getParameter("intervalo");
-        List<Venda> listaVendas = null ;
-        
-        if(intervalo.equals("full")){
-            if(usuario_logado.isGerenteGeral()){
-                listaVendas = VendaDAO.getVendas();
-            } else {
-                listaVendas = VendaDAO.getVendas(usuario_logado.getFilial());
+        if (usuario_logado.isGerenteGeral()|| usuario_logado.isGerente()){
+            String intervalo = request.getParameter("intervalo");
+            List<Venda> listaVendas = null ;
+
+            if(intervalo.equals("full")){
+                if(usuario_logado.isGerenteGeral()){
+                    listaVendas = VendaDAO.getVendas();
+                } else {
+                    listaVendas = VendaDAO.getVendas(usuario_logado.getFilial());
+                }
+
+
+            } else if(intervalo.equals("dates")){
+                String data_inicial = request.getParameter("data_inicial");
+                String data_final = request.getParameter("data_final");
+                String filial = request.getParameter("filial");
+
+                if(!filial.equals("none")){
+                    listaVendas = VendaDAO.getVendas(data_inicial, data_final, filial);
+
+                } else{
+                    listaVendas = VendaDAO.getVendas(data_inicial, data_final);
+                }
+
             }
-            
-            
-        } else if(intervalo.equals("dates")){
-            String data_inicial = request.getParameter("data_inicial");
-            String data_final = request.getParameter("data_final");
-            String filial = request.getParameter("filial");
-            
-            if(!filial.equals("none")){
-                listaVendas = VendaDAO.getVendas(data_inicial, data_final, filial);
-                
-            } else{
-                listaVendas = VendaDAO.getVendas(data_inicial, data_final);
+
+            double soma_preco = 0;
+
+            for(Venda venda : listaVendas){
+                soma_preco += (venda.getTotal_venda());
             }
-            
+
+            request.setAttribute("soma_preco", new DecimalFormat("#,##0.00").format(soma_preco));
+            request.setAttribute("listaVendas", listaVendas);
+
+            request.getRequestDispatcher("/protegido/gerentes/relatorios/listaVendas.jsp").forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/retornos/erro_auth.jsp");
         }
         
-        double soma_preco = 0;
-        
-        for(Venda venda : listaVendas){
-            soma_preco += (venda.getTotal_venda());
-        }
-        
-        request.setAttribute("soma_preco", new DecimalFormat("#,##0.00").format(soma_preco));
-        request.setAttribute("listaVendas", listaVendas);
-        
-        request.getRequestDispatcher("/protegido/gerentes/relatorios/listaVendas.jsp").forward(request, response);
     }
     
 }
