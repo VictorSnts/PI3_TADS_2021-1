@@ -47,6 +47,10 @@
             </tbody>
         </table>
         
+        <c:if test="${not empty msg}">
+            <h4 id="msg" style="color: red">${msg}</h4>
+        </c:if>
+        
         <h1>Carrinho</h1>
         
         <table class="table table-bordered table-striped mb-0">
@@ -82,12 +86,7 @@
                     <option value="pix">PIX</option>
                 </select>
                 <label for="filial">  Filial: </label>
-                <select name="filial" required="true">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+                <input type="text" name="filial" size="3" required="true" readonly="true" value=${usuario_logado.filial}>
                 <button type="submit" name="venda" value="${num_venda}">Finalizar</button>
             </form>
         </div>

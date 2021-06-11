@@ -73,6 +73,16 @@ public class VendaServlet extends HttpServlet {
                 listaProdutos = ProdutoDAO.getProdutos(usuario_logado.getFilial());
 
                 request.setAttribute("listaProdutos", listaProdutos);
+                
+                // Lista os produtos do carrinho para a venda corrente
+                List<VendaProduto> listaItem;
+                listaItem = VendaDAO.getItensVenda(num_venda);
+                request.setAttribute("listaItem", listaItem);
+                
+                // Calcula o total da nota para venda corrente
+                double total_venda = VendaDAO.getTotalVenda(num_venda);
+                request.setAttribute("total_venda", total_venda);
+
             } catch (SQLException ex) {
                 Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -85,34 +95,45 @@ public class VendaServlet extends HttpServlet {
                 if (!request.getParameter("cod").equals("")){
                     cod_produto = Convert.ToInt(request.getParameter("cod"));
                 }
-                // verifica se ja o produto ja foi adicionado
-                try {
-                    ja_adicionado = VendaDAO.verificarProdutoVenda(num_venda, cod_produto);
-                } catch (SQLException ex) {
-                    Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
-                } // Se ja foi adicionado
-                if(ja_adicionado){
-                    //somar qtd
-                    VendaDAO.adicionarItem(num_venda, cod_produto);
+                
+                Produto p = ProdutoDAO.getProduto(request.getParameter("cod"));
+                if(VendaDAO.getQtd(num_venda, cod_produto) >= p.getQuantidade()){
+                    request.setAttribute("msg", "Nao ha mais estoque deste produto!");
+
+                    request.getRequestDispatcher("/protegido/vendedores/vendas/vender.jsp").forward(request, response);
                 } else{
-                    // Busca info do produto no BD
-                    Produto produto = ProdutoDAO.getProduto(Integer.toString(cod_produto));
+                    // verifica se ja o produto ja foi adicionado
+                    try {
+                        ja_adicionado = VendaDAO.verificarProdutoVenda(num_venda, cod_produto);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    } // Se ja foi adicionado
+                    if(ja_adicionado){
+                        VendaDAO.adicionarItem(num_venda, cod_produto);
 
-                    // Cadastra item da venda
-                    VendaProduto vp = new VendaProduto(num_venda, produto.getCod(), produto.getPreco(), 1);
-                    VendaDAO.cadastrarProdutoVenda(vp);
+                    } else{
+                        // Busca info do produto no BD
+                        Produto produto = ProdutoDAO.getProduto(Integer.toString(cod_produto));
+
+                        // Cadastra item da venda
+                        VendaProduto vp = new VendaProduto(num_venda, produto.getCod(), produto.getPreco(), 1);
+                        VendaDAO.cadastrarProdutoVenda(vp);
+                    }
                 }
+                
+                // Lista os produtos do carrinho para a venda corrente
+                List<VendaProduto> listaItem;
+                listaItem = VendaDAO.getItensVenda(num_venda);
+                request.setAttribute("listaItem", listaItem);
+                
+                // Calcula o total da nota para venda corrente
+                double total_venda = VendaDAO.getTotalVenda(num_venda);
+                request.setAttribute("total_venda", total_venda);
             }
-            // Lista os produtos do carrinho para a venda corrente
-            List<VendaProduto> listaItem;
-            listaItem = VendaDAO.getItensVenda(num_venda);
-            request.setAttribute("listaItem", listaItem);
-
-            // Calcula o total da nota para venda corrente
-            double total_venda = VendaDAO.getTotalVenda(num_venda);
-            request.setAttribute("total_venda", total_venda);
-
+            
             request.getRequestDispatcher("/protegido/vendedores/vendas/vender.jsp").forward(request, response);
+
+
         } else {
             response.sendRedirect(request.getContextPath() + "/retornos/erro_auth.jsp");
         }

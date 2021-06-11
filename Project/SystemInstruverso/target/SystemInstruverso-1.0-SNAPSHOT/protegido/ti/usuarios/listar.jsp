@@ -39,7 +39,6 @@
                 <th scope="col">Area</th>
                 <th scope="col">Nivel</th>
                 <th scope="col">Login</th>
-                <th scope="col">Senha</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Email</th>
                 <th scope="col">Cpf</th>
@@ -57,7 +56,6 @@
                     <td>${usuario.perfil}</td>
                     <td>${usuario.nivel}</td>
                     <td>${usuario.login}</td>
-                    <td>${usuario.senha}</td>
                     <td>${usuario.telefone}</td>
                     <td>${usuario.email}</td>
                     <td>${usuario.cpf}</td>

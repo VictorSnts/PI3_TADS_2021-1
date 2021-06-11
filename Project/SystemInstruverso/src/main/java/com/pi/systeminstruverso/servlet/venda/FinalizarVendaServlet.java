@@ -27,6 +27,8 @@ public class FinalizarVendaServlet extends HttpServlet {
         String forma_pagamento = request.getParameter("forma_pagamento");
         int cod_venda = Convert.ToInt(request.getParameter("venda"));
         int filial = Convert.ToInt(request.getParameter("filial"));
+        
+        // verifica se venda pode ser finalizada
 
         // Atualiza venda no BD
         boolean ok = VendaDAO.fializarVenda(cod_venda, forma_pagamento, filial);
